@@ -4,6 +4,7 @@ import FeaturedCallout from '../components/FeaturedCallout.astro';
 import AppCard from '../components/AppCard.astro';
 import DisclosureBlock from '../components/DisclosureBlock.astro';
 import LastVerified from '../components/LastVerified.astro';
+import KeyboardStrip from '../components/KeyboardStrip.astro';
 import { rankedApps } from '../data/apps';
 import { SITE, PERSONAS } from '../data/site';
 
@@ -55,6 +56,7 @@ const itemListSchema = {
         <li><span><strong>No sponsored rankings.</strong> No app can pay for a higher score or a better rank. Ever.</span></li>
       </ul>
     </div>
+    <KeyboardStrip />
   </section>
 
   <div class="wrap">
@@ -85,8 +87,8 @@ const itemListSchema = {
     <div class="grid2">
       {PERSONAS.map((p) => (
         <div class="card">
-          <h3 style="margin-top:0"><a href={p.url} style="color:var(--ink);text-decoration:none">{p.label}</a></h3>
-          <p style="margin-bottom:0.75rem">{p.description}</p>
+          <h3><a href={p.url}>{p.label}</a></h3>
+          <p>{p.description}</p>
           <a class="btn btn-ghost" href={p.url}>Best piano app for {p.label.toLowerCase()}</a>
         </div>
       ))}

@@ -1,0 +1,37 @@
+---
+/**
+ * Decorative 88-key keyboard (A0–C8) drawn as inline SVG. A C-major arpeggio
+ * from C4 lights up once on load; `slice` keeps the middle octaves on narrow screens.
+ */
+const WHITE_W = 24;
+const H = 100;
+const BLACK_W = 14;
+const BLACK_H = 60;
+const NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+const whites = Array.from({ length: 52 }, (_, i) => ({ i, name: NAMES[i % 7] }));
+const blacks = whites.filter((w) => w.i < 51 && 'ACDFG'.includes(w.name));
+// C4 is white key 23; light C4 E4 G4 C5 E5 G5 C6.
+const LIT = [23, 25, 27, 30, 32, 34, 37];
+---
+
+<div class="keys-strip" aria-hidden="true">
+  <svg viewBox={`0 0 ${52 * WHITE_W} ${H}`} preserveAspectRatio="xMidYMax slice" focusable="false">
+    {whites.map((w) => {
+      const lit = LIT.indexOf(w.i);
+      return (
+        <rect
+          class={lit >= 0 ? 'wk lit' : 'wk'}
+          style={lit >= 0 ? `--d:${lit}` : undefined}
+          x={w.i * WHITE_W + 0.5}
+          y={-4}
+          width={WHITE_W - 1}
+          height={H + 3}
+          rx="3"
+        />
+      );
+    })}
+    {blacks.map((w) => (
+      <rect class="bk" x={(w.i + 1) * WHITE_W - BLACK_W / 2} y={-3} width={BLACK_W} height={BLACK_H + 3} rx="2" />
+    ))}
+  </svg>
+</div>
