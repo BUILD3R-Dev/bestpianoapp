@@ -21,7 +21,7 @@ const description = `The best ${app.name} alternatives for 2026, ranked by MetaS
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
-  <div class="wrap">
+  <div class="wrap-wide catalog">
     <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: app.name, href: reviewUrl(app) }, { label: 'Alternatives' }]} />
     <h1>{title}</h1>
     <p class="lede">{alternativesIntro[app.slug]}</p>

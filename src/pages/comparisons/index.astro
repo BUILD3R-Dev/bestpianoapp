@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import { appBySlug } from '../../data/apps';
+import { VS_PAIRS } from '../../data/editorial';
+import { vsUrl } from '../../lib/format';
+import { SITE } from '../../data/site';
+---
+
+<BaseLayout title={`Compare Piano Apps | ${SITE.name}`} description="Compare piano apps head to head on MetaScore, pricing, features, and learning approach.">
+  <div class="wrap-wide catalog">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Comparisons' }]} />
+    <p class="eyebrow">Head to head</p>
+    <h1>Two apps. One decision.</h1>
+    <p class="lede">See how your shortlist compares on price, teaching method, and who each app suits. Choose a matchup to read the full comparison.</p>
+    <div class="matchup-grid">
+      {VS_PAIRS.map(([aSlug, bSlug]) => {
+        const a = appBySlug(aSlug);
+        const b = appBySlug(bSlug);
+        return (
+          <a class="matchup-card" href={vsUrl(a, b)}>
+            <div class="matchup-scores" aria-label={`MetaScores: ${a.name} ${a.metaScore}, ${b.name} ${b.metaScore}`}>
+              <div><span class="app-monogram" aria-hidden="true">{a.name.charAt(0)}</span><strong>{a.metaScore.toFixed(1)}</strong><span>MetaScore{a.provisionalScore ? ' · provisional' : ''}</span></div>
+              <span class="matchup-vs" aria-hidden="true">vs</span>
+              <div><span class="app-monogram" aria-hidden="true">{b.name.charAt(0)}</span><strong>{b.metaScore.toFixed(1)}</strong><span>MetaScore{b.provisionalScore ? ' · provisional' : ''}</span></div>
+            </div>
+            <h2>{a.name} vs {b.name}</h2>
+            <span class="text-link">Read the comparison <span aria-hidden="true">↗</span></span>
+          </a>
+        );
+      })}
+    </div>
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

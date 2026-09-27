@@ -7,8 +7,8 @@ export const SITE = {
 
 export const NAV = [
   { label: 'Best Apps', href: '/best-piano-apps/' },
-  { label: 'Reviews', href: '/simply-piano-review/' },
-  { label: 'Comparisons', href: '/simply-piano-vs-flowkey/' },
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Comparisons', href: '/comparisons/' },
   { label: 'Deals', href: '/deals/' },
   { label: 'Quiz', href: '/quiz/' },
   { label: 'How We Rate', href: '/how-we-rate/' },

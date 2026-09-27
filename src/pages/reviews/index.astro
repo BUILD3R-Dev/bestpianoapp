@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AppCard from '../../components/AppCard.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import { rankedApps } from '../../data/apps';
+import { SITE } from '../../data/site';
+---
+
+<BaseLayout title={`Piano App Reviews | ${SITE.name}`} description="Browse every piano app review, with public ratings, pricing, platforms, and trial terms in one place.">
+  <div class="wrap-wide catalog">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Reviews' }]} />
+    <p class="eyebrow">The review library</p>
+    <h1>Every app. A clearer picture.</h1>
+    <p class="lede">Explore every piano app we track, ordered by MetaScore. Open a review for the teaching approach, pricing, pros and cons, and who it suits.</p>
+    <h2>All {rankedApps.length} piano app reviews</h2>
+    {rankedApps.map((app, i) => <AppCard app={app} rank={i + 1} />)}
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

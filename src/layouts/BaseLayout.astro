@@ -13,6 +13,9 @@ interface Props {
 
 const { title, description, canonical, noindex, schema, ogType = 'article' } = Astro.props;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString();
+const sectionHref = /^\/[^/]+-review\/$/.test(Astro.url.pathname)
+  ? '/reviews/'
+  : /^\/[^/]+-vs-[^/]+\/$/.test(Astro.url.pathname) ? '/comparisons/' : undefined;
 const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
@@ -38,15 +41,16 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site">
       <div class="wrap-wide nav">
         <a class="brand" href="/"><span>♫</span> BestPianoApp</a>
         <nav class="links" aria-label="Primary">
-          {NAV.map((n) => <a href={n.href}>{n.label}</a>)}
+          {NAV.map((n) => <a href={n.href} aria-current={Astro.url.pathname === n.href ? 'page' : sectionHref === n.href ? 'true' : undefined}>{n.label}</a>)}
         </nav>
       </div>
     </header>
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <footer class="site">
@@ -57,7 +61,7 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
           <a href="/how-we-rate/">How we rate</a>
           <a href="/disclosure/">Affiliate disclosure</a>
           <a href="/deals/">Deals</a>
-          <a href="/sitemap.xml">Sitemap</a>
+          <a href="/sitemap-index.xml">Sitemap</a>
         </nav>
         <p>© 2026 bestpianoapp.com — The independent, data-driven guide to piano apps.</p>
         <p>We may earn a commission when you buy through links on this site. <a href="/disclosure/">Read our disclosure</a>.</p>

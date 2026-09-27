@@ -12,20 +12,27 @@ interface Props {
 const { app, rank, showVerdict = false } = Astro.props;
 ---
 
-<article class={`card${rank && rank <= 3 ? ' card-top3' : ''}`}>
-  {rank && <span class={`rank-badge${rank === 1 ? ' gold' : ''}`}>#{rank} — MetaScore {app.metaScore.toFixed(1)}</span>}
-  <h3><a href={reviewUrl(app)}>{app.name}</a></h3>
-  <p class="card-tagline">{app.tagline}</p>
-  <div class="card-score"><MetaScoreBadge app={app} /></div>
-  <div class="chips">
-    <span class="chip">{annualLine(app)}</span>
-    <span class="chip">{libraryLabel(app)} songs</span>
-    <span class="chip">{inputLabel(app.inputMethod)}</span>
-    {app.platforms.map((p) => <span class="chip">{p}</span>)}
+<article class={`card app-card${rank && rank <= 3 ? ' card-top3' : ''}`}>
+  {rank && <span class="app-rank" aria-label={`Rank ${rank}`}>{String(rank).padStart(2, '0')}</span>}
+  <div class="app-overview">
+    <div class="app-heading">
+      <span class="app-monogram" aria-hidden="true">{app.name.charAt(0)}</span>
+      <h3><a href={reviewUrl(app)}>{app.name}</a></h3>
+    </div>
+    <p class="card-tagline">{app.tagline}</p>
+    <div class="chips">
+      <span class="chip">{libraryLabel(app)} songs</span>
+      <span class="chip">{inputLabel(app.inputMethod)}</span>
+      {app.platforms.map((p) => <span class="chip">{p}</span>)}
+    </div>
+    {showVerdict && <p class="card-verdict">{app.verdict}</p>}
   </div>
-  {showVerdict && <p class="card-verdict">{app.verdict}</p>}
-  <div class="card-actions">
-    <CTA app={app} />
-    <a class="btn btn-ghost" href={reviewUrl(app)}>Read our {app.name} review</a>
+  <div class="app-decision">
+    <div class="card-score"><MetaScoreBadge app={app} /></div>
+    <p class="app-price">{annualLine(app)}</p>
+    <div class="card-actions">
+      <CTA app={app} />
+      <a class="review-link" href={reviewUrl(app)}>Read our {app.name} review <span aria-hidden="true">↗</span></a>
+    </div>
   </div>
 </article>

@@ -35,13 +35,14 @@ const schema = {
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description} schema={schema}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Reviews', href: '/best-piano-apps/' }, { label: app.name }]} />
-    <h1>{title}</h1>
+  <div class="wrap-wide review-page">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Reviews', href: '/reviews/' }, { label: app.name }]} />
+    <div class="review-intro"><div><h1>{title}</h1>
     <p class="lede">{ed.intro}</p>
-    <p><MetaScoreBadge app={app} /><a class="ms-how" href="/how-we-rate/">How the MetaScore works</a></p>
+    </div><div class="review-summary"><p><MetaScoreBadge app={app} /><a class="ms-how" href="/how-we-rate/">How the MetaScore works</a></p>
     <CTA app={app} />
-    <h2>Quick facts</h2>
+    </div></div>
+    <div class="review-grid"><aside class="review-facts" aria-labelledby="facts-title"><h2 id="facts-title">Quick facts</h2>
     <div class="cmp-scroll">
     <table class="cmp cmp--facts">
       <tbody>
@@ -56,6 +57,7 @@ const schema = {
       </tbody>
     </table>
     </div>
+    </aside><div class="review-body">
     <ProsCons app={app} />
     <h2>How {app.name} teaches</h2>
     <p>{ed.methodNote}</p>
@@ -83,6 +85,7 @@ const schema = {
       </Fragment>
     )}
     <FAQ items={ed.faqs} />
+    </div></div>
     <DisclosureBlock />
     <LastVerified />
   </div>
