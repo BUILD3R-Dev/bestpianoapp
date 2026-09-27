@@ -4,7 +4,6 @@ import FeaturedCallout from '../components/FeaturedCallout.astro';
 import AppCard from '../components/AppCard.astro';
 import DisclosureBlock from '../components/DisclosureBlock.astro';
 import LastVerified from '../components/LastVerified.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { rankedApps } from '../data/apps';
 import { SITE, PERSONAS } from '../data/site';
 
@@ -37,15 +36,28 @@ const itemListSchema = {
   schema={itemListSchema}
   ogType="website"
 >
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home' }]} />
-    <h1>The Best Piano Apps in 2026, Ranked by Data</h1>
-    <p class="lede">
-      Every piano app claims to be the best. We ignored the marketing and read the reviews instead —
-      1,000+ of them across the App Store, Google Play, Reddit, YouTube, and expert sites —
-      synthesized into one number: the <strong>MetaScore</strong>. Below is what the data actually says.
-    </p>
+  <section class="hero">
+    <div class="wrap-wide">
+      <p class="hero-eyebrow">Independent · Data-driven · Reader-supported</p>
+      <h1>The Best Piano Apps in 2026, Ranked by Data</h1>
+      <p class="hero-sub">
+        Every piano app claims to be the best. We ignored the marketing and read the reviews instead —
+        1,000+ of them across the App Store, Google Play, Reddit, YouTube, and expert sites —
+        synthesized into one number: the <strong>MetaScore</strong>. Below is what the data actually says.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-gold btn-lg" href="/quiz/">Find your app in 60 seconds</a>
+        <a class="btn btn-outline-light btn-lg" href="/best-piano-apps/">See the top-7 ranking</a>
+      </div>
+      <ul class="trust-row">
+        <li><span><strong>MetaScore, published.</strong> Every score is computed from public ratings — and we show our work.</span></li>
+        <li><span><strong>Prices verified monthly.</strong> Annual and monthly pricing re-checked every month, trial terms spelled out.</span></li>
+        <li><span><strong>No sponsored rankings.</strong> No app can pay for a higher score or a better rank. Ever.</span></li>
+      </ul>
+    </div>
+  </section>
 
+  <div class="wrap">
     <FeaturedCallout />
 
     <h2>The top 7, in order</h2>
@@ -74,8 +86,8 @@ const itemListSchema = {
       {PERSONAS.map((p) => (
         <div class="card">
           <h3 style="margin-top:0"><a href={p.url} style="color:var(--ink);text-decoration:none">{p.label}</a></h3>
-          <p style="margin-bottom:0.5rem">{p.description}</p>
-          <a href={p.url}>Best piano app for {p.label.toLowerCase()} →</a>
+          <p style="margin-bottom:0.75rem">{p.description}</p>
+          <a class="btn btn-ghost" href={p.url}>Best piano app for {p.label.toLowerCase()}</a>
         </div>
       ))}
     </div>

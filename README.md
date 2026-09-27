@@ -20,5 +20,3 @@ Production deploys automatically via the Cloudflare Pages GitHub integration on 
 ## Content
 
 Page content and app data live in `src/data/` — monthly price/score updates shouldn't need template changes. See `bestpianoapp-blueprint.md` (in the studio workspace) for the full launch spec.
-
-<!-- auto-deploy trigger -->

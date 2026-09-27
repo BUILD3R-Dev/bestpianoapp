@@ -39,10 +39,11 @@ const schema = {
     <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Reviews', href: '/best-piano-apps/' }, { label: app.name }]} />
     <h1>{title}</h1>
     <p class="lede">{ed.intro}</p>
-    <p><MetaScoreBadge app={app} /> <a href="/how-we-rate/" style="font-size:0.85rem">How the MetaScore works</a></p>
+    <p><MetaScoreBadge app={app} /><a class="ms-how" href="/how-we-rate/">How the MetaScore works</a></p>
     <CTA app={app} />
     <h2>Quick facts</h2>
-    <table class="cmp">
+    <div class="cmp-scroll">
+    <table class="cmp cmp--facts">
       <tbody>
         <tr><td><strong>Annual price</strong></td><td>{annualLine(app)}</td></tr>
         <tr><td><strong>Free trial</strong></td><td>{app.freeTrial}</td></tr>
@@ -54,6 +55,7 @@ const schema = {
         <tr><td><strong>Kids mode</strong></td><td>{app.kidsMode ? 'Yes' : 'No'}</td></tr>
       </tbody>
     </table>
+    </div>
     <ProsCons app={app} />
     <h2>How {app.name} teaches</h2>
     <p>{ed.methodNote}</p>

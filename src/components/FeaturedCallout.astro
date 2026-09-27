@@ -8,11 +8,12 @@ import { annualLine } from '../lib/format';
 {featuredApp ? (
   <aside class="featured-callout" aria-label="Featured partner">
     <span class="tag">Featured partner</span>
-    <h3 style="margin-top:0.4rem">{featuredApp.name} — our launch partner</h3>
-    <p>{featuredApp.tagline}</p>
-    <p style="margin:0.4rem 0"><MetaScoreBadge app={featuredApp} /></p>
-    <p style="font-size:0.9rem;color:var(--muted);margin:0.4rem 0"><strong>{annualLine(featuredApp)}</strong> · {featuredApp.freeTrial}</p>
-    <CTA app={featuredApp} label={`Try ${featuredApp.name}`} />
+    <h3>{featuredApp.name} — our launch partner</h3>
+    <p class="card-tagline">{featuredApp.tagline}</p>
+    <MetaScoreBadge app={featuredApp} />
+    <p class="featured-price"><strong>{annualLine(featuredApp)}</strong> · {featuredApp.freeTrial}</p>
+    <CTA app={featuredApp} label={`Try ${featuredApp.name}`} cls="btn-gold btn-lg" />
+    <p class="featured-note">Featured partner placement. Our rankings are computed from public ratings data and are never for sale. <a href="/disclosure/">How we make money</a>.</p>
   </aside>
 ) : (
   <!--

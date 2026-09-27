@@ -5,9 +5,10 @@ interface Props {
   app: PianoApp;
   label?: string;
   ghost?: boolean;
+  cls?: string;
 }
-const { app, label, ghost = false } = Astro.props;
+const { app, label, ghost = false, cls = '' } = Astro.props;
 const text = label ?? `Try ${app.name} — ${app.freeTrial.split('(')[0].trim()}`;
 ---
 
-<a class={`btn${ghost ? ' btn-ghost' : ''}`} href={app.affiliate.link} rel="sponsored nofollow">{text}</a>
+<a class={`btn${ghost ? ' btn-ghost' : ''}${cls ? ` ${cls}` : ''}`} href={app.affiliate.link} rel="sponsored nofollow">{text}</a>

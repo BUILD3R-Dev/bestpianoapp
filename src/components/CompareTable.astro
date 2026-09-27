@@ -21,8 +21,9 @@ const rows: { label: string; get: (a: PianoApp) => string }[] = [
 ];
 ---
 
-<table class="cmp">
-  <caption style="text-align:left;font-weight:700;padding-bottom:0.5rem">{caption}</caption>
+<div class={`cmp-scroll${list.length > 3 ? ' cmp-scroll--tall' : ''}`}>
+<table class="cmp cmp--wide">
+  <caption>{caption}</caption>
   <thead>
     <tr>
       <th scope="col">Feature</th>
@@ -44,3 +45,4 @@ const rows: { label: string; get: (a: PianoApp) => string }[] = [
     ))}
   </tbody>
 </table>
+</div>

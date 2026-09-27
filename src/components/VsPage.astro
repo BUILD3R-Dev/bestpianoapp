@@ -63,7 +63,11 @@ const faqs = [
       <div><CTA app={a} ghost label={`Try ${a.name}`} /></div>
       <div><CTA app={b} ghost label={`Try ${b.name}`} /></div>
     </div>
-    <p>Want the full picture? <a href={reviewUrl(a)}>Read our {a.name} review</a> · <a href={reviewUrl(b)}>Read our {b.name} review</a> · <a href="/best-piano-apps/">See the full ranking</a></p>
+    <div class="card-actions">
+      <a class="btn btn-ghost" href={reviewUrl(a)}>Read our {a.name} review</a>
+      <a class="btn btn-ghost" href={reviewUrl(b)}>Read our {b.name} review</a>
+      <a class="btn btn-ghost" href="/best-piano-apps/">See the full ranking</a>
+    </div>
     <FAQ items={faqs} />
     <DisclosureBlock />
     <LastVerified />

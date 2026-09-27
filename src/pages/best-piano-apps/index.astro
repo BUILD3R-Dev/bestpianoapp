@@ -93,15 +93,15 @@ const itemListSchema = {
 
     <h2>The full ranking</h2>
     {top7.map((app, i) => (
-      <section>
+      <section class="rank-row">
         <h3>
           <span class="rank-badge">#{i + 1}</span>{' '}
-          <a href={reviewUrl(app)} style="color:var(--ink)">{app.name}</a>
+          <a href={reviewUrl(app)}>{app.name}</a>
           {' '}<MetaScoreBadge app={app} />
         </h3>
-        <p><strong>{annualLine(app)}</strong> · {app.freeTrial}</p>
+        <p class="rank-price"><strong>{annualLine(app)}</strong> · {app.freeTrial}</p>
         <p>{app.verdict}</p>
-        <p><a href={reviewUrl(app)}>Read the full {app.name} review →</a></p>
+        <p><a class="btn btn-ghost" href={reviewUrl(app)}>Read the full {app.name} review</a></p>
       </section>
     ))}
 

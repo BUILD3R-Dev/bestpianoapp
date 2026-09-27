@@ -33,7 +33,8 @@ const dealNotes: Record<string, string> = {
       Flowkey, never pay for anything before trialing it, and treat "lifetime deals" as real only when
       the maker sells them directly.
     </p>
-    <table class="cmp">
+    <div class="cmp-scroll">
+    <table class="cmp cmp--wide">
       <thead><tr><th>App</th><th>Price</th><th>Trial / free</th><th>Deal notes</th></tr></thead>
       <tbody>
         {apps.map((a) => (
@@ -46,6 +47,7 @@ const dealNotes: Record<string, string> = {
         ))}
       </tbody>
     </table>
+    </div>
     <h2>How to actually save money</h2>
     <ul>
       <li><strong>Stack the trials.</strong> Seven-day trials across five apps is five weeks of free structured practice — enough to know which method fits you.</li>
