@@ -3,7 +3,7 @@
  * Persona page body for /best-piano-app-for-{persona}/. Wrapped in BaseLayout here.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from './Breadcrumbs.astro';
+import PageHeader from './PageHeader.astro';
 import AppCard from './AppCard.astro';
 import CompareTable from './CompareTable.astro';
 import DisclosureBlock from './DisclosureBlock.astro';
@@ -30,16 +30,19 @@ const schema = {
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description} schema={schema}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: persona.label }]} />
-    <h1>{title}</h1>
-    <p class="lede">{persona.intro}</p>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Best piano apps', href: '/best-piano-apps/' }, { label: persona.label }]}>
+    {persona.intro}
+  </PageHeader>
+  <div class="container">
     <h2>What matters for {persona.label.toLowerCase()}</h2>
-    <ul>{persona.priorities.map((pr) => <li>{pr}</li>)}</ul>
+    <ul class="checklist">{persona.priorities.map((pr) => <li>{pr}</li>)}</ul>
     <h2>The ranked picks</h2>
-    {picks.map((app, i) => <AppCard app={app} rank={i + 1} showVerdict />)}
+    <div class="app-list">
+      {picks.map((app, i) => <AppCard app={app} rank={i + 1} showVerdict />)}
+    </div>
+    <h2>Side by side</h2>
     <CompareTable apps={picks} caption={`${persona.label} picks — side by side`} />
-    <FAQ items={[
+    <FAQ layout="split" items={[
       { q: `Do I need a keyboard for these apps?`, a: `Not on day one. The mic-input apps here (Simply Piano, Flowkey, Skoove, Yousician) hear any piano or keyboard through your phone — no cables. MIDI-only apps (Playground Sessions, Piano Marvel) do require a MIDI keyboard. Past month three of real practice, an 88-key weighted keyboard is worth it; see our keyboard roundup.` },
       { q: `How much should a ${persona.label.toLowerCase()} expect to pay?`, a: `Most piano apps cost $120–$150 per year. Every pick above offers a free trial — never pay before trialing, and check our deals page for current discounts before committing.` },
     ]} />

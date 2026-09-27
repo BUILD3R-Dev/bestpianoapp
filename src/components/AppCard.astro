@@ -1,4 +1,8 @@
 ---
+/**
+ * One ranked app. `row` is the wide ranking layout (rank · details · score and
+ * actions); `tile` stacks the same content for 3-up grids.
+ */
 import type { PianoApp } from '../data/apps';
 import MetaScoreBadge from './MetaScoreBadge.astro';
 import CTA from './CTA.astro';
@@ -8,24 +12,30 @@ interface Props {
   app: PianoApp;
   rank?: number;
   showVerdict?: boolean;
+  layout?: 'row' | 'tile';
+  showCta?: boolean;
 }
-const { app, rank, showVerdict = false } = Astro.props;
+const { app, rank, showVerdict = false, layout = 'row', showCta = true } = Astro.props;
 ---
 
-<article class={`card${rank && rank <= 3 ? ' card-top3' : ''}`}>
-  {rank && <span class={`rank-badge${rank === 1 ? ' gold' : ''}`}>#{rank} — MetaScore {app.metaScore.toFixed(1)}</span>}
-  <h3><a href={reviewUrl(app)}>{app.name}</a></h3>
-  <p class="card-tagline">{app.tagline}</p>
-  <div class="card-score"><MetaScoreBadge app={app} /></div>
-  <div class="chips">
-    <span class="chip">{annualLine(app)}</span>
-    <span class="chip">{libraryLabel(app)} songs</span>
-    <span class="chip">{inputLabel(app.inputMethod)}</span>
-    {app.platforms.map((p) => <span class="chip">{p}</span>)}
+<article class:list={['app-card', `app-card--${layout}`, { 'is-top': rank && rank <= 3, 'is-first': rank === 1 }]}>
+  {rank && <div class="app-rank"><span class="visually-hidden">Rank </span>{rank}</div>}
+  <div class="app-main">
+    <h3><a href={reviewUrl(app)}>{app.name}</a></h3>
+    <p class="app-tagline">{app.tagline}</p>
+    <ul class="chips" aria-label="Key facts">
+      <li class="chip chip--price">{annualLine(app)}</li>
+      <li class="chip">{libraryLabel(app)} songs</li>
+      <li class="chip">{inputLabel(app.inputMethod)}</li>
+      {app.platforms.map((p) => <li class="chip">{p}</li>)}
+    </ul>
+    {showVerdict && <p class="app-verdict">{app.verdict}</p>}
   </div>
-  {showVerdict && <p class="card-verdict">{app.verdict}</p>}
-  <div class="card-actions">
-    <CTA app={app} />
-    <a class="btn btn-ghost" href={reviewUrl(app)}>Read our {app.name} review</a>
+  <div class="app-side">
+    <MetaScoreBadge app={app} size="lg" />
+    <div class="app-actions">
+      {showCta && <CTA app={app} cls="btn-block" />}
+      <a class:list={['btn', 'btn-block', { 'btn-ghost': showCta }]} href={reviewUrl(app)}>Read our {app.name} review</a>
+    </div>
   </div>
 </article>

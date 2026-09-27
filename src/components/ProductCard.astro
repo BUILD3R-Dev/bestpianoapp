@@ -1,0 +1,25 @@
+---
+/** A keyboard / digital piano pick, laid out as a ranked product row. */
+interface Props {
+  item: { name: string; price: number; keys: string; why: string; searchUrl: string };
+  rank: number;
+  pick?: string;
+}
+const { item, rank, pick } = Astro.props;
+---
+
+<article class:list={['app-card', 'app-card--row', 'product-card', { 'is-first': rank === 1 }]}>
+  <div class="app-rank"><span class="visually-hidden">Rank </span>{rank}</div>
+  <div class="app-main">
+    {pick && <span class="pick-tag">{pick}</span>}
+    <h3>{item.name}</h3>
+    <ul class="chips" aria-label="Key facts"><li class="chip">{item.keys}</li></ul>
+    <p class="app-verdict">{item.why}</p>
+  </div>
+  <div class="app-side">
+    <p class="product-price">${item.price}<span>approx.</span></p>
+    <div class="app-actions">
+      <a class="btn btn-block" href={item.searchUrl} rel="sponsored nofollow" target="_blank">Check price on Amazon</a>
+    </div>
+  </div>
+</article>

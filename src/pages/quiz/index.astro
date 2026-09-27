@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import DisclosureBlock from '../../components/DisclosureBlock.astro';
 import { apps } from '../../data/apps';
 import { annualLine, reviewUrl } from '../../lib/format';
@@ -79,10 +79,10 @@ const QUESTIONS = [
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Quiz' }]} />
-    <h1>{title}</h1>
-    <p class="lede">Five questions, one recommendation — scored against our MetaScore dataset, not a sponsor. No email, no account, nothing to install.</p>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Quiz' }]}>
+    Five questions, one recommendation — scored against our MetaScore dataset, not a sponsor. No email, no account, nothing to install.
+  </PageHeader>
+  <div class="container">
     <div id="quiz">
       <div id="quiz-body"></div>
     </div>

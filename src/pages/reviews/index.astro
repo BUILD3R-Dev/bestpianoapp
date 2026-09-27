@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import AppCard from '../../components/AppCard.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import { rankedApps } from '../../data/apps';
+import { SITE } from '../../data/site';
+
+const title = 'Piano App Reviews (2026)';
+const description = `Every piano app we track, reviewed and ranked by MetaScore: ${rankedApps.map((a) => a.name).join(', ')}. Pricing, method, pros, cons, and who should skip each one.`;
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Reviews' }]}>
+    Every piano app we track, in MetaScore order. Each review covers real pricing, how the app teaches,
+    pros and cons, and who should skip it.
+  </PageHeader>
+  <div class="container">
+    <div class="grid3">
+      {rankedApps.map((app, i) => <AppCard app={app} rank={i + 1} layout="tile" showCta={false} />)}
+    </div>
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

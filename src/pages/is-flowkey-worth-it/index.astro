@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ScoreCard from '../../components/ScoreCard.astro';
 import MetaScoreBadge from '../../components/MetaScoreBadge.astro';
 import VerdictBox from '../../components/VerdictBox.astro';
 import CTA from '../../components/CTA.astro';
@@ -17,14 +18,14 @@ const description =
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Is Flowkey worth it?' }]} />
-    <h1>{title}</h1>
-    <p class="lede">
-      Short answer: for most learners, yes — it is our <a href="/best-piano-apps/">top-ranked app</a> with a
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Is Flowkey worth it?' }]}>
+    Short answer: for most learners, yes — it is our <a href="/best-piano-apps/">top-ranked app</a> with a
       MetaScore of <MetaScoreBadge app={app} showSources={false} />. Long answer: it depends what "worth it" means
       at the price you will actually pay, which is often not the list price. Here is the full cost-vs-value math.
-    </p>
+    <ScoreCard app={app} linkReview slot="aside" />
+  </PageHeader>
+  <div class="container">
+    <div class="prose">
     <h2>What Flowkey costs in 2026</h2>
     <ul>
       <li><strong>List price:</strong> $20/month or about $120/year.</li>
@@ -59,5 +60,6 @@ const description =
     ]} />
     <DisclosureBlock />
     <LastVerified />
+    </div>
   </div>
 </BaseLayout>

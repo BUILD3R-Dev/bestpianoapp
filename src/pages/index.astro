@@ -5,10 +5,16 @@ import AppCard from '../components/AppCard.astro';
 import DisclosureBlock from '../components/DisclosureBlock.astro';
 import LastVerified from '../components/LastVerified.astro';
 import KeyboardStrip from '../components/KeyboardStrip.astro';
-import { rankedApps } from '../data/apps';
+import Leaderboard from '../components/Leaderboard.astro';
+import WeightsChart from '../components/WeightsChart.astro';
+import Matchup from '../components/Matchup.astro';
+import MetaScoreBadge from '../components/MetaScoreBadge.astro';
+import { rankedApps, appBySlug } from '../data/apps';
 import { SITE, PERSONAS } from '../data/site';
 
 const top7 = rankedApps.slice(0, 7);
+const personaPicks = PERSONAS.map((p) => ({ ...p, pick: rankedApps.find((a) => a.bestFor.includes(p.slug))! }));
+const QUIZ_STEPS = ['Your experience', 'What you practice on', 'Your budget', 'What keeps you practicing', 'Who it is for'];
 
 const itemListSchema = {
   '@context': 'https://schema.org',
@@ -38,71 +44,127 @@ const itemListSchema = {
   ogType="website"
 >
   <section class="hero">
-    <div class="wrap-wide">
-      <p class="hero-eyebrow">Independent · Data-driven · Reader-supported</p>
-      <h1>The Best Piano Apps in 2026, Ranked by Data</h1>
-      <p class="hero-sub">
-        Every piano app claims to be the best. We ignored the marketing and read the reviews instead —
-        1,000+ of them across the App Store, Google Play, Reddit, YouTube, and expert sites —
-        synthesized into one number: the <strong>MetaScore</strong>. Below is what the data actually says.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-gold btn-lg" href="/quiz/">Find your app in 60 seconds</a>
-        <a class="btn btn-outline-light btn-lg" href="/best-piano-apps/">See the top-7 ranking</a>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Independent · Data-driven · Reader-supported</p>
+        <h1>The Best Piano Apps in 2026, Ranked by Data</h1>
+        <p class="hero-sub">
+          Every piano app claims to be the best. We ignored the marketing and read the reviews instead —
+          1,000+ of them across the App Store, Google Play, Reddit, YouTube, and expert sites —
+          synthesized into one number: the <strong>MetaScore</strong>. Below is what the data actually says.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-gold btn-lg" href="/quiz/">Find your app in 60 seconds</a>
+          <a class="btn btn-outline-light btn-lg" href="/best-piano-apps/">See the top-7 ranking</a>
+        </div>
       </div>
+      <Leaderboard />
+    </div>
+    <div class="container">
       <ul class="trust-row">
-        <li><span><strong>MetaScore, published.</strong> Every score is computed from public ratings — and we show our work.</span></li>
-        <li><span><strong>Prices verified monthly.</strong> Annual and monthly pricing re-checked every month, trial terms spelled out.</span></li>
-        <li><span><strong>No sponsored rankings.</strong> No app can pay for a higher score or a better rank. Ever.</span></li>
+        <li><strong>MetaScore, published.</strong> Every score is computed from public ratings — and we show our work.</li>
+        <li><strong>Prices verified monthly.</strong> Annual and monthly pricing re-checked every month, trial terms spelled out.</li>
+        <li><strong>No sponsored rankings.</strong> No app can pay for a higher score or a better rank. Ever.</li>
       </ul>
     </div>
     <KeyboardStrip />
   </section>
 
-  <div class="wrap">
-    <FeaturedCallout />
-
-    <h2>The top 7, in order</h2>
-    <p>
-      Ranked by MetaScore, priced honestly, with the trial terms spelled out.
-      <a href="/best-piano-apps/">See the full comparison table</a>.
-    </p>
-    {top7.map((app, i) => <AppCard app={app} rank={i + 1} showVerdict={i < 3} />)}
-
-    <h2>Find your app in 60 seconds</h2>
-    <p>
-      Not sure where to start? Answer five quick questions about your experience, device, and budget,
-      and we will point you at the right app. <a class="btn" href="/quiz/">Take the quiz</a>
-    </p>
-
-    <h2>Why trust these rankings</h2>
-    <p>
-      We do not take placement fees for rankings, and we publish exactly how every score is computed —
-      the sources, the weights, the update cadence, and the limitations.
-      <a href="/how-we-rate/">Read the MetaScore methodology</a>.
-      Where we have used an app ourselves, we say so; everywhere else, we synthesize public ratings and say that too.
-    </p>
-
-    <h2>Browse by who you are</h2>
-    <div class="grid2">
-      {PERSONAS.map((p) => (
-        <div class="card">
-          <h3><a href={p.url}>{p.label}</a></h3>
-          <p>{p.description}</p>
-          <a class="btn btn-ghost" href={p.url}>Best piano app for {p.label.toLowerCase()}</a>
-        </div>
-      ))}
+  <section class="section section--tight">
+    <div class="container">
+      <FeaturedCallout />
     </div>
+  </section>
 
-    <h2>Popular comparisons</h2>
-    <ul>
-      <li><a href="/simply-piano-vs-flowkey/">Simply Piano vs Flowkey</a> — the two giants, head to head</li>
-      <li><a href="/flowkey-vs-skoove/">Flowkey vs Skoove</a> — song library vs. real lessons</li>
-      <li><a href="/best-keyboard-for-piano-apps/">Best keyboards for piano apps</a> — what to play them on</li>
-      <li><a href="/deals/">Current deals and free trials</a> — every live offer in one place</li>
-    </ul>
+  <section class="section" aria-labelledby="top7">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="top7">The top 7, in order</h2>
+        <p>
+          Ranked by MetaScore, priced honestly, with the trial terms spelled out.
+          <a href="/best-piano-apps/">See the full comparison table</a>.
+        </p>
+      </div>
+      <div class="app-list">
+        {top7.map((app, i) => <AppCard app={app} rank={i + 1} showVerdict={i < 3} />)}
+      </div>
+    </div>
+  </section>
 
-    <DisclosureBlock />
-    <LastVerified />
-  </div>
+  <section class="section section--soft" aria-labelledby="quiz">
+    <div class="container split">
+      <div>
+        <h2 id="quiz">Find your app in 60 seconds</h2>
+        <p class="section-lede">
+          Not sure where to start? Answer five quick questions about your experience, device, and budget,
+          and we will point you at the right app.
+        </p>
+        <a class="btn btn-lg" href="/quiz/">Take the quiz</a>
+      </div>
+      <ol class="steps" aria-label="The five questions">
+        {QUIZ_STEPS.map((s) => <li>{s}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="trust">
+    <div class="container split">
+      <div>
+        <h2 id="trust">Why trust these rankings</h2>
+        <p class="section-lede">
+          We do not take placement fees for rankings, and we publish exactly how every score is computed —
+          the sources, the weights, the update cadence, and the limitations.
+        </p>
+        <p>
+          Where we have used an app ourselves, we say so; everywhere else, we synthesize public ratings and say that too.
+        </p>
+        <a class="btn btn-ghost" href="/how-we-rate/">Read the MetaScore methodology</a>
+      </div>
+      <WeightsChart />
+    </div>
+  </section>
+
+  <section class="section section--soft" aria-labelledby="personas">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="personas">Browse by who you are</h2>
+      </div>
+      <div class="grid4">
+        {personaPicks.map((p) => (
+          <a class="tile" href={p.url}>
+            <span class="tile-title">{p.label}</span>
+            <span class="tile-body">{p.description}</span>
+            <span class="tile-pick">
+              <span>Top pick: <strong>{p.pick.name}</strong></span>
+              <MetaScoreBadge app={p.pick} size="sm" />
+            </span>
+            <span class="tile-link">Best piano app for {p.label === 'iPad' ? 'iPad' : p.label.toLowerCase()}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="popular">
+    <div class="container">
+      <div class="section-head section-head--row">
+        <h2 id="popular">Popular comparisons</h2>
+        <a href="/compare/">All comparisons</a>
+      </div>
+      <div class="grid4">
+        <Matchup a={appBySlug('simply-piano')} b={appBySlug('flowkey')} note="The two giants, head to head" />
+        <Matchup a={appBySlug('flowkey')} b={appBySlug('skoove')} note="Song library vs. real lessons" />
+        <a class="tile" href="/best-keyboard-for-piano-apps/">
+          <span class="tile-title">Best keyboards for piano apps</span>
+          <span class="tile-body">What to play them on</span>
+        </a>
+        <a class="tile" href="/deals/">
+          <span class="tile-title">Current deals and free trials</span>
+          <span class="tile-body">Every live offer in one place</span>
+        </a>
+      </div>
+      <DisclosureBlock />
+      <LastVerified />
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Matchup from '../../components/Matchup.astro';
+import MetaScoreBadge from '../../components/MetaScoreBadge.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import { appBySlug, apps } from '../../data/apps';
+import { VS_PAIRS, ALTERNATIVES_APPS } from '../../data/editorial';
+import { SITE } from '../../data/site';
+import { alternativesUrl } from '../../lib/format';
+
+const title = 'Piano App Comparisons (2026)';
+const description = 'Head-to-head piano app comparisons scored side by side — Simply Piano vs Flowkey, Flowkey vs Skoove, and more — plus the best alternatives to each major app.';
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Comparisons' }]}>
+    Every head-to-head we have run, with both MetaScores side by side. Pick a matchup, or start from an
+    app you already know and see what beats it.
+  </PageHeader>
+  <div class="container">
+    <h2>Head-to-head</h2>
+    <div class="grid4">
+      {VS_PAIRS.map(([a, b]) => <Matchup a={appBySlug(a)} b={appBySlug(b)} />)}
+    </div>
+    <h2>Alternatives</h2>
+    <div class="grid4">
+      {ALTERNATIVES_APPS.map((slug) => {
+        const app = appBySlug(slug);
+        return (
+          <a class="tile" href={alternativesUrl(app)}>
+            <span class="tile-title">{app.name} alternatives</span>
+            <span class="tile-pick"><span>{app.name}</span><MetaScoreBadge app={app} size="sm" /></span>
+          </a>
+        );
+      })}
+    </div>
+    <h2>Everything at once</h2>
+    <p>
+      Want all {apps.length} apps in one grid? <a class="btn btn-ghost" href="/best-piano-apps/#table">See the full comparison table</a>
+    </p>
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

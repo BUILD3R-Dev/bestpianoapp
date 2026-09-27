@@ -1,7 +1,12 @@
 ---
 export interface FaqItem { q: string; a: string }
-interface Props { items: FaqItem[] }
-const { items } = Astro.props;
+interface Props {
+  items: FaqItem[];
+  /** split: heading in a left column beside the questions (full-width sections) */
+  layout?: 'stack' | 'split';
+  id?: string;
+}
+const { items, layout = 'stack', id = 'faq' } = Astro.props;
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -14,13 +19,15 @@ const faqSchema = {
 };
 ---
 
-<section class="faq" aria-label="Frequently asked questions">
-  <h2>Frequently asked questions</h2>
-  {items.map((f) => (
-    <details>
-      <summary>{f.q}</summary>
-      <p>{f.a}</p>
-    </details>
-  ))}
+<section class={`faq faq--${layout}`} aria-labelledby={`${id}-title`}>
+  <h2 id={`${id}-title`}>Frequently asked questions</h2>
+  <div class="faq-list">
+    {items.map((f) => (
+      <details>
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
 </section>
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

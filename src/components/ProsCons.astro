@@ -1,11 +1,11 @@
 ---
 import type { PianoApp } from '../data/apps';
 
-interface Props { app: PianoApp }
-const { app } = Astro.props;
+interface Props { app: PianoApp; id?: string }
+const { app, id } = Astro.props;
 ---
 
-<div class="proscons">
+<div class="proscons" id={id}>
   <div class="pros">
     <h3>Pros</h3>
     <ul>{app.pros.map((p) => <li>{p}</li>)}</ul>

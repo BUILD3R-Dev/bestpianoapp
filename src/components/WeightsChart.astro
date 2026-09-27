@@ -1,0 +1,18 @@
+---
+/** The MetaScore formula as a labeled bar list (single series, values labeled directly). */
+import { METASCORE_WEIGHTS } from '../data/site';
+const max = Math.max(...METASCORE_WEIGHTS.map((w) => w.weight));
+---
+
+<figure class="weights">
+  <figcaption>What goes into every MetaScore</figcaption>
+  <ul>
+    {METASCORE_WEIGHTS.map((w) => (
+      <li>
+        <span class="w-label">{w.short}</span>
+        <span class="w-track"><span class="w-bar" style={`width:${(w.weight / max) * 100}%`}></span></span>
+        <span class="w-value">{w.weight}%</span>
+      </li>
+    ))}
+  </ul>
+</figure>

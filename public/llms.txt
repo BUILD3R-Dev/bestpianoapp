@@ -7,6 +7,8 @@
 - [Find your piano app in 60 seconds](https://bestpianoapp.com/quiz/): 5-question quiz that recommends the right app.
 - [How We Rate: The MetaScore Method](https://bestpianoapp.com/how-we-rate/): Data sources, weights, update cadence, and limitations.
 - [Current deals and free trials](https://bestpianoapp.com/deals/): Active discounts and trial offers, refreshed monthly.
+- [All piano app reviews](https://bestpianoapp.com/reviews/): Every app we track, in MetaScore order.
+- [All comparisons](https://bestpianoapp.com/compare/): Every head-to-head matchup and alternatives page.
 
 ## App reviews
 - [Simply Piano Review](https://bestpianoapp.com/simply-piano-review/): MetaScore 8.6. Course-style lessons, mic/MIDI input, ~$120-170/yr.

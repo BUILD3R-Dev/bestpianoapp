@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import DisclosureBlock from '../../components/DisclosureBlock.astro';
 import LastVerified from '../../components/LastVerified.astro';
 import { apps } from '../../data/apps';
@@ -25,14 +25,12 @@ const dealNotes: Record<string, string> = {
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Deals' }]} />
-    <h1>{title}</h1>
-    <p class="lede">
-      Every trial and discount worth knowing, checked monthly. Rule of thumb: never pay list price for
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Deals' }]}>
+    Every trial and discount worth knowing, checked monthly. Rule of thumb: never pay list price for
       Flowkey, never pay for anything before trialing it, and treat "lifetime deals" as real only when
       the maker sells them directly.
-    </p>
+  </PageHeader>
+  <div class="container">
     <div class="cmp-scroll">
     <table class="cmp cmp--wide">
       <thead><tr><th>App</th><th>Price</th><th>Trial / free</th><th>Deal notes</th></tr></thead>
@@ -49,7 +47,7 @@ const dealNotes: Record<string, string> = {
     </table>
     </div>
     <h2>How to actually save money</h2>
-    <ul>
+    <ul class="decisions decisions--2">
       <li><strong>Stack the trials.</strong> Seven-day trials across five apps is five weeks of free structured practice — enough to know which method fits you.</li>
       <li><strong>Buy annual, never monthly.</strong> Monthly plans cost 50–100% more per year everywhere on this page.</li>
       <li><strong>Watch Flowkey.</strong> Its discounts are the most aggressive in the category; the list price is a starting bid.</li>

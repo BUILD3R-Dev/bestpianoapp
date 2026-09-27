@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import LastVerified from '../../components/LastVerified.astro';
-import { SITE } from '../../data/site';
+import WeightsChart from '../../components/WeightsChart.astro';
+import { SITE, METASCORE_WEIGHTS } from '../../data/site';
 
 const title = 'How We Rate Piano Apps: The MetaScore Method';
 const description =
@@ -10,25 +11,23 @@ const description =
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'How we rate' }]} />
-    <h1>{title}</h1>
-    <p class="lede">
-      Every app on this site gets one number: the MetaScore, a 0–10 composite of public ratings.
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'How we rate' }]}>
+    Every app on this site gets one number: the MetaScore, a 0–10 composite of public ratings.
       No sponsored placements. No pay-for-rank. Here is exactly how it is computed — including the parts
       where the method is weak.
-    </p>
+  </PageHeader>
+  <div class="container">
+    <div class="prose">
     <h2>The formula</h2>
+    <WeightsChart />
+    <div class="cmp-scroll">
     <table class="cmp">
       <thead><tr><th>Source</th><th>Weight</th><th>Why</th></tr></thead>
       <tbody>
-        <tr><td><strong>App Store ratings</strong></td><td>25%</td><td>Largest verified-user sample; hard to fake at scale</td></tr>
-        <tr><td><strong>Google Play ratings</strong></td><td>25%</td><td>Second verified-user sample; catches Android-only sentiment</td></tr>
-        <tr><td><strong>Reddit sentiment</strong></td><td>20%</td><td>Unfiltered long-term user opinion (r/piano and related)</td></tr>
-        <tr><td><strong>YouTube reviewer consensus</strong></td><td>15%</td><td>Reviewers who actually demonstrate the product</td></tr>
-        <tr><td><strong>Expert review sites</strong></td><td>15%</td><td>Structured comparisons with consistent criteria</td></tr>
+        {METASCORE_WEIGHTS.map((w) => <tr><td><strong>{w.source}</strong></td><td>{w.weight}%</td><td>{w.why}</td></tr>)}
       </tbody>
     </table>
+    </div>
     <h2>Update cadence</h2>
     <p>
       Scores and prices are re-verified monthly. Every page carries a "prices verified" date so you can see
@@ -51,5 +50,6 @@ const description =
       take money as an input. <a href="/disclosure/">Read the full disclosure</a>.
     </p>
     <LastVerified />
+    </div>
   </div>
 </BaseLayout>

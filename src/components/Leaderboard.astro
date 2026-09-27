@@ -1,0 +1,28 @@
+---
+/** Homepage hero panel: the live top of the MetaScore ranking. */
+import { rankedApps, apps, LAST_VERIFIED_LABEL } from '../data/apps';
+import MetaScoreBadge from './MetaScoreBadge.astro';
+import { annualLine, reviewUrl } from '../lib/format';
+
+const top = rankedApps.slice(0, 5);
+---
+
+<section class="leaderboard" aria-labelledby="lb-title">
+  <div class="leaderboard-head">
+    <h2 id="lb-title">MetaScore leaderboard</h2>
+    <p>Verified {LAST_VERIFIED_LABEL}</p>
+  </div>
+  <ol>
+    {top.map((a, i) => (
+      <li>
+        <span class="lb-rank">{i + 1}</span>
+        <span class="lb-app">
+          <a href={reviewUrl(a)}>{a.name}</a>
+          <span class="lb-price">{annualLine(a)}</span>
+        </span>
+        <MetaScoreBadge app={a} size="sm" />
+      </li>
+    ))}
+  </ol>
+  <a class="lb-more" href="/best-piano-apps/">See all {apps.length} apps ranked</a>
+</section>

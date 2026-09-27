@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import LastVerified from '../../components/LastVerified.astro';
 import { SITE } from '../../data/site';
 
@@ -10,10 +10,11 @@ const description =
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Disclosure' }]} />
-    <h1>{title}</h1>
-    <p class="lede">Short version: this site is reader-supported. When you buy through links here, we may earn a commission. It never changes our rankings.</p>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Disclosure' }]}>
+    Short version: this site is reader-supported. When you buy through links here, we may earn a commission. It never changes our rankings.
+  </PageHeader>
+  <div class="container">
+    <div class="prose">
     <h2>How rankings work</h2>
     <p>
       Every app gets a MetaScore — a 0–10 composite computed from public ratings (App Store, Google Play,
@@ -41,5 +42,6 @@ const description =
       It means the evidence base is small — treat the number as a starting point and read the review.
     </p>
     <LastVerified />
+    </div>
   </div>
 </BaseLayout>

@@ -3,8 +3,9 @@
  * Review page body for /{app}-review/. Wrapped in BaseLayout here.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from './Breadcrumbs.astro';
-import MetaScoreBadge from './MetaScoreBadge.astro';
+import PageHeader from './PageHeader.astro';
+import ScoreCard from './ScoreCard.astro';
+import Matchup from './Matchup.astro';
 import ProsCons from './ProsCons.astro';
 import VerdictBox from './VerdictBox.astro';
 import CTA from './CTA.astro';
@@ -14,7 +15,7 @@ import FAQ from './FAQ.astro';
 import { appBySlug, type App } from '../data/apps';
 import { SITE } from '../data/site';
 import { reviewEditorial, VS_PAIRS } from '../data/editorial';
-import { reviewUrl, vsUrl, annualLine, inputLabel, libraryLabel } from '../lib/format';
+import { annualLine, inputLabel, libraryLabel } from '../lib/format';
 
 const { appSlug } = Astro.props as { appSlug: string };
 const app: App = appBySlug(appSlug);
@@ -32,58 +33,69 @@ const schema = {
   author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
   publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
 };
+const toc = [
+  { id: 'facts', label: 'Quick facts' },
+  { id: 'pros-cons', label: 'Pros and cons' },
+  { id: 'method', label: 'How it teaches' },
+  { id: 'pricing', label: 'Pricing' },
+  { id: 'who', label: 'Who it is for' },
+  { id: 'verdict', label: 'Verdict' },
+  ...(relatedVs.length ? [{ id: 'compare', label: 'Head-to-heads' }] : []),
+  { id: 'faq', label: 'FAQ' },
+];
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description} schema={schema}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Reviews', href: '/best-piano-apps/' }, { label: app.name }]} />
-    <h1>{title}</h1>
-    <p class="lede">{ed.intro}</p>
-    <p><MetaScoreBadge app={app} /><a class="ms-how" href="/how-we-rate/">How the MetaScore works</a></p>
-    <CTA app={app} />
-    <h2>Quick facts</h2>
-    <div class="cmp-scroll">
-    <table class="cmp cmp--facts">
-      <tbody>
-        <tr><td><strong>Annual price</strong></td><td>{annualLine(app)}</td></tr>
-        <tr><td><strong>Free trial</strong></td><td>{app.freeTrial}</td></tr>
-        <tr><td><strong>Platforms</strong></td><td>{app.platforms.join(', ')}</td></tr>
-        <tr><td><strong>How it hears you</strong></td><td>{inputLabel(app.inputMethod)}</td></tr>
-        <tr><td><strong>Song library</strong></td><td>{libraryLabel(app)} songs</td></tr>
-        <tr><td><strong>Course style</strong></td><td>{app.format === 'course' ? 'Structured course' : app.format === 'hybrid' ? 'Course + song library' : 'Song library'}</td></tr>
-        <tr><td><strong>Skill levels</strong></td><td>{app.skillLevels.join(', ')}</td></tr>
-        <tr><td><strong>Kids mode</strong></td><td>{app.kidsMode ? 'Yes' : 'No'}</td></tr>
-      </tbody>
-    </table>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Reviews', href: '/reviews/' }, { label: app.name }]}>
+    {ed.intro}
+    <ScoreCard app={app} slot="aside" />
+  </PageHeader>
+  <div class="container article-grid">
+    <div class="prose">
+      <h2 id="facts">Quick facts</h2>
+      <div class="cmp-scroll">
+      <table class="cmp cmp--facts">
+        <tbody>
+          <tr><td><strong>Annual price</strong></td><td>{annualLine(app)}</td></tr>
+          <tr><td><strong>Free trial</strong></td><td>{app.freeTrial}</td></tr>
+          <tr><td><strong>Platforms</strong></td><td>{app.platforms.join(', ')}</td></tr>
+          <tr><td><strong>How it hears you</strong></td><td>{inputLabel(app.inputMethod)}</td></tr>
+          <tr><td><strong>Song library</strong></td><td>{libraryLabel(app)} songs</td></tr>
+          <tr><td><strong>Course style</strong></td><td>{app.format === 'course' ? 'Structured course' : app.format === 'hybrid' ? 'Course + song library' : 'Song library'}</td></tr>
+          <tr><td><strong>Skill levels</strong></td><td>{app.skillLevels.join(', ')}</td></tr>
+          <tr><td><strong>Kids mode</strong></td><td>{app.kidsMode ? 'Yes' : 'No'}</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <ProsCons app={app} id="pros-cons" />
+      <h2 id="method">How {app.name} teaches</h2>
+      <p>{ed.methodNote}</p>
+      <h2 id="pricing">Pricing: what it really costs</h2>
+      <p>{ed.pricingDeepDive}</p>
+      <CTA app={app} ghost label={`Compare ${app.name} on the full ranking`} />
+      <h2 id="who">Who it is for — and who should skip it</h2>
+      <p><strong>For:</strong> {ed.whoFor}</p>
+      <p><strong>Skip it if:</strong> {ed.whoSkip}</p>
+      <div id="verdict"><VerdictBox title={`${app.name} verdict`}>{app.verdict}</VerdictBox></div>
+      <CTA app={app} />
+      {relatedVs.length > 0 && (
+        <Fragment>
+          <h2 id="compare">Head-to-head comparisons</h2>
+          <div class="grid2">
+            {relatedVs.map(([a, b]) => <Matchup a={appBySlug(a)} b={appBySlug(b)} />)}
+          </div>
+        </Fragment>
+      )}
+      <FAQ items={ed.faqs} />
+      <DisclosureBlock />
+      <LastVerified />
     </div>
-    <ProsCons app={app} />
-    <h2>How {app.name} teaches</h2>
-    <p>{ed.methodNote}</p>
-    <h2>Pricing: what it really costs</h2>
-    <p>{ed.pricingDeepDive}</p>
-    <CTA app={app} ghost label={`Compare ${app.name} on the full ranking`} />
-    <h2>Who it is for — and who should skip it</h2>
-    <p><strong>For:</strong> {ed.whoFor}</p>
-    <p><strong>Skip it if:</strong> {ed.whoSkip}</p>
-    <VerdictBox title={`${app.name} verdict`}>{app.verdict}</VerdictBox>
-    <CTA app={app} />
-    {relatedVs.length > 0 && (
-      <Fragment>
-        <h2>Head-to-head comparisons</h2>
-        <ul>
-          {relatedVs.map(([a, b]) => {
-            const other = appBySlug(a === app.slug ? b : a);
-            return (
-              <li>
-                <a href={vsUrl(appBySlug(a), appBySlug(b))}>{app.name} vs {other.name}</a>
-              </li>
-            );
-          })}
-        </ul>
-      </Fragment>
-    )}
-    <FAQ items={ed.faqs} />
-    <DisclosureBlock />
-    <LastVerified />
+    <aside class="rail" aria-label="On this page">
+      <nav class="toc">
+        <h2>On this page</h2>
+        <ul>{toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}</ul>
+      </nav>
+      <div class="rail-cta"><CTA app={app} cls="btn-block" /></div>
+    </aside>
   </div>
 </BaseLayout>

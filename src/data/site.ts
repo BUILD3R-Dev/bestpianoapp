@@ -7,11 +7,19 @@ export const SITE = {
 
 export const NAV = [
   { label: 'Best Apps', href: '/best-piano-apps/' },
-  { label: 'Reviews', href: '/simply-piano-review/' },
-  { label: 'Comparisons', href: '/simply-piano-vs-flowkey/' },
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Compare', href: '/compare/' },
   { label: 'Deals', href: '/deals/' },
-  { label: 'Quiz', href: '/quiz/' },
   { label: 'How We Rate', href: '/how-we-rate/' },
+];
+
+/** The MetaScore formula. Rendered on /how-we-rate/ and the homepage chart. */
+export const METASCORE_WEIGHTS = [
+  { source: 'App Store ratings', short: 'App Store', weight: 25, why: 'Largest verified-user sample; hard to fake at scale' },
+  { source: 'Google Play ratings', short: 'Google Play', weight: 25, why: 'Second verified-user sample; catches Android-only sentiment' },
+  { source: 'Reddit sentiment', short: 'Reddit', weight: 20, why: 'Unfiltered long-term user opinion (r/piano and related)' },
+  { source: 'YouTube reviewer consensus', short: 'YouTube reviewers', weight: 15, why: 'Reviewers who actually demonstrate the product' },
+  { source: 'Expert review sites', short: 'Expert sites', weight: 15, why: 'Structured comparisons with consistent criteria' },
 ];
 
 export interface Persona {

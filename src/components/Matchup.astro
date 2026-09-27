@@ -1,0 +1,16 @@
+---
+/** A head-to-head link tile: both apps with their MetaScores. */
+import type { PianoApp } from '../data/apps';
+import MetaScoreBadge from './MetaScoreBadge.astro';
+import { vsUrl } from '../lib/format';
+
+interface Props { a: PianoApp; b: PianoApp; note?: string }
+const { a, b, note } = Astro.props;
+---
+
+<a class="matchup" href={vsUrl(a, b)}>
+  <span class="matchup-title">{a.name} vs {b.name}</span>
+  {note && <span class="matchup-note">{note}</span>}
+  <span class="matchup-row"><span>{a.name}</span><MetaScoreBadge app={a} size="sm" /></span>
+  <span class="matchup-row"><span>{b.name}</span><MetaScoreBadge app={b} size="sm" /></span>
+</a>

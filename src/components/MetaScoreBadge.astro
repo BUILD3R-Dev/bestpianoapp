@@ -1,16 +1,25 @@
 ---
 import type { PianoApp } from '../data/apps';
 
-interface Props { app: PianoApp; showSources?: boolean }
-const { app, showSources = true } = Astro.props;
+interface Props {
+  app: PianoApp;
+  showSources?: boolean;
+  /** sm: number + keys only · md: inline row · lg: stacked, for cards and scorecards */
+  size?: 'sm' | 'md' | 'lg';
+}
+const { app, showSources = true, size = 'md' } = Astro.props;
 const pct = Math.round((app.metaScore / 10) * 100);
 const band = app.metaScore >= 8 ? 'ms-high' : app.metaScore >= 6 ? 'ms-mid' : 'ms-low';
 ---
 
-<span class="metascore" title={`MetaScore ${app.metaScore}/10 from ${app.metaScoreSources} public sources`}>
+<span class={`metascore metascore--${size}`} title={`MetaScore ${app.metaScore}/10 from ${app.metaScoreSources} public sources`}>
   <span class="num">{app.metaScore.toFixed(1)}</span>
   <span class="bar" aria-hidden="true"><span class={`fill ${band}`} style={`width:${pct}%`}></span></span>
-  <span class="ms-label">MetaScore</span>
-  {showSources && <span class="ms-sources">· {app.metaScoreSources} {app.metaScoreSources === 1 ? 'source' : 'sources'}</span>}
+  {size !== 'sm' && (
+    <span class="ms-meta">
+      <span class="ms-label">MetaScore</span>
+      {showSources && <span class="ms-sources">{app.metaScoreSources} {app.metaScoreSources === 1 ? 'source' : 'sources'}</span>}
+    </span>
+  )}
   {app.provisionalScore && <span class="provisional">provisional</span>}
 </span>

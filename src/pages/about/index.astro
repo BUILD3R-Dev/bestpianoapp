@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import LastVerified from '../../components/LastVerified.astro';
 import { SITE } from '../../data/site';
 
@@ -10,14 +10,13 @@ const description =
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
-    <h1>{title}</h1>
-    <p class="lede">
-      Choosing a piano app should not require reading 200 reviews. So we read them for you — across the
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}>
+    Choosing a piano app should not require reading 200 reviews. So we read them for you — across the
       App Store, Google Play, Reddit, YouTube, and expert review sites — and compress all of it into one
       number per app: the MetaScore.
-    </p>
+  </PageHeader>
+  <div class="container">
+    <div class="prose">
     <h2>Why this site exists</h2>
     <p>
       Piano app marketing is loud and comparison content is stale — the best-known comparison posts still
@@ -38,5 +37,6 @@ const description =
     </ul>
     <p>Questions about our methodology: start at <a href="/how-we-rate/">how we rate</a>.</p>
     <LastVerified />
+    </div>
   </div>
 </BaseLayout>

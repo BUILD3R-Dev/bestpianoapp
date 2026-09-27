@@ -1,0 +1,28 @@
+---
+/**
+ * Full-bleed page header band: breadcrumbs, H1, lede (default slot) and an
+ * optional right-hand column (slot="aside"), e.g. a ScoreCard.
+ */
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  crumbs?: { label: string; href?: string }[];
+  class?: string;
+}
+const { title, crumbs, class: cls } = Astro.props;
+const hasAside = Astro.slots.has('aside');
+const hasLede = Astro.slots.has('default');
+---
+
+<div class:list={['page-head', cls, { 'page-head--split': hasAside }]}>
+  <div class="container page-head-inner">
+    <div class="page-head-main">
+      {crumbs && <Breadcrumbs items={crumbs} />}
+      <h1>{title}</h1>
+      {hasLede && <p class="lede"><slot /></p>}
+      <slot name="after" />
+    </div>
+    {hasAside && <div class="page-head-aside"><slot name="aside" /></div>}
+  </div>
+</div>

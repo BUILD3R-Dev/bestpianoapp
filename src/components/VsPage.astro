@@ -3,7 +3,8 @@
  * Head-to-head page body for /{a}-vs-{b}/. Wrapped in BaseLayout here.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from './Breadcrumbs.astro';
+import PageHeader from './PageHeader.astro';
+import ScoreCard from './ScoreCard.astro';
 import VerdictBox from './VerdictBox.astro';
 import CTA from './CTA.astro';
 import DisclosureBlock from './DisclosureBlock.astro';
@@ -11,9 +12,10 @@ import LastVerified from './LastVerified.astro';
 import CompareTable from './CompareTable.astro';
 import FAQ from './FAQ.astro';
 import { appBySlug } from '../data/apps';
+import { VS_PAIRS } from '../data/editorial';
 import { SITE } from '../data/site';
 import { vsEditorial } from '../data/editorial';
-import { reviewUrl, annualLine, inputLabel } from '../lib/format';
+import { reviewUrl, vsUrl, annualLine, inputLabel } from '../lib/format';
 
 const { aSlug, bSlug } = Astro.props as { aSlug: string; bSlug: string };
 const a = appBySlug(aSlug);
@@ -37,39 +39,63 @@ const faqs = [
     a: `${a.name} is ${a.format === 'course' ? 'a structured course' : a.format === 'hybrid' ? 'a course-plus-library hybrid' : 'a song library'} using ${inputLabel(a.inputMethod).toLowerCase()} input; ${b.name} is ${b.format === 'course' ? 'a structured course' : b.format === 'hybrid' ? 'a course-plus-library hybrid' : 'a song library'} using ${inputLabel(b.inputMethod).toLowerCase()} input. MetaScores: ${a.metaScore.toFixed(1)} vs ${b.metaScore.toFixed(1)}.`,
   },
 ];
+const otherMatchups = VS_PAIRS
+  .filter(([x, y]) => !(x === aSlug && y === bSlug) && [x, y].some((s) => s === aSlug || s === bSlug))
+  .slice(0, 5)
+  .map(([x, y]) => [appBySlug(x), appBySlug(y)] as const);
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
-  <div class="wrap">
-    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Comparisons', href: '/best-piano-apps/' }, { label: `${a.name} vs ${b.name}` }]} />
-    <h1>{title}</h1>
-    <p class="lede">Two of the most-searched piano apps, compared on price, method, and who each one actually suits — from public ratings data, not marketing copy.</p>
-    <VerdictBox title="The short version">
-      <p style="margin-top:0"><strong>{ed.pickA}</strong></p>
-      <p style="margin-bottom:0"><strong>{ed.pickB}</strong></p>
-    </VerdictBox>
-    <div class="grid2">
-      <div><CTA app={a} label={`Try ${a.name}`} /></div>
-      <div><CTA app={b} label={`Try ${b.name}`} /></div>
+  <PageHeader class="page-head--faceoff" title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Comparisons', href: '/compare/' }, { label: `${a.name} vs ${b.name}` }]}>
+    Two of the most-searched piano apps, compared on price, method, and who each one actually suits — from public ratings data, not marketing copy.
+  </PageHeader>
+  <div class="container">
+    <div class="faceoff">
+      <ScoreCard app={a} linkReview ctaLabel={`Try ${a.name}`} />
+      <span class="faceoff-vs" aria-hidden="true">vs</span>
+      <ScoreCard app={b} linkReview ctaLabel={`Try ${b.name}`} />
     </div>
-    <CompareTable apps={[a, b]} caption={`${a.name} vs ${b.name} — side by side`} />
-    <h2>Breaking it down</h2>
-    {ed.body.map((p) => <p>{p}</p>)}
-    <h2>{a.name}: the case for</h2>
-    <p>{a.verdict}</p>
-    <h2>{b.name}: the case for</h2>
-    <p>{b.verdict}</p>
-    <div class="grid2">
-      <div><CTA app={a} ghost label={`Try ${a.name}`} /></div>
-      <div><CTA app={b} ghost label={`Try ${b.name}`} /></div>
+  </div>
+  <div class="container article-grid">
+    <div class="prose">
+      <VerdictBox title="The short version">
+        <p><strong>{ed.pickA}</strong></p>
+        <p><strong>{ed.pickB}</strong></p>
+      </VerdictBox>
+      <CompareTable apps={[a, b]} caption={`${a.name} vs ${b.name} — side by side`} />
+      <h2>Breaking it down</h2>
+      {ed.body.map((p) => <p>{p}</p>)}
+      <h2>{a.name}: the case for</h2>
+      <p>{a.verdict}</p>
+      <h2>{b.name}: the case for</h2>
+      <p>{b.verdict}</p>
+      <div class="grid2">
+        <div><CTA app={a} ghost label={`Try ${a.name}`} /></div>
+        <div><CTA app={b} ghost label={`Try ${b.name}`} /></div>
+      </div>
+      <FAQ items={faqs} />
+      <DisclosureBlock />
+      <LastVerified />
     </div>
-    <div class="card-actions">
-      <a class="btn btn-ghost" href={reviewUrl(a)}>Read our {a.name} review</a>
-      <a class="btn btn-ghost" href={reviewUrl(b)}>Read our {b.name} review</a>
-      <a class="btn btn-ghost" href="/best-piano-apps/">See the full ranking</a>
-    </div>
-    <FAQ items={faqs} />
-    <DisclosureBlock />
-    <LastVerified />
+    <aside class="rail" aria-label="Related">
+      <div class="rail-block">
+        <nav class="toc">
+          <h2>Keep reading</h2>
+          <ul>
+            <li><a href={reviewUrl(a)}>Read our {a.name} review</a></li>
+            <li><a href={reviewUrl(b)}>Read our {b.name} review</a></li>
+            <li><a href="/best-piano-apps/">See the full ranking</a></li>
+          </ul>
+        </nav>
+      </div>
+      {otherMatchups.length > 0 && (
+        <div class="rail-block">
+          <nav class="toc">
+            <h2>Other matchups</h2>
+            <ul>{otherMatchups.map(([x, y]) => <li><a href={vsUrl(x, y)}>{x.name} vs {y.name}</a></li>)}</ul>
+          </nav>
+        </div>
+      )}
+    </aside>
   </div>
 </BaseLayout>

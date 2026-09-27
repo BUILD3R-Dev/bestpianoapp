@@ -1,0 +1,35 @@
+---
+/**
+ * At-a-glance card for one app: MetaScore, price, trial, input, platforms, CTA.
+ * Used in review/alternatives headers, the vs face-off, and the Flowkey value page.
+ */
+import type { PianoApp } from '../data/apps';
+import MetaScoreBadge from './MetaScoreBadge.astro';
+import CTA from './CTA.astro';
+import { annualLine, inputLabel, reviewUrl } from '../lib/format';
+
+interface Props {
+  app: PianoApp;
+  ctaLabel?: string;
+  /** Link the name and add a "Read the review" button (off on the app's own review). */
+  linkReview?: boolean;
+  heading?: string;
+}
+const { app, ctaLabel, linkReview = false, heading } = Astro.props;
+---
+
+<section class="scorecard" aria-label={`${app.name} at a glance`}>
+  {heading && <p class="scorecard-kicker">{heading}</p>}
+  <p class="scorecard-name">{linkReview ? <a href={reviewUrl(app)}>{app.name}</a> : app.name}</p>
+  <p class="scorecard-maker">by {app.maker}</p>
+  <MetaScoreBadge app={app} size="lg" />
+  <a class="scorecard-how" href="/how-we-rate/">How the MetaScore works</a>
+  <dl class="scorecard-facts">
+    <div><dt>Price</dt><dd>{annualLine(app)}</dd></div>
+    <div><dt>Free trial</dt><dd>{app.freeTrial}</dd></div>
+    <div><dt>Hears you via</dt><dd>{inputLabel(app.inputMethod)}</dd></div>
+    <div><dt>Platforms</dt><dd>{app.platforms.join(', ')}</dd></div>
+  </dl>
+  <CTA app={app} label={ctaLabel} cls="btn-block" />
+  {linkReview && <a class="btn btn-ghost btn-block" href={reviewUrl(app)}>Read our {app.name} review</a>}
+</section>
