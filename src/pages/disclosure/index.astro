@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import { SITE } from '../../data/site';
+
+const title = 'Affiliate Disclosure';
+const description =
+  'How BestPianoApp makes money: affiliate commissions, our featured-partner slot, and why no app can pay for a better ranking.';
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Disclosure' }]} />
+    <h1>{title}</h1>
+    <p class="lede">Short version: this site is reader-supported. When you buy through links here, we may earn a commission. It never changes our rankings.</p>
+    <h2>How rankings work</h2>
+    <p>
+      Every app gets a MetaScore — a 0–10 composite computed from public ratings (App Store, Google Play,
+      Reddit, YouTube reviewers, expert sites) by a fixed formula. <strong>No app can pay for a higher
+      MetaScore or a better rank.</strong> The formula does not take money as an input, and sponsored
+      placements do not exist in our rankings. <a href="/how-we-rate/">Read the full methodology</a>.
+    </p>
+    <h2>Affiliate relationships</h2>
+    <p>
+      Outbound links marked as sponsored may earn us a commission at no cost to you. Current and planned
+      programs include Piano Tree Partners (20% recurring commission — applied), Amazon Associates for
+      keyboard hardware, and direct partner deals we negotiate as the site grows. Until a program is
+      approved, outbound links go directly to the maker's site.
+    </p>
+    <h2>Featured partner slot</h2>
+    <p>
+      Piano Player (by WebPianoTeacher.com) holds a labeled <em>Featured Partner</em> slot on our homepage
+      and ranking page, plus a dedicated review. The placement is always labeled as such. Commercial terms
+      for the slot are still being finalized; until they are, its link points directly to the maker's site
+      with no tracking. The featured slot does not affect the MetaScore or any ranking.
+    </p>
+    <h2>What "provisional" means</h2>
+    <p>
+      Newer apps with thin public review footprints carry a <em>provisional</em> badge on their MetaScore.
+      It means the evidence base is small — treat the number as a starting point and read the review.
+    </p>
+    <LastVerified />
+  </div>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import type { PianoApp } from '../data/apps';
+
+interface Props {
+  app: PianoApp;
+  label?: string;
+  ghost?: boolean;
+}
+const { app, label, ghost = false } = Astro.props;
+const text = label ?? `Try ${app.name} — ${app.freeTrial.split('(')[0].trim()}`;
+---
+
+<a class={`btn${ghost ? ' btn-ghost' : ''}`} href={app.affiliate.link} rel="sponsored nofollow">{text}</a>

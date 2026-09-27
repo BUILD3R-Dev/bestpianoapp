@@ -1,0 +1,32 @@
+---
+/**
+ * /go/{merchant}/ affiliate redirect stubs.
+ *
+ * TEMPORARY: until the Cloudflare Worker for click-tracked redirects is deployed,
+ * these static pages meta-refresh to the maker's site (no tracking, no 404s).
+ * The Worker will replace this route at deploy time. NEVER indexed (noindex +
+ * excluded from sitemap.xml via astro.config.mjs filter).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { apps } from '../../data/apps';
+
+export async function getStaticPaths() {
+  return apps.map((a) => ({ params: { merchant: a.slug }, props: { slug: a.slug } }));
+}
+
+const { slug } = Astro.props as { slug: string };
+const app = apps.find((a) => a.slug === slug)!;
+// Prefer an approved http(s) affiliate link; fall back to the maker's site.
+const target = app.affiliate.link.startsWith('http') ? app.affiliate.link : app.siteUrl;
+---
+
+<BaseLayout title={`Continue to ${app.name}`} description={`Redirecting to ${app.name}.`} noindex>
+  <meta http-equiv="refresh" content={`0;url=${target}`} />
+  <div class="wrap">
+    <p>Taking you to <strong>{app.name}</strong>…</p>
+    <p><a href={target}>Click here if you are not redirected</a>.</p>
+    <script is:inline define:vars={{ target }}>
+      window.location.replace(target);
+    </script>
+  </div>
+</BaseLayout>

@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import { apps } from '../../data/apps';
+import { annualLine, reviewUrl } from '../../lib/format';
+import { SITE } from '../../data/site';
+
+const title = 'Find Your Piano App: 60-Second Quiz';
+const description =
+  'Answer 5 questions about your experience, device, and budget, and get a data-backed piano app recommendation. No email required.';
+
+// Minimal per-app payload for the client-side recommender.
+const quizData = Object.fromEntries(
+  apps.map((a) => [
+    a.slug,
+    {
+      name: a.name,
+      tagline: a.tagline,
+      score: a.metaScore,
+      provisional: !!a.provisionalScore,
+      price: annualLine(a),
+      trial: a.freeTrial,
+      review: reviewUrl(a),
+      cta: a.affiliate.link.startsWith('http') ? a.affiliate.link : `/go/${a.slug}/`,
+    },
+  ])
+);
+
+const QUESTIONS = [
+  {
+    id: 'exp',
+    q: 'How much piano experience do you have?',
+    answers: [
+      { label: 'Total beginner — never really played', value: 'beginner' },
+      { label: 'Some basics — I can pick out a tune', value: 'basics' },
+      { label: 'Returning player — I played before', value: 'returning' },
+    ],
+  },
+  {
+    id: 'device',
+    q: 'What will you practice on?',
+    answers: [
+      { label: 'Phone', value: 'phone' },
+      { label: 'Tablet / iPad', value: 'tablet' },
+      { label: 'Computer + MIDI keyboard', value: 'midi' },
+      { label: 'Acoustic piano', value: 'acoustic' },
+    ],
+  },
+  {
+    id: 'budget',
+    q: "What's your budget mindset?",
+    answers: [
+      { label: 'Cheapest good option', value: 'cheap' },
+      { label: 'Best overall value', value: 'value' },
+      { label: 'Premium is fine if it delivers', value: 'premium' },
+    ],
+  },
+  {
+    id: 'goal',
+    q: 'What keeps you practicing?',
+    answers: [
+      { label: 'Playing real songs fast', value: 'songs' },
+      { label: 'Getting technique right', value: 'technique' },
+      { label: 'Fun, games, streaks', value: 'fun' },
+      { label: 'Watching and studying performances', value: 'watch' },
+    ],
+  },
+  {
+    id: 'who',
+    q: 'Who is the app for?',
+    answers: [
+      { label: 'Me (adult)', value: 'adult' },
+      { label: 'My kid', value: 'kid' },
+      { label: 'The whole family', value: 'family' },
+    ],
+  },
+];
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Quiz' }]} />
+    <h1>{title}</h1>
+    <p class="lede">Five questions, one recommendation — scored against our MetaScore dataset, not a sponsor. No email, no account, nothing to install.</p>
+    <div id="quiz">
+      <div id="quiz-body"></div>
+    </div>
+    <DisclosureBlock />
+  </div>
+</BaseLayout>
+
+<script define:vars={{ quizData, QUESTIONS }}>
+  const SCORE = {
+    exp: {
+      beginner: { 'simply-piano': 3, flowkey: 2, yousician: 2, 'piano-tree': 2, skoove: 1 },
+      basics: { flowkey: 3, skoove: 2, 'playground-sessions': 2, 'piano-marvel': 1 },
+      returning: { pianote: 3, 'playground-sessions': 2, 'piano-marvel': 3, skoove: 1 },
+    },
+    device: {
+      phone: { 'simply-piano': 3, yousician: 2, 'piano-tree': 2, skoove: 1 },
+      tablet: { flowkey: 3, 'simply-piano': 2, skoove: 1, 'piano-player': 2 },
+      midi: { 'playground-sessions': 3, 'piano-marvel': 3, flowkey: 1 },
+      acoustic: { 'simply-piano': 3, flowkey: 2, skoove: 2, yousician: 1 },
+    },
+    budget: {
+      cheap: { 'piano-marvel': 3, flowkey: 2, 'piano-tree': 2, 'piano-player': 1 },
+      value: { flowkey: 3, 'simply-piano': 1, 'playground-sessions': 2 },
+      premium: { pianote: 3, skoove: 1 },
+    },
+    goal: {
+      songs: { flowkey: 3, yousician: 2, 'simply-piano': 1 },
+      technique: { skoove: 3, 'piano-marvel': 2, pianote: 2 },
+      fun: { yousician: 3, 'simply-piano': 2, flowkey: 1 },
+      watch: { 'piano-player': 3, pianote: 1 },
+    },
+    who: {
+      adult: { skoove: 1, pianote: 1, flowkey: 1 },
+      kid: { 'simply-piano': 3, yousician: 2 },
+      family: { 'simply-piano': 2, yousician: 2, flowkey: 1 },
+    },
+  };
+
+  const totals = {};
+  let step = 0;
+  const body = document.getElementById('quiz-body');
+
+  function renderQuestion() {
+    const q = QUESTIONS[step];
+    body.innerHTML =
+      '<p style="color:var(--muted)">Question ' + (step + 1) + ' of ' + QUESTIONS.length + '</p>' +
+      '<h2 style="border:none;padding:0;margin:0 0 1rem">' + q.q + '</h2>' +
+      '<div class="quiz-q">' +
+      q.answers.map((a) => '<button data-q="' + q.id + '" data-v="' + a.value + '">' + a.label + '</button>').join('') +
+      '</div>';
+    body.querySelectorAll('button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const pts = SCORE[btn.dataset.q][btn.dataset.v] || {};
+        for (const slug in pts) totals[slug] = (totals[slug] || 0) + pts[slug];
+        step++;
+        if (step < QUESTIONS.length) renderQuestion();
+        else renderResult();
+      });
+    });
+  }
+
+  function renderResult() {
+    const ranked = Object.entries(totals).sort((x, y) => y[1] - x[1]);
+    const top = quizData[ranked[0][0]];
+    const second = ranked[1] ? quizData[ranked[1][0]] : null;
+    body.innerHTML =
+      '<p style="color:var(--muted)">Based on your answers:</p>' +
+      '<article class="card card-top3"><span class="rank-badge">Your match</span>' +
+      '<h2 style="border:none;padding:0;margin:0.4rem 0">' + top.name + '</h2>' +
+      '<p>' + top.tagline + '</p>' +
+      '<div class="chips"><span class="chip">MetaScore ' + top.score.toFixed(1) + '/10' + (top.provisional ? ' (provisional)' : '') + '</span>' +
+      '<span class="chip">' + top.price + '</span><span class="chip">' + top.trial + '</span></div>' +
+      '<a class="btn" href="' + top.cta + '" rel="sponsored nofollow">Try ' + top.name + '</a> ' +
+      '<a class="btn btn-ghost" href="' + top.review + '">Read our review</a></article>' +
+      (second
+        ? '<p><strong>Runner-up:</strong> <a href="' + second.review + '">' + second.name + '</a> — ' + second.tagline + '</p>'
+        : '') +
+      '<p><a href="/best-piano-apps/">See the full ranking</a> · <a href="#" id="quiz-restart">Retake the quiz</a></p>' +
+      '<p style="font-size:0.85rem;color:var(--muted)">This recommendation is computed from your answers against our ratings dataset. It is a starting point, not a verdict — read the full review before paying.</p>';
+    document.getElementById('quiz-restart').addEventListener('click', (e) => {
+      e.preventDefault();
+      for (const k in totals) delete totals[k];
+      step = 0;
+      renderQuestion();
+    });
+  }
+
+  renderQuestion();
+</script>

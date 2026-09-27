@@ -1,0 +1,46 @@
+---
+import type { PianoApp } from '../data/apps';
+import { annualLine, reviewUrl, libraryLabel, inputLabel } from '../lib/format';
+
+interface Props {
+  apps: PianoApp[];
+  caption?: string;
+}
+const { apps: list, caption = 'Side-by-side comparison' } = Astro.props;
+
+const rows: { label: string; get: (a: PianoApp) => string }[] = [
+  { label: 'Annual price', get: (a) => annualLine(a) },
+  { label: 'Free trial', get: (a) => a.freeTrial },
+  { label: 'Song library', get: (a) => `${libraryLabel(a)} songs` },
+  { label: 'Input', get: (a) => inputLabel(a.inputMethod) },
+  { label: 'Platforms', get: (a) => a.platforms.join(', ') },
+  { label: 'Course style', get: (a) => a.format === 'course' ? 'Structured course' : a.format === 'hybrid' ? 'Course + song library' : 'Song library' },
+  { label: 'Sheet music', get: (a) => (a.sheetMusic ? 'Yes' : 'No') },
+  { label: 'Skill levels', get: (a) => a.skillLevels.join(', ') },
+  { label: 'Kids mode', get: (a) => (a.kidsMode ? 'Yes' : 'No') },
+];
+---
+
+<table class="cmp">
+  <caption style="text-align:left;font-weight:700;padding-bottom:0.5rem">{caption}</caption>
+  <thead>
+    <tr>
+      <th scope="col">Feature</th>
+      {list.map((a) => (
+        <th scope="col"><a href={reviewUrl(a)}>{a.name}</a></th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>MetaScore</strong></td>
+      {list.map((a) => <td><strong>{a.metaScore.toFixed(1)}</strong> / 10 ({a.metaScoreSources} {a.metaScoreSources === 1 ? 'source' : 'sources'}){a.provisionalScore && <em> — provisional</em>}</td>)}
+    </tr>
+    {rows.map((r) => (
+      <tr>
+        <td><strong>{r.label}</strong></td>
+        {list.map((a) => <td>{r.get(a)}</td>)}
+      </tr>
+    ))}
+  </tbody>
+</table>

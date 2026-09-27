@@ -1,0 +1,15 @@
+---
+import type { PianoApp } from '../data/apps';
+
+interface Props { app: PianoApp; showSources?: boolean }
+const { app, showSources = true } = Astro.props;
+const pct = Math.round((app.metaScore / 10) * 100);
+---
+
+<span class="metascore" title={`MetaScore ${app.metaScore}/10 from ${app.metaScoreSources} public sources`}>
+  <span class="num">{app.metaScore.toFixed(1)}</span>
+  <span class="bar" aria-hidden="true"><span class="fill" style={`width:${pct}%`}></span></span>
+  <span style="font-weight:400;font-size:0.85rem;color:var(--muted)">MetaScore</span>
+  {showSources && <span style="font-weight:400;font-size:0.8rem;color:var(--muted)">· {app.metaScoreSources} {app.metaScoreSources === 1 ? 'source' : 'sources'}</span>}
+  {app.provisionalScore && <span style="font-weight:700;font-size:0.8rem;color:var(--accent-ink)">· provisional</span>}
+</span>

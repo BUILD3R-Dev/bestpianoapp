@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import { SITE } from '../../data/site';
+
+const title = 'How We Rate Piano Apps: The MetaScore Method';
+const description =
+  'Our MetaScore methodology: how we turn 1,000+ public reviews into one 0–10 rating per piano app. Data sources, weights, update cadence, and limitations.';
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'How we rate' }]} />
+    <h1>{title}</h1>
+    <p class="lede">
+      Every app on this site gets one number: the MetaScore, a 0–10 composite of public ratings.
+      No sponsored placements. No pay-for-rank. Here is exactly how it is computed — including the parts
+      where the method is weak.
+    </p>
+    <h2>The formula</h2>
+    <table class="cmp">
+      <thead><tr><th>Source</th><th>Weight</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><strong>App Store ratings</strong></td><td>25%</td><td>Largest verified-user sample; hard to fake at scale</td></tr>
+        <tr><td><strong>Google Play ratings</strong></td><td>25%</td><td>Second verified-user sample; catches Android-only sentiment</td></tr>
+        <tr><td><strong>Reddit sentiment</strong></td><td>20%</td><td>Unfiltered long-term user opinion (r/piano and related)</td></tr>
+        <tr><td><strong>YouTube reviewer consensus</strong></td><td>15%</td><td>Reviewers who actually demonstrate the product</td></tr>
+        <tr><td><strong>Expert review sites</strong></td><td>15%</td><td>Structured comparisons with consistent criteria</td></tr>
+      </tbody>
+    </table>
+    <h2>Update cadence</h2>
+    <p>
+      Scores and prices are re-verified monthly. Every page carries a "prices verified" date so you can see
+      how fresh the data is. An app that raises prices or ships a bad update will see its score move within a
+      cycle — freshness is the entire point of doing this programmatically instead of by hand.
+    </p>
+    <h2>Limitations — read this part</h2>
+    <ul>
+      <li><strong>We synthesize public ratings; where we've used an app ourselves, we say so.</strong> We do not claim hands-on testing we did not do.</li>
+      <li><strong>New apps get provisional scores.</strong> An app with one or two rating sources (like Piano Player) carries a <em>provisional</em> badge — the number is our best synthesis, not a confident measurement.</li>
+      <li><strong>Ratings can be gamed.</strong> Developers incentivize reviews; stores host fake ones. Weighting five independent source types dampens this but does not eliminate it.</li>
+      <li><strong>Scores are averages, not prescriptions.</strong> The top-ranked app is the best bet for the average learner, not for you specifically — use the persona pages and quiz to match your situation.</li>
+      <li><strong>Evidence volume matters.</strong> We rank conservatively when sources are thin: a 7.9 from 3 sources sits below a 7.9 from 6 sources in our ordering.</li>
+    </ul>
+    <h2>Money and independence</h2>
+    <p>
+      This site is reader-supported: we may earn commissions when you buy through our links, and one app
+      (Piano Player) holds a labeled featured-partner slot. <strong>No app can pay for a higher MetaScore or a
+      better rank</strong> — scores are computed from public data by a fixed formula, and the formula does not
+      take money as an input. <a href="/disclosure/">Read the full disclosure</a>.
+    </p>
+    <LastVerified />
+  </div>
+</BaseLayout>

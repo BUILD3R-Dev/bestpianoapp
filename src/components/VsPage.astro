@@ -1,0 +1,71 @@
+---
+/**
+ * Head-to-head page body for /{a}-vs-{b}/. Wrapped in BaseLayout here.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import VerdictBox from './VerdictBox.astro';
+import CTA from './CTA.astro';
+import DisclosureBlock from './DisclosureBlock.astro';
+import LastVerified from './LastVerified.astro';
+import CompareTable from './CompareTable.astro';
+import FAQ from './FAQ.astro';
+import { appBySlug } from '../data/apps';
+import { SITE } from '../data/site';
+import { vsEditorial } from '../data/editorial';
+import { reviewUrl, annualLine, inputLabel } from '../lib/format';
+
+const { aSlug, bSlug } = Astro.props as { aSlug: string; bSlug: string };
+const a = appBySlug(aSlug);
+const b = appBySlug(bSlug);
+const ed = vsEditorial[`${aSlug}-vs-${bSlug}`];
+const title = `${a.name} vs ${b.name} (2026): Which Is Worth It?`;
+const description = `${a.name} vs ${b.name} compared head-to-head: price (${annualLine(a)} vs ${annualLine(b)}), MetaScores ${a.metaScore.toFixed(1)} vs ${b.metaScore.toFixed(1)}, features, and who should pick which.`;
+const cheaper = (a.pricing.annual ?? Infinity) <= (b.pricing.annual ?? Infinity) ? a : b;
+const pricier = cheaper === a ? b : a;
+const faqs = [
+  {
+    q: `Which is cheaper, ${a.name} or ${b.name}?`,
+    a: `${cheaper.name} is cheaper at ${annualLine(cheaper)}, versus ${annualLine(pricier)} for ${pricier.name}. Watch our deals page — both apps discount periodically, so the gap moves.`,
+  },
+  {
+    q: `Which is better for beginners, ${a.name} or ${b.name}?`,
+    a: `Both cover beginners; the real split comes down to method. ${ed.pickA} ${ed.pickB}`,
+  },
+  {
+    q: `What is the main difference between ${a.name} and ${b.name}?`,
+    a: `${a.name} is ${a.format === 'course' ? 'a structured course' : a.format === 'hybrid' ? 'a course-plus-library hybrid' : 'a song library'} using ${inputLabel(a.inputMethod).toLowerCase()} input; ${b.name} is ${b.format === 'course' ? 'a structured course' : b.format === 'hybrid' ? 'a course-plus-library hybrid' : 'a song library'} using ${inputLabel(b.inputMethod).toLowerCase()} input. MetaScores: ${a.metaScore.toFixed(1)} vs ${b.metaScore.toFixed(1)}.`,
+  },
+];
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Comparisons', href: '/best-piano-apps/' }, { label: `${a.name} vs ${b.name}` }]} />
+    <h1>{title}</h1>
+    <p class="lede">Two of the most-searched piano apps, compared on price, method, and who each one actually suits — from public ratings data, not marketing copy.</p>
+    <VerdictBox title="The short version">
+      <p style="margin-top:0"><strong>{ed.pickA}</strong></p>
+      <p style="margin-bottom:0"><strong>{ed.pickB}</strong></p>
+    </VerdictBox>
+    <div class="grid2">
+      <div><CTA app={a} label={`Try ${a.name}`} /></div>
+      <div><CTA app={b} label={`Try ${b.name}`} /></div>
+    </div>
+    <CompareTable apps={[a, b]} caption={`${a.name} vs ${b.name} — side by side`} />
+    <h2>Breaking it down</h2>
+    {ed.body.map((p) => <p>{p}</p>)}
+    <h2>{a.name}: the case for</h2>
+    <p>{a.verdict}</p>
+    <h2>{b.name}: the case for</h2>
+    <p>{b.verdict}</p>
+    <div class="grid2">
+      <div><CTA app={a} ghost label={`Try ${a.name}`} /></div>
+      <div><CTA app={b} ghost label={`Try ${b.name}`} /></div>
+    </div>
+    <p>Want the full picture? <a href={reviewUrl(a)}>Read our {a.name} review</a> · <a href={reviewUrl(b)}>Read our {b.name} review</a> · <a href="/best-piano-apps/">See the full ranking</a></p>
+    <FAQ items={faqs} />
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

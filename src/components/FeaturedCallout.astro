@@ -1,0 +1,23 @@
+---
+import { featuredApp } from '../data/apps';
+import CTA from './CTA.astro';
+import MetaScoreBadge from './MetaScoreBadge.astro';
+import { annualLine } from '../lib/format';
+---
+
+{featuredApp ? (
+  <aside class="featured-callout" aria-label="Featured partner">
+    <span class="tag">Featured partner</span>
+    <h3 style="margin-top:0.4rem">{featuredApp.name} — our launch partner</h3>
+    <p>{featuredApp.tagline}</p>
+    <p style="margin:0.4rem 0"><MetaScoreBadge app={featuredApp} /></p>
+    <p style="font-size:0.9rem;color:var(--muted);margin:0.4rem 0"><strong>{annualLine(featuredApp)}</strong> · {featuredApp.freeTrial}</p>
+    <CTA app={featuredApp} label={`Try ${featuredApp.name}`} />
+  </aside>
+) : (
+  <!--
+    FEATURED SLOT (Appendix A): reserved for the WebPianoTeacher launch-partner app.
+    Set `featured: true` on the app in src/data/apps.ts and this callout renders
+    automatically on the homepage and /best-piano-apps/.
+  -->
+)}

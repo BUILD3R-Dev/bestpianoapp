@@ -1,0 +1,31 @@
+---
+import type { PianoApp } from '../data/apps';
+import MetaScoreBadge from './MetaScoreBadge.astro';
+import CTA from './CTA.astro';
+import { annualLine, reviewUrl, libraryLabel, inputLabel } from '../lib/format';
+
+interface Props {
+  app: PianoApp;
+  rank?: number;
+  showVerdict?: boolean;
+}
+const { app, rank, showVerdict = false } = Astro.props;
+---
+
+<article class={`card${rank && rank <= 3 ? ' card-top3' : ''}`}>
+  {rank && <span class="rank-badge">#{rank} — MetaScore {app.metaScore.toFixed(1)}</span>}
+  <h3 style="margin-top:0"><a href={reviewUrl(app)} style="color:var(--ink);text-decoration:none">{app.name}</a></h3>
+  <p style="margin:0.25rem 0">{app.tagline}</p>
+  <div style="margin:0.5rem 0"><MetaScoreBadge app={app} /></div>
+  <div class="chips">
+    <span class="chip">{annualLine(app)}</span>
+    <span class="chip">{libraryLabel(app)} songs</span>
+    <span class="chip">{inputLabel(app.inputMethod)}</span>
+    {app.platforms.map((p) => <span class="chip">{p}</span>)}
+  </div>
+  {showVerdict && <p><em>{app.verdict}</em></p>}
+  <div>
+    <CTA app={app} />
+    <a class="btn btn-ghost" href={reviewUrl(app)}>Read our {app.name} review</a>
+  </div>
+</article>

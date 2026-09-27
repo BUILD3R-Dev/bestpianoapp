@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import FAQ from '../../components/FAQ.astro';
+import { KEYBOARDS, SITE } from '../../data/site';
+
+const title = '5 Best Keyboards for Piano Apps (2026)';
+const description =
+  'The 5 best keyboards and digital pianos for piano apps in 2026: weighted 88-key picks, budget options, and what actually matters for app learning. Prices verified.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: title,
+  itemListElement: KEYBOARDS.map((k, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: { '@type': 'Product', name: k.name },
+  })),
+};
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description} schema={schema}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Keyboards for piano apps' }]} />
+    <h1>{title}</h1>
+    <p class="lede">
+      The app matters more than the keyboard — but the wrong keyboard will fight you. For piano apps
+      you need 88 weighted keys if you are serious, or 61 touch-sensitive keys if you are testing the
+      waters. MIDI over USB matters for Playground Sessions and Piano Marvel; everyone else works fine
+      with a microphone. These are the five we would buy, ranked by value.
+    </p>
+    <h2>What actually matters</h2>
+    <ul>
+      <li><strong>Weighted keys</strong> — build finger strength like a real piano. Non-negotiable past month three.</li>
+      <li><strong>USB MIDI</strong> — required for Playground Sessions and Piano Marvel; nice-to-have everywhere else.</li>
+      <li><strong>88 keys</strong> — 61 is fine for year one, but you will want the full range sooner than you think.</li>
+      <li><strong>Speakers you can tolerate</strong> — you will hear them daily. This is where budget boards cut corners.</li>
+    </ul>
+    {KEYBOARDS.map((k, i) => (
+      <article class={`card${i === 0 ? ' card-top3' : ''}`}>
+        {i === 0 && <span class="rank-badge">#1 — Our pick</span>}
+        <h3 style="margin-top:0">{k.name} — ${k.price}</h3>
+        <div class="chips"><span class="chip">{k.keys}</span></div>
+        <p>{k.why}</p>
+        <a class="btn" href={k.searchUrl} rel="sponsored nofollow" target="_blank">Check price on Amazon</a>
+      </article>
+    ))}
+    <h2>Pair it with the right app</h2>
+    <p>
+      A keyboard is only half the setup. <a href="/best-piano-apps/">See our ranked piano apps</a> —
+      <a href="/simply-piano-review/">Simply Piano</a> and <a href="/flowkey-review/">Flowkey</a> work
+      with any of these over microphone, while <a href="/playground-sessions-review/">Playground Sessions</a> and
+      <a href="/piano-marvel-review/">Piano Marvel</a> need the USB MIDI connection (all five boards above have it).
+    </p>
+    <FAQ items={[
+      { q: 'Do I need an 88-key keyboard for piano apps?', a: 'Not on day one — 61 keys covers the first year. But weighted 88-key boards build proper technique, and you will want the full range within a year if you stick with it. Buy the 88-key board if the budget stretches.' },
+      { q: 'What is the cheapest keyboard that works with piano apps?', a: 'The Casio CT-S1 at around $200 is the cheapest we recommend: 61 touch-sensitive keys with USB MIDI. Below that price, key feel degrades fast enough to hurt your learning.' },
+      { q: 'Do I need MIDI, or is microphone enough?', a: 'Microphone is enough for Simply Piano, Flowkey, Skoove, and Yousician. MIDI is required for Playground Sessions and Piano Marvel, and gives more precise feedback everywhere. All five keyboards above have USB MIDI.' },
+    ]} />
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

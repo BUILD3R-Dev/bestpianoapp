@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeaturedCallout from '../components/FeaturedCallout.astro';
+import AppCard from '../components/AppCard.astro';
+import DisclosureBlock from '../components/DisclosureBlock.astro';
+import LastVerified from '../components/LastVerified.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { rankedApps } from '../data/apps';
+import { SITE, PERSONAS } from '../data/site';
+
+const top7 = rankedApps.slice(0, 7);
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Best Piano Apps 2026 — ranked by data',
+  itemListElement: top7.map((app, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: app.name,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: app.metaScore,
+        bestRating: 10,
+        ratingCount: app.metaScoreSources,
+      },
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={`Best Piano Apps 2026 — Ranked by Data | ${SITE.name}`}
+  description="The 7 best piano apps of 2026, ranked by our MetaScore: a weighted composite of 1,000+ public reviews. Honest pricing, real pros and cons, no sponsored rankings."
+  schema={itemListSchema}
+  ogType="website"
+>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home' }]} />
+    <h1>The Best Piano Apps in 2026, Ranked by Data</h1>
+    <p class="lede">
+      Every piano app claims to be the best. We ignored the marketing and read the reviews instead —
+      1,000+ of them across the App Store, Google Play, Reddit, YouTube, and expert sites —
+      synthesized into one number: the <strong>MetaScore</strong>. Below is what the data actually says.
+    </p>
+
+    <FeaturedCallout />
+
+    <h2>The top 7, in order</h2>
+    <p>
+      Ranked by MetaScore, priced honestly, with the trial terms spelled out.
+      <a href="/best-piano-apps/">See the full comparison table</a>.
+    </p>
+    {top7.map((app, i) => <AppCard app={app} rank={i + 1} showVerdict={i < 3} />)}
+
+    <h2>Find your app in 60 seconds</h2>
+    <p>
+      Not sure where to start? Answer five quick questions about your experience, device, and budget,
+      and we will point you at the right app. <a class="btn" href="/quiz/">Take the quiz</a>
+    </p>
+
+    <h2>Why trust these rankings</h2>
+    <p>
+      We do not take placement fees for rankings, and we publish exactly how every score is computed —
+      the sources, the weights, the update cadence, and the limitations.
+      <a href="/how-we-rate/">Read the MetaScore methodology</a>.
+      Where we have used an app ourselves, we say so; everywhere else, we synthesize public ratings and say that too.
+    </p>
+
+    <h2>Browse by who you are</h2>
+    <div class="grid2">
+      {PERSONAS.map((p) => (
+        <div class="card">
+          <h3 style="margin-top:0"><a href={p.url} style="color:var(--ink);text-decoration:none">{p.label}</a></h3>
+          <p style="margin-bottom:0.5rem">{p.description}</p>
+          <a href={p.url}>Best piano app for {p.label.toLowerCase()} →</a>
+        </div>
+      ))}
+    </div>
+
+    <h2>Popular comparisons</h2>
+    <ul>
+      <li><a href="/simply-piano-vs-flowkey/">Simply Piano vs Flowkey</a> — the two giants, head to head</li>
+      <li><a href="/flowkey-vs-skoove/">Flowkey vs Skoove</a> — song library vs. real lessons</li>
+      <li><a href="/best-keyboard-for-piano-apps/">Best keyboards for piano apps</a> — what to play them on</li>
+      <li><a href="/deals/">Current deals and free trials</a> — every live offer in one place</li>
+    </ul>
+
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

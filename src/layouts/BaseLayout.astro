@@ -1,0 +1,142 @@
+---
+import { SITE, NAV } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  ogType?: string;
+}
+
+const { title, description, canonical, noindex, schema, ogType = 'article' } = Astro.props;
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString();
+const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111'/><rect x='18' y='28' width='12' height='44' fill='white'/><rect x='34' y='28' width='12' height='44' fill='white'/><rect x='50' y='28' width='12' height='44' fill='white'/><rect x='66' y='28' width='12' height='44' fill='white'/><rect x='28' y='28' width='9' height='26' fill='%23111'/><rect x='45' y='28' width='9' height='26' fill='%23111'/><rect x='62' y='28' width='9' height='26' fill='%23111'/></svg>" />
+    {schemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+    <style>
+      :root {
+        --ink: #16161a;
+        --muted: #55565e;
+        --line: #e6e6ea;
+        --bg: #ffffff;
+        --soft: #f7f7f9;
+        --accent: #b8860b;
+        --accent-ink: #7a5c06;
+        --good: #1a7f4b;
+        --bad: #b3261e;
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .wrap { max-width: 76ch; margin: 0 auto; padding: 0 1.25rem; }
+      .wrap-wide { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+      header.site { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 50; }
+      .nav { display: flex; align-items: center; gap: 1.25rem; padding: 0.8rem 0; flex-wrap: wrap; }
+      .brand { font-weight: 800; font-size: 1.1rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+      .brand span { color: var(--accent-ink); }
+      nav.links { display: flex; gap: 1rem; margin-left: auto; flex-wrap: wrap; font-size: 0.95rem; }
+      nav.links a { color: var(--muted); text-decoration: none; }
+      nav.links a:hover { color: var(--ink); text-decoration: underline; }
+      main { padding: 2rem 0 3rem; }
+      h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.02em; margin: 0.4rem 0 1rem; }
+      h2 { font-size: 1.45rem; letter-spacing: -0.01em; margin: 2.2rem 0 0.8rem; border-top: 1px solid var(--line); padding-top: 1.6rem; }
+      h3 { font-size: 1.15rem; margin: 1.6rem 0 0.5rem; }
+      p, li { color: #232329; }
+      .lede { font-size: 1.15rem; color: var(--muted); }
+      a { color: #0b5fff; }
+      table.cmp { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0 1.5rem; display: block; overflow-x: auto; }
+      table.cmp th, table.cmp td { border: 1px solid var(--line); padding: 0.6rem 0.75rem; text-align: left; vertical-align: top; white-space: nowrap; }
+      table.cmp th { background: var(--soft); font-weight: 700; }
+      table.cmp td:first-child, table.cmp th:first-child { font-weight: 600; background: var(--soft); }
+      .card { border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem; background: var(--bg); margin: 1rem 0; }
+      .card-top3 { border-width: 2px; }
+      .rank-badge { display: inline-block; font-weight: 800; font-size: 0.8rem; background: var(--ink); color: #fff; border-radius: 999px; padding: 0.15rem 0.7rem; margin-bottom: 0.5rem; }
+      .metascore { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; }
+      .metascore .bar { width: 110px; height: 10px; background: var(--line); border-radius: 999px; overflow: hidden; }
+      .metascore .fill { height: 100%; background: linear-gradient(90deg, var(--accent), #e0a92e); }
+      .metascore .num { font-size: 1.25rem; }
+      .btn { display: inline-block; background: var(--ink); color: #fff; font-weight: 700; padding: 0.7rem 1.4rem; border-radius: 10px; text-decoration: none; margin: 0.5rem 0.5rem 0.5rem 0; }
+      .btn:hover { background: #000; }
+      .btn-ghost { background: var(--soft); color: var(--ink); border: 1px solid var(--line); }
+      .chips { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 0.5rem 0; }
+      .chip { font-size: 0.8rem; background: var(--soft); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.65rem; color: var(--muted); }
+      .proscons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+      @media (max-width: 640px) { .proscons { grid-template-columns: 1fr; } }
+      .pros, .cons { border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; }
+      .pros h3 { color: var(--good); margin-top: 0; }
+      .cons h3 { color: var(--bad); margin-top: 0; }
+      .pros ul, .cons ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+      .verdict { background: var(--soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+      .disclosure { font-size: 0.85rem; color: var(--muted); background: var(--soft); border: 1px dashed var(--line); border-radius: 10px; padding: 0.9rem 1.1rem; margin: 2rem 0 1rem; }
+      .verified { font-size: 0.82rem; color: var(--muted); margin: 1.5rem 0 0; }
+      .faq details { border: 1px solid var(--line); border-radius: 10px; margin: 0.6rem 0; padding: 0.8rem 1rem; }
+      .faq summary { font-weight: 700; cursor: pointer; }
+      .crumbs { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+      .crumbs a { color: var(--muted); }
+      .featured-callout { border: 2px solid var(--accent); border-radius: 12px; padding: 1.25rem; background: #fffdf4; margin: 1.5rem 0; }
+      .featured-callout .tag { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
+      footer.site { border-top: 1px solid var(--line); padding: 2rem 0; font-size: 0.9rem; color: var(--muted); }
+      footer.site nav { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1rem; }
+      footer.site a { color: var(--muted); }
+      .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } h1 { font-size: 1.7rem; } }
+      .quiz-q { margin: 1.5rem 0; }
+      .quiz-q button { display: block; width: 100%; text-align: left; margin: 0.4rem 0; padding: 0.7rem 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); font-size: 1rem; cursor: pointer; }
+      .quiz-q button:hover { border-color: var(--ink); }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap-wide nav">
+        <a class="brand" href="/"><span>♫</span> BestPianoApp</a>
+        <nav class="links" aria-label="Primary">
+          {NAV.map((n) => <a href={n.href}>{n.label}</a>)}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site">
+      <div class="wrap-wide">
+        <nav aria-label="Footer">
+          <a href="/about/">About</a>
+          <a href="/how-we-rate/">How we rate</a>
+          <a href="/disclosure/">Affiliate disclosure</a>
+          <a href="/deals/">Deals</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </nav>
+        <p>© 2026 bestpianoapp.com — The independent, data-driven guide to piano apps.</p>
+        <p>We may earn a commission when you buy through links on this site. <a href="/disclosure/">Read our disclosure</a>.</p>
+      </div>
+    </footer>
+  </body>
+</html>

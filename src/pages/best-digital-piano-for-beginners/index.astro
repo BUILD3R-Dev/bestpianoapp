@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import FAQ from '../../components/FAQ.astro';
+import { DIGITAL_PIANOS, SITE } from '../../data/site';
+
+const title = 'Best Digital Piano for Beginners (2026)';
+const description =
+  'The best digital pianos for beginners in 2026: 88 weighted keys, USB MIDI for apps, and honest picks from $300 to $700. Prices verified.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: title,
+  itemListElement: DIGITAL_PIANOS.map((k, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: { '@type': 'Product', name: k.name },
+  })),
+};
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description} schema={schema}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Digital pianos for beginners' }]} />
+    <h1>{title}</h1>
+    <p class="lede">
+      If you are learning with an app, your digital piano has one job: feel enough like a real piano
+      that your fingers learn correctly, and connect to your app without drama. That means 88 weighted
+      keys and USB MIDI. Everything else — voices, rhythms, Bluetooth — is garnish. These five are the
+      honest picks, from the $300 starter to the $700 slim premium.
+    </p>
+    {DIGITAL_PIANOS.map((k, i) => (
+      <article class={`card${i === 0 ? ' card-top3' : ''}`}>
+        {i === 0 && <span class="rank-badge">#1 — The default</span>}
+        <h3 style="margin-top:0">{k.name} — ${k.price}</h3>
+        <div class="chips"><span class="chip">{k.keys}</span></div>
+        <p>{k.why}</p>
+        <a class="btn" href={k.searchUrl} rel="sponsored nofollow" target="_blank">Check price on Amazon</a>
+      </article>
+    ))}
+    <h2>Beginner buying rules</h2>
+    <ul>
+      <li><strong>Do not buy 61 keys "for now"</strong> if you can afford 88 weighted — you will replace the 61-key board within a year and spend more total.</li>
+      <li><strong>Buy used if the budget is tight.</strong> Yamaha P-45s flood the used market; a $350 used P-45 beats a $350 new no-name board every time.</li>
+      <li><strong>Budget $0 extra for apps to work.</strong> Every board above connects to <a href="/best-piano-apps/">our ranked piano apps</a> — mic apps need nothing, MIDI apps need the USB cable in the box.</li>
+    </ul>
+    <FAQ items={[
+      { q: 'What is the best digital piano for a beginner?', a: 'The Yamaha P-45 at around $500 is the default recommendation: 88 fully weighted keys, USB MIDI, dead simple. It is the board teachers suggest when they do not want to think about it.' },
+      { q: 'How much should a beginner spend on a digital piano?', a: '$300–$550 covers the honest range. $300 gets the Alesis Recital Pro (fine to start); $500 gets the Yamaha P-45 (buy it once). Above $700 you are paying for furniture and sound, not learning.' },
+      { q: 'Can I learn piano on a keyboard without weighted keys?', a: 'For the first few months, yes. Past that, unweighted keys teach the wrong finger technique and the transition to a real piano is painful. If you are committing, weighted is worth it.' },
+    ]} />
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+/**
+ * Alternatives page body for /{app}-alternatives/. Wrapped in BaseLayout here.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import AppCard from './AppCard.astro';
+import DisclosureBlock from './DisclosureBlock.astro';
+import LastVerified from './LastVerified.astro';
+import FAQ from './FAQ.astro';
+import { appBySlug, rankedApps } from '../data/apps';
+import { SITE } from '../data/site';
+import { alternativesIntro } from '../data/editorial';
+import { reviewUrl, annualLine } from '../lib/format';
+
+const { appSlug } = Astro.props as { appSlug: string };
+const app = appBySlug(appSlug);
+const alts = rankedApps.filter((x) => x.slug !== app.slug).slice(0, 4);
+const title = `${app.name} Alternatives: 4 Options Worth Considering (2026)`;
+const description = `The best ${app.name} alternatives for 2026, ranked by MetaScore: ${alts.map((x) => x.name).join(', ')}. Cheaper, more serious, or better-fitting options with honest pricing.`;
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: app.name, href: reviewUrl(app) }, { label: 'Alternatives' }]} />
+    <h1>{title}</h1>
+    <p class="lede">{alternativesIntro[app.slug]}</p>
+    {alts.map((alt, i) => <AppCard app={alt} rank={i + 1} showVerdict />)}
+    <h2>Why look beyond {app.name}?</h2>
+    <p>{app.name} scores {app.metaScore.toFixed(1)}/10 on our MetaScore at {annualLine(app)}. The alternatives above beat it on at least one dimension that matters — price, teaching method, platform coverage, or depth. None of these rankings are sponsored; every score is computed from public ratings. <a href="/how-we-rate/">How we rate</a>.</p>
+    <FAQ items={[
+      { q: `What is the best free alternative to ${app.name}?`, a: `Of the apps we track, Piano Tree offers a free tier with no card required, and Piano Marvel's 30-day trial is the longest evaluation window. "Free" usually means limited — use the free tier to decide whether the paid product deserves your money.` },
+      { q: `What is the cheapest alternative to ${app.name}?`, a: `Piano Marvel and Flowkey both run about $120/year — among the cheapest full-featured plans we track — versus ${annualLine(app)} for ${app.name}. Check our deals page before paying list price anywhere.` },
+    ]} />
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

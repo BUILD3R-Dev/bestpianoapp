@@ -1,0 +1,39 @@
+---
+/**
+ * Dynamic content route: /{app}-review/, /{a}-vs-{b}/, /{app}-alternatives/,
+ * and /best-piano-app-for-{persona}/ — rendered by page-body components from the data model.
+ * Static files (/, /best-piano-apps/) take precedence in Astro routing.
+ */
+import ReviewPage from '../components/ReviewPage.astro';
+import VsPage from '../components/VsPage.astro';
+import AlternativesPage from '../components/AlternativesPage.astro';
+import PersonaPage from '../components/PersonaPage.astro';
+import { PERSONAS } from '../data/site';
+import { VS_PAIRS, ALTERNATIVES_APPS } from '../data/editorial';
+import { apps } from '../data/apps';
+
+export async function getStaticPaths() {
+  const paths: { params: { slug: string }; props: Record<string, unknown> }[] = [];
+  for (const app of apps) {
+    paths.push({ params: { slug: `${app.slug}-review` }, props: { kind: 'review', appSlug: app.slug } });
+  }
+  for (const [a, b] of VS_PAIRS) {
+    paths.push({ params: { slug: `${a}-vs-${b}` }, props: { kind: 'vs', aSlug: a, bSlug: b } });
+  }
+  for (const s of ALTERNATIVES_APPS) {
+    paths.push({ params: { slug: `${s}-alternatives` }, props: { kind: 'alternatives', appSlug: s } });
+  }
+  for (const p of PERSONAS) {
+    paths.push({ params: { slug: p.url.replace(/\//g, '') }, props: { kind: 'persona', personaSlug: p.slug } });
+  }
+  return paths;
+}
+
+const props = Astro.props as Record<string, string>;
+const kind = props.kind;
+---
+
+{kind === 'review' && <ReviewPage appSlug={props.appSlug} />}
+{kind === 'vs' && <VsPage aSlug={props.aSlug} bSlug={props.bSlug} />}
+{kind === 'alternatives' && <AlternativesPage appSlug={props.appSlug} />}
+{kind === 'persona' && <PersonaPage personaSlug={props.personaSlug} />}

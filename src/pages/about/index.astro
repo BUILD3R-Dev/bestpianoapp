@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import { SITE } from '../../data/site';
+
+const title = 'About BestPianoApp';
+const description =
+  'BestPianoApp is the independent, data-driven guide to piano apps. We synthesize 1,000+ public reviews into one MetaScore per app — no sponsored rankings.';
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
+    <h1>{title}</h1>
+    <p class="lede">
+      Choosing a piano app should not require reading 200 reviews. So we read them for you — across the
+      App Store, Google Play, Reddit, YouTube, and expert review sites — and compress all of it into one
+      number per app: the MetaScore.
+    </p>
+    <h2>Why this site exists</h2>
+    <p>
+      Piano app marketing is loud and comparison content is stale — the best-known comparison posts still
+      show years-old pricing. We built BestPianoApp to be the opposite: every price and rating re-verified
+      monthly, every score computed by a published formula, every limitation disclosed on the page.
+    </p>
+    <h2>How we are funded</h2>
+    <p>
+      Reader-supported, via affiliate commissions — and one labeled featured-partner slot. Rankings are
+      computed from public ratings data and cannot be bought. <a href="/disclosure/">Full disclosure</a> ·
+      <a href="/how-we-rate/">Methodology</a>.
+    </p>
+    <h2>What we are not</h2>
+    <ul>
+      <li>We are not piano teachers, and an app is not a teacher past the beginner stage.</li>
+      <li>We do not claim hands-on testing we did not do — our scores synthesize public ratings, and we say so on every page.</li>
+      <li>We are not affiliated with any app maker, except the disclosed featured-partner slot.</li>
+    </ul>
+    <p>Questions about our methodology: start at <a href="/how-we-rate/">how we rate</a>.</p>
+    <LastVerified />
+  </div>
+</BaseLayout>

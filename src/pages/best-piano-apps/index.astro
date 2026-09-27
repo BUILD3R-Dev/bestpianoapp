@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FeaturedCallout from '../../components/FeaturedCallout.astro';
+import AppCard from '../../components/AppCard.astro';
+import CompareTable from '../../components/CompareTable.astro';
+import CTA from '../../components/CTA.astro';
+import MetaScoreBadge from '../../components/MetaScoreBadge.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ, { type FaqItem } from '../../components/FAQ.astro';
+import { rankedApps, apps } from '../../data/apps';
+import { SITE } from '../../data/site';
+import { reviewUrl, annualLine } from '../../lib/format';
+
+const top7 = rankedApps.slice(0, 7);
+const top3 = top7.slice(0, 3);
+
+const faqs: FaqItem[] = [
+  {
+    q: 'What is the best piano app overall in 2026?',
+    a: 'By our MetaScore — a weighted composite of 1,000+ public reviews — Flowkey ranks #1 at 8.9/10, followed by Pianote (8.8) and Simply Piano (8.6). Flowkey wins on consistently high user ratings, a song-first approach, and mic-or-MIDI input. The right app still depends on you: strict beginners often do better with Simply Piano\u2019s curriculum, and serious students should look at Pianote.',
+  },
+  {
+    q: 'Can you really learn piano with an app?',
+    a: 'Yes, up to an intermediate level — with caveats. Apps are excellent at note reading, rhythm, and building a daily practice habit, and the feedback on wrong notes prevents the worst bad habits. They are weak at technique: posture, hand position, and dynamics need a teacher\u2019s eyes. Think of an app as a very good practice coach, not a replacement for lessons once you pass the beginner stage.',
+  },
+  {
+    q: 'How much does a piano app cost?',
+    a: 'Most piano apps cost $120–$150 per year, with monthly plans around $20. Pianote is the outlier at ~$240/yr; Piano Marvel is the cheapest full-featured option at ~$120/yr with a 30-day trial. Every app here offers a free trial — never pay before trialing.',
+  },
+  {
+    q: 'Do I need a keyboard, or can I use my phone?',
+    a: 'You can start with your phone. Simply Piano, Flowkey, Skoove, and Yousician all use your device\u2019s microphone to hear any piano or keyboard — no cables. MIDI-only apps (Playground Sessions, Piano Marvel) require a MIDI/USB keyboard. For real progress past month three, an 88-key weighted keyboard is worth it; see our keyboard roundup.',
+  },
+  {
+    q: 'What is a MetaScore?',
+    a: 'Our 0–10 composite rating for each app, weighted from App Store ratings (25%), Google Play ratings (25%), Reddit sentiment (20%), YouTube reviewer consensus (15%), and expert review sites (15%). We recompute monthly and publish the full methodology, including its limitations.',
+  },
+  {
+    q: 'Are these rankings sponsored by the apps?',
+    a: 'No. Rankings are computed from public ratings data, and no app can pay for a higher MetaScore or a better rank. We do earn commissions when you buy through our links — that is how the site is funded — but it never changes the numbers. Read our full disclosure.',
+  },
+];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'The 7 Best Piano Apps in 2026, Ranked by Data',
+  itemListElement: top7.map((app, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: app.name,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: app.metaScore,
+        bestRating: 10,
+        ratingCount: app.metaScoreSources,
+      },
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={`The 7 Best Piano Apps in 2026, Ranked by Data | ${SITE.name}`}
+  description="We ranked the 7 best piano apps of 2026 using our MetaScore — a composite of 1,000+ public reviews. Flowkey, Pianote, Simply Piano and more, with honest pricing and free-trial terms."
+  schema={itemListSchema}
+>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Best piano apps' }]} />
+    <h1>The 7 Best Piano Apps in 2026, Ranked by Data</h1>
+    <p class="lede">
+      Choosing a piano app should not require reading 200 reviews. So we read them for you —
+      across the App Store, Google Play, Reddit, YouTube, and expert review sites — and compressed
+      all of it into one number per app: the <a href="/how-we-rate/">MetaScore</a>. The seven apps
+      below are the highest-scoring piano apps available today, ordered by score, with pricing
+      verified this month and trial terms spelled out. No sponsored placements. No hype.
+    </p>
+
+    <FeaturedCallout />
+
+    <h2>The top 3, at a glance</h2>
+    {top3.map((app, i) => <AppCard app={app} rank={i + 1} showVerdict />)}
+
+    <h2>Full comparison table</h2>
+    <p>Every app, every key spec, one table. Prices and ratings verified September 27, 2026.</p>
+    <div class="wrap-wide" style="padding:0">
+      <CompareTable apps={apps} caption={`All ${apps.length} piano apps compared`} />
+    </div>
+
+    <h2>The full ranking</h2>
+    {top7.map((app, i) => (
+      <section>
+        <h3>
+          <span class="rank-badge">#{i + 1}</span>{' '}
+          <a href={reviewUrl(app)} style="color:var(--ink)">{app.name}</a>
+          {' '}<MetaScoreBadge app={app} />
+        </h3>
+        <p><strong>{annualLine(app)}</strong> · {app.freeTrial}</p>
+        <p>{app.verdict}</p>
+        <p><a href={reviewUrl(app)}>Read the full {app.name} review →</a></p>
+      </section>
+    ))}
+
+    <h2>How to pick</h2>
+    <ul>
+      <li><strong>Total beginner, want structure:</strong> <a href="/simply-piano-review/">Simply Piano</a> — the most refined curriculum.</li>
+      <li><strong>Want to play songs fast:</strong> <a href="/flowkey-vs-skoove/">Flowkey</a> — highest user ratings in the category.</li>
+      <li><strong>Serious about technique:</strong> <a href="/skoove-review/">Skoove</a> — the most teacher-like method.</li>
+      <li><strong>In it for the long haul:</strong> <a href="/pianote-review/">Pianote</a> — the only path to advanced.</li>
+      <li><strong>Own a MIDI keyboard:</strong> <a href="/piano-marvel-review/">Piano Marvel</a> — cheapest, with sight-reading assessment.</li>
+      <li><strong>On a phone only:</strong> any mic-input app above — <a href="/best-piano-app-for-beginners/">see the beginner guide</a>.</li>
+    </ul>
+    <p><a class="btn" href="/quiz/">Not sure? Take the 60-second quiz</a></p>
+
+    <FAQ items={faqs} />
+
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

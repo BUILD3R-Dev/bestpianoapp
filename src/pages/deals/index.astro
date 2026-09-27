@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import { apps } from '../../data/apps';
+import { annualLine } from '../../lib/format';
+import { SITE } from '../../data/site';
+
+const title = 'Piano App Deals: Trials & Discounts (2026)';
+const description =
+  'Current piano app trials and discounts in one place: free trials, the longest trial windows, lifetime deals, and which discounts are actually real. Checked monthly.';
+
+const dealNotes: Record<string, string> = {
+  'simply-piano': '7-day trial (card required). Family plans soften the $150/yr price.',
+  flowkey: 'Discounts run constantly — check the current offer before paying the $120/yr list price.',
+  skoove: '7-day trial (card required). Instructor support is bundled, not an upsell.',
+  pianote: '7-day trial (card required). At $240/yr, never pay without trialing first.',
+  'playground-sessions': '$290 lifetime option — breaks even vs annual in under two years.',
+  'piano-marvel': '30-day free trial — the longest evaluation window we track.',
+  yousician: '7-day trial (card required). Bundle value only makes sense for multi-instrument households.',
+  'piano-tree': 'Free tier with no card required — the only genuinely free starting point here.',
+  'piano-player': '7-day trial, cancel anytime. Web player live today; native apps coming soon.',
+};
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Deals' }]} />
+    <h1>{title}</h1>
+    <p class="lede">
+      Every trial and discount worth knowing, checked monthly. Rule of thumb: never pay list price for
+      Flowkey, never pay for anything before trialing it, and treat "lifetime deals" as real only when
+      the maker sells them directly.
+    </p>
+    <table class="cmp">
+      <thead><tr><th>App</th><th>Price</th><th>Trial / free</th><th>Deal notes</th></tr></thead>
+      <tbody>
+        {apps.map((a) => (
+          <tr>
+            <td><strong><a href={`/${a.slug}-review/`}>{a.name}</a></strong></td>
+            <td>{annualLine(a)}</td>
+            <td>{a.freeTrial}</td>
+            <td>{dealNotes[a.slug]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <h2>How to actually save money</h2>
+    <ul>
+      <li><strong>Stack the trials.</strong> Seven-day trials across five apps is five weeks of free structured practice — enough to know which method fits you.</li>
+      <li><strong>Buy annual, never monthly.</strong> Monthly plans cost 50–100% more per year everywhere on this page.</li>
+      <li><strong>Watch Flowkey.</strong> Its discounts are the most aggressive in the category; the list price is a starting bid.</li>
+      <li><strong>Consider lifetime once.</strong> Playground Sessions at $290 is the only lifetime option here — it wins if you practice for two-plus years.</li>
+    </ul>
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>

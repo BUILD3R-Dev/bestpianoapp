@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import MetaScoreBadge from '../../components/MetaScoreBadge.astro';
+import VerdictBox from '../../components/VerdictBox.astro';
+import CTA from '../../components/CTA.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import FAQ from '../../components/FAQ.astro';
+import { appBySlug } from '../../data/apps';
+import { SITE } from '../../data/site';
+
+const app = appBySlug('flowkey');
+const title = 'Is Flowkey Worth It in 2026? Cost vs. Value';
+const description =
+  'Is Flowkey worth it? We break down the real cost ($120/yr list, often discounted), what you get, and who should skip it. MetaScore 8.9/10 — our top-ranked app.';
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <div class="wrap">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Is Flowkey worth it?' }]} />
+    <h1>{title}</h1>
+    <p class="lede">
+      Short answer: for most learners, yes — it is our <a href="/best-piano-apps/">top-ranked app</a> with a
+      MetaScore of <MetaScoreBadge app={app} showSources={false} />. Long answer: it depends what "worth it" means
+      at the price you will actually pay, which is often not the list price. Here is the full cost-vs-value math.
+    </p>
+    <h2>What Flowkey costs in 2026</h2>
+    <ul>
+      <li><strong>List price:</strong> $20/month or about $120/year.</li>
+      <li><strong>Real price:</strong> frequently discounted — the effective annual cost is often well under $120. Check our <a href="/deals/">deals page</a> before paying full price.</li>
+      <li><strong>Trial:</strong> 7-day free trial, card required.</li>
+      <li><strong>Context:</strong> $120/year is $10/month — roughly the cost of one-sixth of a single private piano lesson. Against Simply Piano ($150/yr) it is $30 cheaper for a higher-rated app.</li>
+    </ul>
+    <h2>What you get for it</h2>
+    <ul>
+      <li>A 1,500+ song library you learn by playing real music from the first week — the song-first method that earned Flowkey the highest user ratings in the category.</li>
+      <li>Mic or MIDI feedback with slowdown, looping, and hand-separate practice on phone, tablet, or computer.</li>
+      <li>Yamaha ownership — the company is not going anywhere, which matters for a subscription you might hold for years.</li>
+    </ul>
+    <h2>What you do not get</h2>
+    <ul>
+      <li>A strict day-by-day curriculum. If you need an app to tell you exactly what to practice on day 14, <a href="/simply-piano-review/">Simply Piano</a> or <a href="/skoove-review/">Skoove</a> structure better.</li>
+      <li>Advanced depth. Strong intermediates exhaust the lesson path within months — <a href="/pianote-review/">Pianote</a> is the upgrade.</li>
+      <li>Human teachers. Feedback is automated; there is no community or live instruction.</li>
+    </ul>
+    <VerdictBox title="The worth-it test">
+      Flowkey is worth it if you will practice 3+ times a week and learn best by playing songs you like. At the
+      (frequently discounted) annual price, two months of consistent practice makes it cheaper per session than
+      almost any alternative. It is not worth it if you need rigid structure or are already intermediate — in
+      those cases you are paying for the wrong strengths.
+    </VerdictBox>
+    <CTA app={app} label="Try Flowkey free for 7 days" />
+    <p>Still deciding? <a href="/flowkey-review/">Read our full Flowkey review</a> or <a href="/simply-piano-vs-flowkey/">compare it head-to-head with Simply Piano</a>.</p>
+    <FAQ items={[
+      { q: 'How much does Flowkey cost per month?', a: '$20/month at list price, or about $120/year on the annual plan — though discounts frequently bring the annual cost lower. Check our deals page for current offers.' },
+      { q: 'Is there a free version of Flowkey?', a: 'There is a 7-day free trial (card required), but no permanent free tier. For a genuinely free starting point, look at Piano Tree\u2019s free tier.' },
+      { q: 'Is Flowkey better than Simply Piano?', a: 'It is higher-rated (MetaScore 8.9 vs 8.6) and cheaper ($120 vs $150/yr). Simply Piano wins on curriculum structure and kids profiles. We compare them in depth on our head-to-head page.' },
+    ]} />
+    <DisclosureBlock />
+    <LastVerified />
+  </div>
+</BaseLayout>
