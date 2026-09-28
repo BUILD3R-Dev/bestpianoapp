@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /go/
 
-Sitemap: https://bestpianoapp.com/sitemap.xml
+Sitemap: https://bestpianoapp.com/sitemap-index.xml

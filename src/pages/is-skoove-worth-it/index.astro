@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ScoreCard from '../../components/ScoreCard.astro';
+import MetaScoreBadge from '../../components/MetaScoreBadge.astro';
+import VerdictBox from '../../components/VerdictBox.astro';
+import CTA from '../../components/CTA.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import FAQ from '../../components/FAQ.astro';
+import { appBySlug } from '../../data/apps';
+import { SITE } from '../../data/site';
+
+const app = appBySlug('skoove');
+const title = 'Is Skoove Worth It in 2026? Cost vs. Value';
+const description =
+  'Is Skoove worth it? We break down the real cost (~$150/yr), the technique-first method, real instructor support, and who should skip it. MetaScore 8.4/10.';
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Is Skoove worth it?' }]}>
+    Short answer: for an adult beginner who wants real technique — not just gamified song-chasing — yes.
+      Skoove is the most teacher-like of the course apps (MetaScore <MetaScoreBadge app={app} showSources={false} />).
+      Long answer: it costs ~$150/year and has the smallest song library in the category (~400 songs). Here is
+      the full cost-vs-value math.
+    <ScoreCard app={app} linkReview slot="aside" />
+  </PageHeader>
+  <div class="container">
+    <div class="prose">
+    <h2>What Skoove costs in 2026</h2>
+    <ul>
+      <li><strong>List price:</strong> $20/month or about $150/year — tied with Simply Piano at the top of the price range.</li>
+      <li><strong>Bundled instructor support:</strong> one-on-one help from real piano instructors is included, not an upsell — that is rare at this price.</li>
+      <li><strong>Trial:</strong> 7-day free trial, card required.</li>
+      <li><strong>Context:</strong> $150/year is $12.50/month. Against <a href="/flowkey-review/">Flowkey</a> ($120/yr, MetaScore 8.9) you are paying $30 more for teaching rigor over song variety.</li>
+    </ul>
+    <h2>What you get for it</h2>
+    <ul>
+      <li>The most "teacher-like" method of the course apps: technique, posture, and reading music get real attention — not just hitting the right notes.</li>
+      <li>Real instructor support bundled into the subscription.</li>
+      <li>A clean, adult-friendly design with no cartoon gamification, and mic or MIDI input on phone, tablet, or desktop.</li>
+    </ul>
+    <h2>What you do not get</h2>
+    <ul>
+      <li>Song variety. ~400 songs is the thinnest library we track — if playing lots of music fast is the motivation, <a href="/flowkey-review/">Flowkey</a> (1,500+ songs) or <a href="/simply-piano-review/">Simply Piano</a> (5,000+) serve you better.</li>
+      <li>Kid-friendly features. Skoove assumes an adult learner.</li>
+      <li>Advanced depth — like all course apps here, serious intermediates graduate to <a href="/pianote-review/">Pianote</a> eventually.</li>
+    </ul>
+    <VerdictBox title="The worth-it test">
+      Skoove is worth it if you are an adult beginner who wants to learn properly — technique first, with a human
+      instructor in reach — and will practice consistently. It is not worth it if song variety is your
+      motivation, if you are buying for a kid, or if you just want the cheapest highly-rated app, which is
+      <a href="/flowkey-vs-skoove/">Flowkey</a>.
+    </VerdictBox>
+    <CTA app={app} label="Try Skoove free for 7 days" />
+    <p>Still deciding? <a href="/skoove-review/">Read our full Skoove review</a>, <a href="/skoove-alternatives/">see the alternatives</a>, or <a href="/flowkey-vs-skoove/">compare it head-to-head with Flowkey</a>.</p>
+    <FAQ items={[
+      { q: 'How much does Skoove cost per month?', a: '$20/month at list price, or about $150/year on the annual plan — at the top of the course-app price range, though instructor support is included rather than upsold.' },
+      { q: 'Is there a free version of Skoove?', a: 'There is a 7-day free trial (card required), but no permanent free tier. For a genuinely free starting point, look at Piano Tree\u2019s free tier.' },
+      { q: 'Is Skoove better than Simply Piano?', a: 'It depends on the learner. Skoove is more technique-focused and adult-oriented with real instructor support; Simply Piano has the more polished beginner course and kids profiles. They are priced identically (~$150/yr).' },
+    ]} />
+    <DisclosureBlock />
+    <LastVerified />
+    </div>
+  </div>
+</BaseLayout>

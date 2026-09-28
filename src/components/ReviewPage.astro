@@ -14,7 +14,7 @@ import LastVerified from './LastVerified.astro';
 import FAQ from './FAQ.astro';
 import { appBySlug, type App } from '../data/apps';
 import { SITE } from '../data/site';
-import { reviewEditorial, VS_PAIRS } from '../data/editorial';
+import { reviewEditorial, VS_PAIRS, WORTH_IT_APPS, worthItUrl } from '../data/editorial';
 import { annualLine, inputLabel, libraryLabel } from '../lib/format';
 
 const { appSlug } = Astro.props as { appSlug: string };
@@ -78,6 +78,9 @@ const toc = [
       <p><strong>Skip it if:</strong> {ed.whoSkip}</p>
       <div id="verdict"><VerdictBox title={`${app.name} verdict`}>{app.verdict}</VerdictBox></div>
       <CTA app={app} />
+      {WORTH_IT_APPS.includes(app.slug) && (
+        <p><strong>Cost-vs-value:</strong> we worked the full math — <a href={worthItUrl(app.slug)}>is {app.name} worth it in 2026?</a></p>
+      )}
       {relatedVs.length > 0 && (
         <Fragment>
           <h2 id="compare">Head-to-head comparisons</h2>

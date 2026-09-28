@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ScoreCard from '../../components/ScoreCard.astro';
+import MetaScoreBadge from '../../components/MetaScoreBadge.astro';
+import VerdictBox from '../../components/VerdictBox.astro';
+import CTA from '../../components/CTA.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import FAQ from '../../components/FAQ.astro';
+import { appBySlug } from '../../data/apps';
+import { SITE } from '../../data/site';
+
+const app = appBySlug('simply-piano');
+const title = 'Is Simply Piano Worth It in 2026? Cost vs. Value';
+const description =
+  'Is Simply Piano worth it? We break down the real cost (~$150/yr, the priciest course app), what you get, and who should skip it. MetaScore 8.6/10.';
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'Is Simply Piano worth it?' }]}>
+    Short answer: for an absolute beginner who practices consistently, yes — it has the most refined
+      beginner curriculum in the category (MetaScore <MetaScoreBadge app={app} showSources={false} />). Long answer:
+      it is the priciest course app at about $150/year, and you can do better once you pass the beginner stage.
+      Here is the full cost-vs-value math.
+    <ScoreCard app={app} linkReview slot="aside" />
+  </PageHeader>
+  <div class="container">
+    <div class="prose">
+    <h2>What Simply Piano costs in 2026</h2>
+    <ul>
+      <li><strong>List price:</strong> $20/month or about $150/year — the most expensive of the mainstream course apps.</li>
+      <li><strong>Family plans:</strong> available, which softens the per-person cost if more than one of you is learning.</li>
+      <li><strong>Trial:</strong> 7-day free trial, card required.</li>
+      <li><strong>Context:</strong> $150/year is $12.50/month — roughly one-twelfth the cost of a single monthly private piano lesson. Against Flowkey ($120/yr) you pay $30 more for a more structured course but a lower-rated app.</li>
+    </ul>
+    <h2>What you get for it</h2>
+    <ul>
+      <li>The most polished beginner curriculum anywhere: a clear, gamified path from first notes to two-handed playing, battle-tested on the largest user base in the category.</li>
+      <li>Zero-setup mic input — put your phone on the music stand and play, no cables or configuration.</li>
+      <li>Genuinely good kids profiles, which most competitors do not offer.</li>
+    </ul>
+    <h2>What you do not get</h2>
+    <ul>
+      <li>MIDI support — detection is mic-only, and it struggles in noisy rooms.</li>
+      <li>Depth past the beginner stage. Intermediates hit a ceiling quickly; <a href="/pianote-review/">Pianote</a> is the honest upgrade path.</li>
+      <li>A bargain. At ~$150/yr with aggressive upsell screens, you are paying a premium — <a href="/flowkey-review/">Flowkey</a> is rated higher and costs $30 less.</li>
+    </ul>
+    <VerdictBox title="The worth-it test">
+      Simply Piano is worth it if you are a total beginner (or buying for a kid) and will practice 3+ times a
+      week — the structured course genuinely converts practice into progress, and the mic setup removes every
+      excuse. It is not worth it if you already play a little, practice in a noisy house, or want the
+      best-rated app per dollar — <a href="/simply-piano-vs-flowkey/">Flowkey</a> wins that comparison for most adults.
+    </VerdictBox>
+    <CTA app={app} label="Try Simply Piano free for 7 days" />
+    <p>Still deciding? <a href="/simply-piano-review/">Read our full Simply Piano review</a>, <a href="/simply-piano-alternatives/">see the alternatives</a>, or <a href="/simply-piano-vs-flowkey/">compare it head-to-head with Flowkey</a>.</p>
+    <FAQ items={[
+      { q: 'How much does Simply Piano cost per month?', a: '$20/month at list price, or about $150/year on the annual plan — the priciest of the mainstream course apps. Family plans are available.' },
+      { q: 'Is there a free version of Simply Piano?', a: 'There is a 7-day free trial (card required), but no permanent free tier. For a genuinely free starting point, look at Piano Tree\u2019s free tier.' },
+      { q: 'Is Simply Piano better than Flowkey?', a: 'They serve different learners. Simply Piano wins on curriculum structure and kids profiles; Flowkey wins on ratings (MetaScore 8.9 vs 8.6), song library, and price ($120 vs $150/yr). We compare them in depth on our head-to-head page.' },
+    ]} />
+    <DisclosureBlock />
+    <LastVerified />
+    </div>
+  </div>
+</BaseLayout>

@@ -429,3 +429,8 @@ export const VS_PAIRS: [string, string][] = [
 ];
 
 export const ALTERNATIVES_APPS = ['simply-piano', 'flowkey', 'skoove', 'pianote'];
+
+// Apps with a dedicated "is it worth it?" cost-vs-value page (URL: /is-{slug}-worth-it/)
+export const WORTH_IT_APPS = ['flowkey', 'simply-piano', 'skoove'];
+
+export const worthItUrl = (slug: string) => `/is-${slug}-worth-it/`;
