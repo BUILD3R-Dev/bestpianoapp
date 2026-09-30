@@ -25,10 +25,32 @@ const title = app.slug === 'piano-tree'
   ? 'Piano Tree Review 2026: The Underdog Worth Watching'
   : `${app.name} Review (2026): Is It Worth It?`;
 const description = `${app.name} review for 2026: MetaScore ${app.metaScore.toFixed(1)}/10 from public ratings, ${annualLine(app)} pricing, ${app.freeTrial}, pros, cons, and an honest verdict.`;
+const offerPrice = app.pricing.annual ?? app.pricing.monthly;
+const productSchema = {
+  '@type': 'Product',
+  name: app.name,
+  brand: { '@type': 'Brand', name: app.maker },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: app.metaScore,
+    bestRating: 10,
+    ratingCount: app.metaScoreSources,
+  },
+  ...(offerPrice
+    ? {
+        offers: {
+          '@type': 'Offer',
+          price: offerPrice,
+          priceCurrency: 'USD',
+          url: app.siteUrl,
+        },
+      }
+    : {}),
+};
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Review',
-  itemReviewed: { '@type': 'Product', name: app.name, brand: { '@type': 'Brand', name: app.maker } },
+  itemReviewed: productSchema,
   reviewRating: { '@type': 'Rating', ratingValue: app.metaScore, bestRating: 10, worstRating: 0 },
   author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
   publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },

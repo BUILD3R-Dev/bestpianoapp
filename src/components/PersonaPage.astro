@@ -24,7 +24,16 @@ const schema = {
   itemListElement: picks.map((app, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    item: { '@type': 'Product', name: app.name },
+    item: {
+      '@type': 'Product',
+      name: app.name,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: app.metaScore,
+        bestRating: 10,
+        ratingCount: app.metaScoreSources,
+      },
+    },
   })),
 };
 ---
