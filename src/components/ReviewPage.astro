@@ -13,7 +13,7 @@ import DisclosureBlock from './DisclosureBlock.astro';
 import LastVerified from './LastVerified.astro';
 import FAQ from './FAQ.astro';
 import { appBySlug, type App } from '../data/apps';
-import { SITE } from '../data/site';
+import { SITE, PERSONAS } from '../data/site';
 import { reviewEditorial, VS_PAIRS, WORTH_IT_APPS, worthItUrl, COST_PAGES, costUrl } from '../data/editorial';
 import { annualLine, inputLabel, libraryLabel } from '../lib/format';
 
@@ -105,6 +105,13 @@ const toc = [
       )}
       {COST_PAGES[app.slug] && (
         <p><strong>Price breakdown:</strong> every plan, trial terms, and how it compares — <a href={costUrl(app.slug)}>how much does {app.name} cost in 2026?</a></p>
+      )}
+      {PERSONAS.filter((p) => app.bestFor.includes(p.slug)).length > 0 && (
+        <p><strong>Ranked for you:</strong> see where {app.name} lands in our rankings for{' '}
+          {PERSONAS.filter((p) => app.bestFor.includes(p.slug)).map((p, i, arr) => (
+            <Fragment>{i > 0 && (i === arr.length - 1 ? ' and ' : ', ')}<a href={p.url}>{p.label}</a></Fragment>
+          ))}.
+        </p>
       )}
       {relatedVs.length > 0 && (
         <Fragment>

@@ -51,9 +51,29 @@ const schema = {
     </div>
     <h2>Side by side</h2>
     <CompareTable apps={picks} caption={`${persona.label} picks — side by side`} />
+    {personaSlug === 'ipad' && (
+      <Fragment>
+        <h2>The iPad practice setup</h2>
+        <p>
+          Nothing to buy, nothing to plug in: every app above listens through the iPad's built-in
+          microphone, so the tablet sits on your music stand or piano and just works — no cables, no
+          adapters. <a href="/flowkey-review/">Flowkey</a> (our #1 iPad pick) can also connect over
+          MIDI if you already own a digital piano with a MIDI port, but that is optional, not required.
+          Pair any pick with a current <a href="/deals/">trial or discount</a> before paying, and if you
+          outgrow the mic phase, our <a href="/best-keyboard-for-piano-apps/">keyboard roundup</a> covers
+          which 88-key boards pair best with app practice.
+        </p>
+      </Fragment>
+    )}
     <FAQ layout="split" items={[
       { q: `Do I need a keyboard for these apps?`, a: `Not on day one. The mic-input apps here (Simply Piano, Flowkey, Skoove, Yousician) hear any piano or keyboard through your phone — no cables. MIDI-only apps (Playground Sessions, Piano Marvel) do require a MIDI keyboard. Past month three of real practice, an 88-key weighted keyboard is worth it; see our keyboard roundup.` },
       { q: `How much should a ${persona.label.toLowerCase()} expect to pay?`, a: `Most piano apps cost $120–$150 per year. Every pick above offers a free trial — never pay before trialing, and check our deals page for current discounts before committing.` },
+      ...(personaSlug === 'ipad'
+        ? [
+            { q: 'Do I need a MIDI keyboard to use a piano app on iPad?', a: 'No. Our iPad picks hear what you play through the iPad\u2019s built-in microphone, so the tablet sits on the music stand with nothing plugged in. MIDI is only needed for Playground Sessions or Piano Marvel, and neither is an iPad-first pick.' },
+            { q: 'Flowkey or Simply Piano on iPad?', a: 'Flowkey ranks higher on iPad (MetaScore 8.9 vs 8.6) with the strongest tablet song-first experience and optional MIDI. Simply Piano\u2019s structured curriculum suits total beginners and kids. Both run mic-only on iPad, both have 7-day trials — try both free and keep the one you practice with more.' },
+          ]
+        : []),
     ]} />
     <DisclosureBlock />
     <LastVerified />

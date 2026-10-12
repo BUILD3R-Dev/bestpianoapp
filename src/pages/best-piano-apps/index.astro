@@ -9,7 +9,7 @@ import LastVerified from '../../components/LastVerified.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import FAQ, { type FaqItem } from '../../components/FAQ.astro';
 import { rankedApps, apps } from '../../data/apps';
-import { SITE } from '../../data/site';
+import { SITE, PERSONAS } from '../../data/site';
 import { reviewUrl, annualLine } from '../../lib/format';
 
 const top7 = rankedApps.slice(0, 7);
@@ -113,6 +113,11 @@ const itemListSchema = {
       <li><strong>Own a MIDI keyboard</strong> <a href="/piano-marvel-review/">Piano Marvel</a> — cheapest, with sight-reading assessment.</li>
       <li><strong>On a phone only</strong> Any mic-input app above — <a href="/best-piano-app-for-beginners/">see the beginner guide</a>.</li>
     </ul>
+    <p><strong>Shopping for someone specific?</strong> Our persona rankings:{' '}
+      {PERSONAS.map((p, i, arr) => (
+        <Fragment>{i > 0 && (i === arr.length - 1 ? ' and ' : ', ')}<a href={p.url}>best piano app for {p.label.toLowerCase()}</a></Fragment>
+      ))}.
+    </p>
     <p><a class="btn" href="/quiz/">Not sure? Take the 60-second quiz</a></p>
 
     <FAQ items={faqs} layout="split" />
