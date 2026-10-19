@@ -291,7 +291,7 @@ export const apps: PianoApp[] = [
     maker: 'Piano Marvel LLC',
     tagline: 'The method-book killer — structured technique training for serious students.',
     pricing: { monthly: 17.99, annual: 129.99, currency: 'USD' },
-    freeTrial: '30-day free trial (card required)',
+    freeTrial: 'Free trial available — no charge during trial (length not published)',
     platforms: ['iOS', 'PC', 'Mac'],
     inputMethod: 'midi',
     songLibrarySize: 6000,
@@ -316,7 +316,7 @@ export const apps: PianoApp[] = [
     },
     siteUrl: 'https://www.pianomarvel.com',
     pros: [
-      'Cheapest full-featured option here at ~$129.99/yr, with the longest free trial (30 days)',
+      'Cheapest full-featured option here at ~$129.99/yr, with a free trial (no charge during trial)',
       'SASR sight-reading assessment is unique — measurable progress on reading music',
       'Huge library (6,000+ pieces) spanning method books to repertoire',
       'Widely used by actual piano teachers as a practice tool',

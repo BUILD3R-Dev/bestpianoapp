@@ -159,13 +159,13 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
   },
   'piano-marvel': {
     intro:
-      'Piano Marvel is the sleeper of this list: the cheapest full-featured subscription, the longest free trial (30 days), and a method built around measurable sight-reading progress that real piano teachers actually assign. It is also the least fun app here — utilitarian to a fault. If your goal is measurable skill per dollar and you own a MIDI keyboard, nothing touches it.',
+      'Piano Marvel is the sleeper of this list: the cheapest full-featured subscription, a no-charge trial period, and a method built around measurable sight-reading progress that real piano teachers actually assign. It is also the least fun app here — utilitarian to a fault. If your goal is measurable skill per dollar and you own a MIDI keyboard, nothing touches it.',
     pricingDeepDive:
-      'Piano Marvel costs $17.99/month or $129.99/year — the cheapest annual plan of any full-featured app here. The standout is the trial: 30 days, a full month to evaluate, versus 7 days everywhere else. At these prices the financial risk of trying it is essentially zero. Like Playground Sessions, it requires a MIDI keyboard, so budget for one if needed.',
+      'Piano Marvel costs $17.99/month or $129.99/year — the cheapest annual plan of any full-featured app here. The standout is the trial terms: no charge during the trial period (the official site does not publish the length; independent reviews report 30 days). At these prices the financial risk of trying it is essentially zero. Like Playground Sessions, it requires a MIDI keyboard, so budget for one if needed.',
     methodNote:
       'The method centers on SASR — the Standard Assessment of Sight Reading — a proprietary scoring system that measures and tracks your reading progress numerically. Around it sits a structured technique curriculum and a 6,000+ piece library spanning method books to repertoire. Feedback is MIDI-based and precise. The interface is spartan and there is no gamification to speak of; motivation must come from you.',
     whoFor:
-      'Technique-focused learners, students already working with a teacher who want a practice tool, and sight-reading builders. The 30-day trial makes it the lowest-risk experiment on this page.',
+      'Technique-focused learners, students already working with a teacher who want a practice tool, and sight-reading builders. The no-charge trial makes it a low-risk experiment.',
     whoSkip:
       'Anyone who needs gamification or entertainment to practice, acoustic piano owners (MIDI required), and phone-only learners.',
     faqs: [
@@ -175,11 +175,11 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'How much does Piano Marvel cost?',
-        a: 'About $129.99 per year or $17.99 per month — the cheapest full-featured plan we track — with an unmatched 30-day free trial. You will need a MIDI keyboard, which is the real cost to factor in.',
+        a: 'About $129.99 per year or $17.99 per month — the cheapest full-featured plan we track — with a free trial that carries no charge during the trial period. You will need a MIDI keyboard, which is the real cost to factor in.',
       },
       {
         q: 'Piano Marvel vs Playground Sessions?',
-        a: 'Both require MIDI and both are notation-serious. Piano Marvel is cheaper ($129.99 vs $149.99/yr), has the longer trial (30 vs 7 days), and wins on sight-reading measurement; Playground Sessions has the lifetime option and more polished video lessons.',
+        a: 'Both require MIDI and both are notation-serious. Piano Marvel is cheaper ($129.99 vs $149.99/yr), has the more generous trial terms (no charge during the trial), and wins on sight-reading measurement; Playground Sessions has the lifetime option and more polished video lessons.',
       },
     ],
   },
