@@ -8,7 +8,7 @@ import DisclosureBlock from '../../components/DisclosureBlock.astro';
 import LastVerified from '../../components/LastVerified.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import FAQ, { type FaqItem } from '../../components/FAQ.astro';
-import { rankedApps, apps } from '../../data/apps';
+import { rankedApps, apps, LAST_VERIFIED_LABEL } from '../../data/apps';
 import { SITE, PERSONAS } from '../../data/site';
 import { reviewUrl, annualLine } from '../../lib/format';
 
@@ -26,7 +26,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: 'How much does a piano app cost?',
-    a: 'Most piano apps cost $120–$150 per year, with monthly plans around $20. Pianote is the outlier at ~$240/yr; Piano Marvel is the cheapest full-featured option at ~$120/yr with a 30-day trial. Every app here offers a free trial — never pay before trialing.',
+    a: 'Most piano apps cost $130–$170 per year, with monthly plans around $18–$30. Pianote is the outlier at $279/yr; Piano Marvel is the cheapest full-featured option at $129.99/yr. Piano Tree runs $99.99/yr on promo pricing. Every app here offers a free trial — never pay before trialing.',
   },
   {
     q: 'Do I need a keyboard, or can I use my phone?',
@@ -85,7 +85,7 @@ const itemListSchema = {
     </div>
 
     <h2 id="table">Full comparison table</h2>
-    <p>Every app, every key spec, one table. Prices and ratings verified September 27, 2026.</p>
+    <p>Every app, every key spec, one table. Prices and ratings verified {LAST_VERIFIED_LABEL}.</p>
     <CompareTable apps={apps} caption={`All ${apps.length} piano apps compared`} />
 
     <h2>The full ranking</h2>

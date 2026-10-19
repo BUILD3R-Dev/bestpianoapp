@@ -3,7 +3,10 @@ import { LAST_VERIFIED_LABEL } from '../data/apps';
 
 export function money(n: number | undefined): string {
   if (n === undefined) return 'See site';
-  return `$${n.toLocaleString('en-US')}`;
+  const s = Number.isInteger(n)
+    ? n.toLocaleString('en-US')
+    : n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return `$${s}`;
 }
 
 export function annualLine(app: PianoApp): string {

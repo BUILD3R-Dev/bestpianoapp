@@ -23,7 +23,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
     intro:
       'Simply Piano is the biggest name in piano apps — by downloads, by review count, and by marketing budget. With over 275,000 combined App Store and Google Play ratings, it has been tested on more beginners than every other app on this page combined. That scale is its superpower: the curriculum has been refined against millions of real learners. It is also the most expensive course app here, and the upsell screens never quite stop.',
     pricingDeepDive:
-      'Simply Piano costs $20/month or about $150/year on the annual plan, which makes it the priciest of the course-style apps — $30 a year more than Flowkey for a comparable subscription. Family plans exist and soften the blow if multiple people will use it. The 7-day free trial requires a card, so set a reminder if you only want to evaluate it. There is no lifetime option and no meaningful free tier; this is a pay-to-play app.',
+      'Simply Piano costs $17.90/month or $169.90/year on the annual plan, which makes it the priciest of the course-style apps — $20 a year more than Flowkey Premium for a comparable subscription. Family plans ($209.90/year) exist and soften the blow if multiple people will use it. The 14-day free trial requires a card, so set a reminder if you only want to evaluate it. There is no lifetime option and no meaningful free tier; this is a pay-to-play app.',
     methodNote:
       'The method is mic-based: set your phone on the music stand and the app listens to any piano or keyboard — no cables, no MIDI, no setup friction. Lessons are gamified courses that progress from single notes to two-handed playing, with instant feedback on wrong notes and rhythm. Kids profiles are genuinely good, not an afterthought. The trade-off of mic input is accuracy: in a noisy room, detection suffers, and advanced players will find the feedback shallow compared to MIDI-based scoring.',
     whoFor:
@@ -33,7 +33,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
     faqs: [
       {
         q: 'How much does Simply Piano cost?',
-        a: 'About $150 per year on the annual plan, or $20 per month. It is the most expensive course-style app we track — Flowkey and Piano Marvel cost less per year. A 7-day free trial is available but requires a credit card.',
+        a: 'About $169.90 per year on the annual plan, or $17.90 per month. It is the most expensive course-style app we track — Flowkey and Piano Marvel cost less per year. A 14-day free trial is available but requires a credit card.',
       },
       {
         q: 'Does Simply Piano work with a real piano?',
@@ -45,7 +45,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'Is Simply Piano worth it in 2026?',
-        a: 'For a total beginner who will actually practice daily, yes — the curriculum is the most refined in the category. For anyone past the beginner stage, no: you will outgrow it fast at $150 a year. Start with the free trial and judge it by whether you finish the first two courses.',
+        a: 'For a total beginner who will actually practice daily, yes — the curriculum is the most refined in the category. For anyone past the beginner stage, no: you will outgrow it fast at $169.90 a year. Start with the free trial and judge it by whether you finish the first two courses.',
       },
     ],
   },
@@ -53,7 +53,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
     intro:
       'Flowkey holds our highest MetaScore — 8.9 out of 10, the best-reviewed piano app across every source we track. The formula is simple: learn songs first, theory second. You are playing recognizable music within days, not weeks, and the app listens via mic or MIDI while you do it. It is owned by Yamaha, which means the company behind it is not going anywhere.',
     pricingDeepDive:
-      'Flowkey lists at $20/month or about $120/year — already $30 a year cheaper than Simply Piano. But the listed price is rarely the real price: Flowkey runs discounts constantly, and the effective annual cost is often well under $120. Check our deals page before paying full price. The 7-day free trial requires a card. There is no lifetime plan.',
+      'Flowkey lists at $24.99/month or $149.99/year for Premium — $20 a year cheaper than Simply Piano. But the listed price is rarely the real price: Flowkey runs discounts constantly, and the effective annual cost is often well under $149.99. Check our deals page before paying full price. The 7-day free trial requires a card. There is no lifetime plan.',
     methodNote:
       'The method is song-first: pick a song, and Flowkey breaks it into wait-mode, slow, and full-speed practice with hand-separate options. Feedback comes through mic or MIDI, and it runs on phone, tablet, or computer — the widest device coverage of the course apps. What it does not do is hand you a strict curriculum. Beginners who need structure ("tell me what to do on day 14") get less guidance here than from Simply Piano or Skoove.',
     whoFor:
@@ -67,7 +67,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'How much does Flowkey cost?',
-        a: 'About $120 per year or $20 per month at list price, but discounts are frequent and the real price is often lower. Never pay full price without checking the current offers on our deals page first.',
+        a: 'About $149.99 per year or $24.99 per month for Premium at list price, but discounts are frequent and the real price is often lower. The course-only Classic tier runs $99.99/year. Never pay full price without checking the current offers on our deals page first.',
       },
       {
         q: 'Flowkey vs Simply Piano — which is better?',
@@ -83,7 +83,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
     intro:
       'Skoove is the connoisseur pick of the course apps: the smallest song library here, the most serious teaching method. Where competitors optimize for streaks and fun, Skoove optimizes for playing correctly — technique, fingering, dynamics — and backs it with one-on-one support from real piano instructors. Our MetaScore of 8.4 reflects a smaller but devoted user base.',
     pricingDeepDive:
-      'Skoove costs $20/month or about $150/year, putting it at the top of the price range alongside Simply Piano. The price stings less when you count what is bundled: one-on-one instructor support is included in the subscription, which none of the cheaper apps offer. The 7-day free trial requires a card. Judge it on the lessons, not the song count.',
+      'Skoove costs $29.99/month or $149.99/year — the priciest monthly plan in the category, though the annual price ties Flowkey. The price stings less when you count what is bundled: one-on-one instructor support is included in the subscription, which none of the cheaper apps offer. The 7-day free trial requires a card. Judge it on the lessons, not the song count.',
     methodNote:
       'The method is the most teacher-like here: AI listening via mic or MIDI, but with feedback weighted toward technique rather than just right notes. Lessons are clean and adult — no cartoon gamification, no mascots. It runs on phone, tablet, and desktop. The honest weakness is repertoire: roughly 400 songs, an order of magnitude fewer than Simply Piano or Yousician, so song-driven learners will feel the thin catalog.',
     whoFor:
@@ -97,7 +97,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'How much does Skoove cost?',
-        a: 'About $150 per year or $20 per month, with a 7-day free trial (card required). It is priced at the top of the range, but one-on-one instructor support is included — no other course app bundles that.',
+        a: 'About $149.99 per year or $29.99 per month, with a 7-day free trial (card required). The monthly plan is the priciest in the category, but one-on-one instructor support is included — no other course app bundles that.',
       },
       {
         q: 'Skoove vs Flowkey — which should I pick?',
@@ -107,19 +107,19 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
   },
   pianote: {
     intro:
-      'Pianote is the premium play: video lessons from real teachers, live Q&A sessions, and an active student community — closer to an online music school than an app. It is the only option here with a genuine multi-year path for advanced players, and its per-user ratings are the highest we track. It is also, at $240 a year, the most expensive by a wide margin.',
+      'Pianote is the premium play: video lessons from real teachers, live Q&A sessions, and an active student community — closer to an online music school than an app. It is the only option here with a genuine multi-year path for advanced players, and its per-user ratings are the highest we track. It is also, at $279 a year, the most expensive by a wide margin.',
     pricingDeepDive:
-      'Pianote costs $30/month or about $240/year — double the course-app average. There is no way around it: this is a serious financial commitment, roughly the cost of two months of private lessons. The 7-day free trial requires a card. Whether it is worth it depends entirely on whether you will use the community and live sessions; if you just want an app that listens to your playing, you are overpaying.',
+      'Pianote costs $30/month or $279/year — more than double the course-app average. There is no way around it: this is a serious financial commitment, roughly the cost of two months of private lessons. The 7-day free trial requires a card. Whether it is worth it depends entirely on whether you will use the community and live sessions; if you just want an app that listens to your playing, you are overpaying.',
     methodNote:
       'The method is video-first: structured courses taught by real pianists, practice tools, and a community where you can post videos for feedback, plus scheduled live Q&A. What it does not have is automated note detection — nobody is listening to your playing in real time. That is the fundamental trade-off: human teaching depth in exchange for instant feedback. It covers beginner through advanced, the widest skill range here.',
     whoFor:
       'Serious, self-motivated learners — especially returning players and intermediates — who want real teachers and a community, and a path that lasts years rather than months.',
     whoSkip:
-      'Budget buyers (this is 2x the category average), anyone who wants instant "you missed that note" feedback, and casual learners who just want to play a few songs for fun — that is massive overkill at $240.',
+      'Budget buyers (this is more than 2x the category average), anyone who wants instant "you missed that note" feedback, and casual learners who just want to play a few songs for fun — that is massive overkill at $279.',
     faqs: [
       {
         q: 'Why is Pianote so expensive?',
-        a: 'Because you are paying for human teachers: video courses, live Q&A sessions, and a staffed community. At $240/year it costs double the average app — but it is still far cheaper than private lessons, which run $40–$80 per hour.',
+        a: 'Because you are paying for human teachers: video courses, live Q&A sessions, and a staffed community. At $279/year it costs more than double the average app — but it is still far cheaper than private lessons, which run $40–$80 per hour.',
       },
       {
         q: 'Is Pianote good for beginners?',
@@ -133,9 +133,9 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
   },
   'playground-sessions': {
     intro:
-      'Playground Sessions is the value pick for one specific buyer: someone with a MIDI keyboard and a computer. Its interactive sheet music — real notation with built-in scoring and playback — is the best in the category, and the $290 lifetime option pays for itself in under two years. Co-created with Quincy Jones, the curriculum has genuine musical credibility. The catch is absolute: no MIDI keyboard, no app.',
+      'Playground Sessions is the value pick for one specific buyer: someone with a MIDI keyboard and a computer. Its interactive sheet music — real notation with built-in scoring and playback — is the best in the category, and the $349.99 lifetime option pays for itself in under two and a half years. Co-created with Quincy Jones, the curriculum has genuine musical credibility. The catch is absolute: no MIDI keyboard, no app.',
     pricingDeepDive:
-      'Playground Sessions costs $18/month or about $150/year — but the number that matters is $290 for lifetime access. Against the $150 annual plan, lifetime breaks even in under two years, making it the best long-term deal of any app here if you commit. Monthly is $18. The 7-day free trial requires a card. Remember the hidden cost: you need a MIDI/USB keyboard, which starts around $150–$300 if you do not own one.',
+      'Playground Sessions costs $24.99/month or $149.99/year — but the number that matters is $349.99 for lifetime access. Against the $149.99 annual plan, lifetime breaks even in under two and a half years, making it the best long-term deal of any app here if you commit. The 7-day free trial requires a card. Remember the hidden cost: you need a MIDI/USB keyboard, which starts around $150–$300 if you do not own one.',
     methodNote:
       'The method is notation-first: video lessons paired with interactive sheet music that scores your timing and accuracy in real time over MIDI. This is the closest any app gets to reading real music from day one, and it is excellent for players who already read a little. Platform coverage is the narrowest here — iOS, PC, and Mac, but no Android — and the interface feels dated next to Flowkey.',
     whoFor:
@@ -149,7 +149,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'Is the Playground Sessions lifetime plan worth it?',
-        a: 'If you will use it for two or more years, yes: $290 breaks even against the $150 annual plan in under two years, and it is the cheapest lifetime deal in the category. If you might quit in six months, stick with monthly.',
+        a: 'If you will use it for two and a half or more years, yes: $349.99 breaks even against the $149.99 annual plan in under two and a half years, and it is the cheapest lifetime deal in the category. If you might quit in six months, stick with monthly.',
       },
       {
         q: 'Playground Sessions vs Simply Piano?',
@@ -161,7 +161,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
     intro:
       'Piano Marvel is the sleeper of this list: the cheapest full-featured subscription, the longest free trial (30 days), and a method built around measurable sight-reading progress that real piano teachers actually assign. It is also the least fun app here — utilitarian to a fault. If your goal is measurable skill per dollar and you own a MIDI keyboard, nothing touches it.',
     pricingDeepDive:
-      'Piano Marvel costs $15/month or about $120/year — the joint-cheapest annual plan of any full-featured app here. The standout is the trial: 30 days, a full month to evaluate, versus 7 days everywhere else. At these prices the financial risk of trying it is essentially zero. Like Playground Sessions, it requires a MIDI keyboard, so budget for one if needed.',
+      'Piano Marvel costs $17.99/month or $129.99/year — the cheapest annual plan of any full-featured app here. The standout is the trial: 30 days, a full month to evaluate, versus 7 days everywhere else. At these prices the financial risk of trying it is essentially zero. Like Playground Sessions, it requires a MIDI keyboard, so budget for one if needed.',
     methodNote:
       'The method centers on SASR — the Standard Assessment of Sight Reading — a proprietary scoring system that measures and tracks your reading progress numerically. Around it sits a structured technique curriculum and a 6,000+ piece library spanning method books to repertoire. Feedback is MIDI-based and precise. The interface is spartan and there is no gamification to speak of; motivation must come from you.',
     whoFor:
@@ -175,19 +175,19 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'How much does Piano Marvel cost?',
-        a: 'About $120 per year or $15 per month — the cheapest full-featured plan we track — with an unmatched 30-day free trial. You will need a MIDI keyboard, which is the real cost to factor in.',
+        a: 'About $129.99 per year or $17.99 per month — the cheapest full-featured plan we track — with an unmatched 30-day free trial. You will need a MIDI keyboard, which is the real cost to factor in.',
       },
       {
         q: 'Piano Marvel vs Playground Sessions?',
-        a: 'Both require MIDI and both are notation-serious. Piano Marvel is cheaper ($120 vs $150/yr), has the longer trial (30 vs 7 days), and wins on sight-reading measurement; Playground Sessions has the lifetime option and more polished video lessons.',
+        a: 'Both require MIDI and both are notation-serious. Piano Marvel is cheaper ($129.99 vs $149.99/yr), has the longer trial (30 vs 7 days), and wins on sight-reading measurement; Playground Sessions has the lifetime option and more polished video lessons.',
       },
     ],
   },
   yousician: {
     intro:
-      'Yousician is the best value in music apps — with one enormous asterisk. A single $140/year subscription covers piano, guitar, ukulele, bass, and singing, with the strongest gamification in the category. As a piano-only app, though, it loses to the piano-first competition on curriculum depth and feedback quality. Buy it for the bundle, not for the piano course.',
+      'Yousician is the best value in music apps — with one enormous asterisk. A single $139.99/year subscription covers piano, guitar, ukulele, bass, and singing, with the strongest gamification in the category. As a piano-only app, though, it loses to the piano-first competition on curriculum depth and feedback quality. Buy it for the bundle, not for the piano course.',
     pricingDeepDive:
-      'Yousician costs $20/month or about $140/year. The math only works as a bundle: $140 for five instruments is $28 per instrument per year, which is absurd value. As a piano-only purchase at $140, it is mid-priced and outclassed by Flowkey at $120. The 7-day free trial requires a card — and note that subscription-cancellation complaints are the most common negative reviews, so trial with intent.',
+      'Yousician costs $29.99/month or $139.99/year. The math only works as a bundle: $139.99 for five instruments is $28 per instrument per year, which is absurd value. As a piano-only purchase at $139.99, it is mid-priced and outclassed on curriculum by piano-first apps like Flowkey. The 7-day free trial requires a card — and note that subscription-cancellation complaints are the most common negative reviews, so trial with intent.',
     methodNote:
       'The method is gamified across the board: mic-based real-time feedback, levels, challenges, and streaks tuned to keep kids and casual learners engaged. It runs on everything — iOS, Android, PC, Mac — the widest platform support here. The piano content is shallower than the piano-first apps and there is no sheet-music focus, which rules it out for classical-track learners.',
     whoFor:
@@ -201,7 +201,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'How much does Yousician cost?',
-        a: 'About $140 per year or $20 per month — one subscription covering piano, guitar, ukulele, bass, and singing. As a five-instrument bundle it is excellent value; as a piano-only app it is merely average.',
+        a: 'About $139.99 per year or $29.99 per month — one subscription covering piano, guitar, ukulele, bass, and singing. As a five-instrument bundle it is excellent value; as a piano-only app it is merely average.',
       },
       {
         q: 'Yousician vs Simply Piano for kids?',
@@ -213,7 +213,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
     intro:
       'Piano Tree is the underdog on this page: a newer course app growing on word of mouth, with early reviews that are strongly positive — 4.5+ on both app stores. Our MetaScore of 7.9 comes with a wide confidence interval (3 sources versus 6 for the leaders), so treat the number as provisional. The risk-free way to evaluate it is the free tier: try the actual product before paying anything.',
     pricingDeepDive:
-      'Piano Tree offers a free tier — the only app here you can evaluate without a card or a trial clock. Paid plan pricing is not yet published on a stable page, so verify current pricing on their site before committing. We will update this page when stable pricing is confirmed. (For transparency: Piano Tree runs an open partner program paying 20% recurring commission, which we have applied to. It does not affect the MetaScore or ranking.)',
+      'Piano Tree offers a free tier — the only app here you can evaluate without a card or a trial clock. Paid plans currently run $9.99/month or $99.99/year (promotional pricing; list $14.99/$149.99), with a 7-day free trial that requires no credit card. (For transparency: Piano Tree runs an open partner program paying 20% recurring commission, which we have applied to. It does not affect the MetaScore or ranking.)',
     methodNote:
       'The method is a modern guided course with mic or MIDI note detection, clean lesson design, and none of the legacy-app clutter. With a fraction of the review volume of the leaders, the honest assessment is that the product is promising but the evidence base is thin. The free tier is the correct way to resolve that uncertainty for yourself.',
     whoFor:
@@ -227,7 +227,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'How much does Piano Tree cost?',
-        a: 'There is a free tier with no card required. Paid plan pricing is not yet published on a stable page — check their site for current pricing, and we will update this page when it stabilizes.',
+        a: 'There is a free tier with no card required. Paid plans are $9.99/month or $99.99/year at current promotional pricing (list $14.99/$149.99), with a 7-day trial that needs no credit card.',
       },
       {
         q: 'Why is Piano Tree ranked below apps with similar scores?',
@@ -280,10 +280,10 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickA:
       'Pick Simply Piano if you are a total beginner who wants the most structured, hand-holding curriculum — or if the app is mainly for kids.',
     pickB:
-      'Pick Flowkey if you want the highest-rated app overall, a song-first approach, and to pay $30/year less.',
+      'Pick Flowkey if you want the highest-rated app overall, a song-first approach, and to pay about $20/year less.',
     body: [
       'This is the heavyweight fight of piano apps: the most-downloaded (Simply Piano, MetaScore 8.6) against the highest-rated (Flowkey, MetaScore 8.9). Both use your device microphone, both run on phone and tablet, and both will take a beginner from zero to playing songs. The difference is philosophy, not quality.',
-      'Simply Piano is a curriculum: day-by-day courses, gamified progression, excellent kids profiles. Flowkey is a songbook with a teacher attached: pick music you like, slow it down, learn it in sections. On price, Flowkey wins at about $120/year versus $150 — and its frequent discounts widen the gap. Unless you need maximum structure or kids profiles, Flowkey is the pick for most people.',
+      'Simply Piano is a curriculum: day-by-day courses, gamified progression, excellent kids profiles. Flowkey is a songbook with a teacher attached: pick music you like, slow it down, learn it in sections. On price, Flowkey wins at about $149.99/year versus $169.90 — and its frequent discounts widen the gap. Unless you need maximum structure or kids profiles, Flowkey is the pick for most people.',
     ],
   },
   'flowkey-vs-skoove': {
@@ -293,7 +293,7 @@ export const vsEditorial: Record<string, VsEditorial> = {
       'Pick Skoove if correct technique matters more to you than variety, and you want instructor backup.',
     body: [
       'Flowkey (MetaScore 8.9) versus Skoove (8.4) is the clearest fun-vs-rigor trade-off in piano apps. Flowkey\u2019s 1,500-song library and song-first method keep practice feeling like playing; Skoove\u2019s ~400 songs and technique-focused AI feedback keep practice honest.',
-      'The price gap is real: about $120/year for Flowkey against $150 for Skoove — though Skoove bundles one-on-one instructor support, which no other course app includes. Both take mic or MIDI input. Choose by what makes you open the app on day 30: if it is songs, Flowkey; if it is the idea of playing correctly, Skoove.',
+      'There is no price gap at the annual level: about $149.99/year for both Flowkey and Skoove — though Skoove bundles one-on-one instructor support, which no other course app includes. Both take mic or MIDI input. Choose by what makes you open the app on day 30: if it is songs, Flowkey; if it is the idea of playing correctly, Skoove.',
     ],
   },
   'simply-piano-vs-skoove': {
@@ -302,7 +302,7 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickB:
       'Pick Skoove if you are an adult who would rather learn correctly than quickly, with instructor support when you stall.',
     body: [
-      'Both cost about $150/year, both target beginners, and both end up on every serious shortlist — but they are built for different learners. Simply Piano (8.6) is the mass-market curriculum: polished, gamified, tested on millions, with 5,000+ songs and the best kids mode available.',
+      'Both target beginners, and both end up on every serious shortlist — but they are built for different learners. (Simply Piano runs $169.90/year; Skoove $149.99/year.) Simply Piano (8.6) is the mass-market curriculum: polished, gamified, tested on millions, with 5,000+ songs and the best kids mode available.',
       'Skoove (8.4) is the teacher\u2019s answer to Simply Piano: ~400 songs, technique-first feedback, adult design with no mascots, and real instructors on call. Simply Piano is the safer gift for a kid; Skoove is the better tool for an adult who winces at being condescended to by an app.',
     ],
   },
@@ -310,9 +310,9 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickA:
       'Pick Pianote if you are serious about piano for years — video teachers, live Q&A, and the only true advanced path here.',
     pickB:
-      'Pick Playground Sessions if you own a MIDI keyboard and want interactive notation scoring, ideally on the $290 lifetime plan.',
+      'Pick Playground Sessions if you own a MIDI keyboard and want interactive notation scoring, ideally on the $349.99 lifetime plan.',
     body: [
-      'Pianote (8.8, ~$240/year) and Playground Sessions (8.3, ~$150/year or $290 lifetime) serve the committed learner from opposite directions. Pianote is a video school: real teachers, community feedback, live sessions, content from beginner to advanced. Playground Sessions is a scoring engine: real sheet music on screen, your MIDI keyboard graded in real time.',
+      'Pianote (8.8, ~$279/year) and Playground Sessions (8.3, ~$149.99/year or $349.99 lifetime) serve the committed learner from opposite directions. Pianote is a video school: real teachers, community feedback, live sessions, content from beginner to advanced. Playground Sessions is a scoring engine: real sheet music on screen, your MIDI keyboard graded in real time.',
       'The deciding questions are budget and hardware. Pianote costs nearly twice as much annually but needs nothing beyond a phone mic; Playground Sessions is cheaper (or lifetime) but useless without a MIDI keyboard. Note the feedback gap: Pianote has no automated note detection, Playground Sessions has nothing but.',
     ],
   },
@@ -323,16 +323,16 @@ export const vsEditorial: Record<string, VsEditorial> = {
       'Pick Playground Sessions if you own a MIDI keyboard and want to learn real sheet music with precise scoring.',
     body: [
       'This comparison is really a hardware question wearing an app costume. Simply Piano (8.6) hears any piano through your phone\u2019s microphone: acoustic, digital, keyboard, no cables. Playground Sessions (8.3) requires a MIDI/USB keyboard and gives you nothing until you plug one in.',
-      'If you have a MIDI keyboard and a computer, Playground Sessions\u2019 interactive notation and $290 lifetime option are the better long-term value — annual plans cost the same ~$150. If you have an acoustic piano, a phone, and ten minutes, Simply Piano is the only one of the two that works at all.',
+      'If you have a MIDI keyboard and a computer, Playground Sessions\u2019 interactive notation and $349.99 lifetime option are the better long-term value — annual plans cost nearly the same (~$149.99). If you have an acoustic piano, a phone, and ten minutes, Simply Piano is the only one of the two that works at all.',
     ],
   },
   'flowkey-vs-yousician': {
     pickA:
       'Pick Flowkey if piano is the instrument — deeper piano curriculum, higher ratings, lower price.',
     pickB:
-      'Pick Yousician if you want piano plus guitar, ukulele, bass, and singing under one $140 subscription.',
+      'Pick Yousician if you want piano plus guitar, ukulele, bass, and singing under one $139.99 subscription.',
     body: [
-      'Flowkey (8.9) is a piano specialist; Yousician (7.9) is a music generalist. That single fact decides this comparison. Flowkey\u2019s piano curriculum, song library, and feedback are all deeper — and at ~$120/year it is cheaper than Yousician\u2019s ~$140.',
+      'Flowkey (8.9) is a piano specialist; Yousician (7.9) is a music generalist. That single fact decides this comparison. Flowkey\u2019s piano curriculum, song library, and feedback are all deeper — and at ~$149.99/year it costs $10 more than Yousician\u2019s ~$139.99.',
       'Yousician\u2019s case is the bundle: five instruments, one subscription, the strongest gamification in the category, and platform support everywhere including desktop. If anyone in the house might pick up a guitar, the bundle math is unbeatable. If the goal is learning piano well, the specialist wins.',
     ],
   },
@@ -342,18 +342,18 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickB:
       'Pick Piano Marvel if measurable skill is the goal — SASR sight-reading scores, teacher-approved method, 30-day trial.',
     body: [
-      'Simply Piano (8.6, ~$150/year) and Piano Marvel (8.2, ~$120/year) represent opposite theories of learning. Simply Piano believes practice follows fun: streaks, songs, polished progression. Piano Marvel believes practice follows measurement: the SASR sight-reading assessment turns progress into a number, and the 6,000-piece library is built for students, not scrollers.',
+      'Simply Piano (8.6, ~$169.90/year) and Piano Marvel (8.2, ~$129.99/year) represent opposite theories of learning. Simply Piano believes practice follows fun: streaks, songs, polished progression. Piano Marvel believes practice follows measurement: the SASR sight-reading assessment turns progress into a number, and the 6,000-piece library is built for students, not scrollers.',
       'The practical split is hardware and temperament. Simply Piano works with any piano via mic; Piano Marvel demands a MIDI keyboard. Simply Piano entertains; Piano Marvel trains. Piano Marvel\u2019s 30-day trial (versus 7) makes it the cheapest experiment of the two — try the serious tool first, and if you bounce off it, you have your answer about what motivates you.',
     ],
   },
   'flowkey-vs-pianote': {
     pickA:
-      'Pick Flowkey if you want the best-reviewed app experience at $120/year — songs, feedback, done.',
+      'Pick Flowkey if you want the best-reviewed app experience at $149.99/year — songs, feedback, done.',
     pickB:
-      'Pick Pianote if you are committing to piano for years and want human teachers, at $240/year.',
+      'Pick Pianote if you are committing to piano for years and want human teachers, at $279/year.',
     body: [
-      'This is the value-versus-premium decision. Flowkey (8.9) is the people\u2019s champion: highest MetaScore, song-first learning, mic or MIDI feedback, ~$120/year. Pianote (8.8) is the connoisseur\u2019s choice: video lessons from real teachers, live Q&A, community, content through advanced — at ~$240/year, double the price.',
-      'Flowkey tells you instantly when you miss a note; Pianote has no automated feedback at all, trading it for human teaching depth. Casual-to-intermediate learners get more per dollar from Flowkey. Learners who know they will still be playing in three years should price Pianote against private lessons ($40–$80/hour), whereupon $240 a year looks like a bargain.',
+      'This is the value-versus-premium decision. Flowkey (8.9) is the people\u2019s champion: highest MetaScore, song-first learning, mic or MIDI feedback, ~$149.99/year. Pianote (8.8) is the connoisseur\u2019s choice: video lessons from real teachers, live Q&A, community, content through advanced — at ~$279/year, nearly double the price.',
+      'Flowkey tells you instantly when you miss a note; Pianote has no automated feedback at all, trading it for human teaching depth. Casual-to-intermediate learners get more per dollar from Flowkey. Learners who know they will still be playing in three years should price Pianote against private lessons ($40–$80/hour), whereupon $279 a year looks like a bargain.',
     ],
   },
   'skoove-vs-yousician': {
@@ -362,27 +362,27 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickB:
       'Pick Yousician if the household plays multiple instruments and fun is the retention strategy.',
     body: [
-      'Skoove (8.4, ~$150/year) and Yousician (7.9, ~$140/year) both cost about the same and could not be more different. Skoove is a piano purist: ~400 songs, technique-first AI feedback, instructor support, adult design. Yousician is a music arcade: five instruments, heavy gamification, 10,000 songs, kids included.',
+      'Skoove (8.4, ~$149.99/year) and Yousician (7.9, ~$139.99/year) both cost about the same and could not be more different. Skoove is a piano purist: ~400 songs, technique-first AI feedback, instructor support, adult design. Yousician is a music arcade: five instruments, heavy gamification, 10,000 songs, kids included.',
       'The question is what you are optimizing. Optimizing for playing piano well? Skoove, comfortably. Optimizing for a family where the kids might quit piano for guitar by March? Yousician\u2019s bundle keeps the subscription useful either way.',
     ],
   },
   'simply-piano-vs-pianote': {
     pickA:
-      'Pick Simply Piano if you want an interactive course that listens and corrects — the beginner default at ~$150/year.',
+      'Pick Simply Piano if you want an interactive course that listens and corrects — the beginner default at ~$169.90/year.',
     pickB:
-      'Pick Pianote if you want to learn from human teachers on video, with a path past intermediate, at ~$240/year.',
+      'Pick Pianote if you want to learn from human teachers on video, with a path past intermediate, at ~$279/year.',
     body: [
       'Simply Piano (8.6) is software that teaches: structured courses, mic feedback, gamified progression from zero. Pianote (8.8) is teachers on video: real pianists, live Q&A, community critique, and the only advanced curriculum here. One listens to you; the other shows you.',
-      'Price reflects the model: ~$150/year for the app, ~$240/year for the school. Beginners who need daily structure and instant correction do better with Simply Piano. Self-motivated learners — especially returning players — get more from Pianote\u2019s depth, and should compare $240 against the cost of actual lessons before flinching.',
+      'Price reflects the model: ~$169.90/year for the app, ~$279/year for the school. Beginners who need daily structure and instant correction do better with Simply Piano. Self-motivated learners — especially returning players — get more from Pianote\u2019s depth, and should compare $279 against the cost of actual lessons before flinching.',
     ],
   },
   'flowkey-vs-playground-sessions': {
     pickA:
       'Pick Flowkey if you want songs, simplicity, and the highest user ratings — works with any piano via mic.',
     pickB:
-      'Pick Playground Sessions if you read (or want to read) real notation and own a MIDI keyboard — lifetime $290 available.',
+      'Pick Playground Sessions if you read (or want to read) real notation and own a MIDI keyboard — lifetime $349.99 available.',
     body: [
-      'Flowkey (8.9, ~$120/year) is the song-first app: pick music you love, slow it down, learn it by ear and by eye, with mic or MIDI feedback on phone, tablet, or web. Playground Sessions (8.3, ~$150/year or $290 lifetime) is the notation-first app: real sheet music on screen, scored in real time over MIDI, co-created with Quincy Jones.',
+      'Flowkey (8.9, ~$149.99/year) is the song-first app: pick music you love, slow it down, learn it by ear and by eye, with mic or MIDI feedback on phone, tablet, or web. Playground Sessions (8.3, ~$149.99/year or $349.99 lifetime) is the notation-first app: real sheet music on screen, scored in real time over MIDI, co-created with Quincy Jones.',
       'Flowkey is the better first app for most people — higher rated, cheaper, zero hardware requirements. Playground Sessions is the better second app for the committed: once you own a MIDI keyboard and care about reading music, its interactive notation and lifetime pricing are unmatched.',
     ],
   },
@@ -393,7 +393,7 @@ export const vsEditorial: Record<string, VsEditorial> = {
       'Pick Piano Tree if you want to try the underdog free first — modern lessons, strongly positive early reviews, zero cost to evaluate.',
     body: [
       'This is the giant versus the upstart. Simply Piano (8.6) has been tested on more beginners than every other app combined; its 8.6 MetaScore rests on six sources and hundreds of thousands of reviews. Piano Tree (7.9) has a few thousand reviews, three sources, and a free tier.',
-      'The rational play is sequential, not either-or: try Piano Tree\u2019s free tier this week at zero cost. If the lessons click, you may never need the $150/year giant. If they feel thin, Simply Piano\u2019s depth is worth paying for — you will know within the 7-day trial.',
+      'The rational play is sequential, not either-or: try Piano Tree\u2019s free tier this week at zero cost. If the lessons click, you may never need the $169.90/year giant. If they feel thin, Simply Piano\u2019s depth is worth paying for — you will know within the 14-day trial.',
     ],
   },
 };
@@ -410,7 +410,7 @@ export const alternativesIntro: Record<string, string> = {
   skoove:
     'Skoove is the technique-first pick with the thinnest song library and a top-of-range price. If the method appeals but the catalog or cost does not, these alternatives keep the rigor and fix the trade-offs.',
   pianote:
-    'Pianote is the premium video school at $240/year — superb if you are all-in, overkill otherwise. These alternatives deliver serious learning for less, or swap video depth for instant feedback.',
+    'Pianote is the premium video school at $279/year — superb if you are all-in, overkill otherwise. These alternatives deliver serious learning for less, or swap video depth for instant feedback.',
 };
 
 export const VS_PAIRS: [string, string][] = [
@@ -439,6 +439,7 @@ export const worthItUrl = (slug: string) => `/is-${slug}-worth-it/`;
 export const COST_PAGES: Record<string, string> = {
   'simply-piano': '/how-much-does-simply-piano-cost/',
   'flowkey': '/how-much-does-flowkey-cost/',
+  'skoove': '/how-much-does-skoove-cost/',
 };
 
 export const costUrl = (slug: string) => COST_PAGES[slug];

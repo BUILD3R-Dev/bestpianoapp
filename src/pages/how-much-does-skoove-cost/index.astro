@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ScoreCard from '../../components/ScoreCard.astro';
+import MetaScoreBadge from '../../components/MetaScoreBadge.astro';
+import VerdictBox from '../../components/VerdictBox.astro';
+import CTA from '../../components/CTA.astro';
+import DisclosureBlock from '../../components/DisclosureBlock.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import FAQ from '../../components/FAQ.astro';
+import { appBySlug } from '../../data/apps';
+import { SITE } from '../../data/site';
+
+const app = appBySlug('skoove');
+const title = 'How Much Does Skoove Cost in 2026? Full Price Breakdown';
+const description =
+  'Skoove costs $29.99/month or $149.99/year (7-day free trial, card required). Full breakdown of every plan, the annual-plan math, and how it compares to Simply Piano, Flowkey, and Pianote.';
+---
+
+<BaseLayout title={`${title} | ${SITE.name}`} description={description}>
+  <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'How much does Skoove cost?' }]}>
+    Skoove costs <strong>$29.99/month</strong> or <strong>$149.99/year</strong> on the annual plan,
+    with a 7-day free trial (card required). It sits near the top of the mainstream price range —
+    $20 a year less than Simply Piano — and justifies it with the most serious teaching method of the
+    course apps plus real-instructor support bundled in (MetaScore <MetaScoreBadge app={app} showSources={false} />).
+    Full breakdown below.
+    <ScoreCard app={app} linkReview slot="aside" />
+  </PageHeader>
+  <div class="container">
+    <div class="prose">
+    <h2>Skoove prices in 2026</h2>
+    <ul>
+      <li><strong>Monthly:</strong> $29.99/month — the flexible option, but poor value long-term: about $360/year if you stay on it.</li>
+      <li><strong>Annual:</strong> $149.99/year — $12.50/month-equivalent, and the plan almost every committed learner picks.</li>
+      <li><strong>Free trial:</strong> 7 days, card required. Cancel before day 7 to avoid being charged.</li>
+      <li><strong>What the price includes:</strong> one-on-one support from real piano instructors is bundled into the subscription — no other course app here includes that at this price.</li>
+      <li><strong>Run by Skoove GmbH.</strong> A dedicated piano-learning company, not a side project — the lesson method is the whole business.</li>
+    </ul>
+    <h2>The monthly vs. annual math</h2>
+    <p>
+      The break-even is 5 months: 5 × $29.99 = $149.95, essentially the annual price. If you will practice
+      for more than 5 months, the annual plan is cheaper than month-to-month. Committed learners
+      should buy the year; casual tinkerers should start on the trial and reassess.
+    </p>
+    <h2>Skoove vs. competitor prices</h2>
+    <ul>
+      <li><strong>Simply Piano:</strong> $169.90/yr — $20 more than Skoove, rated slightly higher (MetaScore 8.6 vs 8.4). You trade Skoove's technique-first rigor and instructor support for Simply Piano's bigger song library and stronger beginner hand-holding.</li>
+      <li><strong>Flowkey:</strong> $149.99/yr — the same price as Skoove, and the highest-rated app we track (MetaScore 8.9). Flowkey is song-first; Skoove is method-first.</li>
+      <li><strong>Yousician:</strong> $139.99/yr — $10 cheaper, covers piano plus guitar, ukulele, bass, and singing, but its piano curriculum is shallower.</li>
+      <li><strong>Playground Sessions:</strong> $149.99/yr or $349.99 lifetime — the same annual price as Skoove, MIDI-only, with a lifetime option Skoove does not offer.</li>
+      <li><strong>Piano Marvel:</strong> $129.99/yr — $20 cheaper, MIDI-focused.</li>
+      <li><strong>Pianote:</strong> $279/yr — $129 more than Skoove, for real teachers on video, live Q&amp;A, and a genuine advanced path.</li>
+    </ul>
+    <p>Context: $149.99/year is roughly one-twentieth the cost of a year of weekly private piano lessons. Every app here is cheap next to a teacher — the real question is which app's method you will actually stick with.</p>
+    <h2>Hidden costs and things to watch</h2>
+    <ul>
+      <li><strong>Auto-renewal</strong> after the trial: the card you enter on day 1 gets charged on day 8 unless you cancel.</li>
+      <li><strong>The library is small.</strong> ~400 songs is the thinnest catalog of the mainstream apps. If song variety is the point for you, <a href="/flowkey-review/">Flowkey</a> ($149.99/yr, ~1,500 songs) costs the same with far more to play.</li>
+      <li><strong>Rigor cuts both ways.</strong> Skoove's technique-first method is its best feature and its biggest filter — casual players who just want songs for fun may find it demanding. <a href="/simply-piano-review/">Simply Piano</a> is the more forgiving start at the same price.</li>
+      <li><strong>Keyboard costs extra.</strong> Like every app here, Skoove assumes you have a piano or keyboard — mic or MIDI input both work, but you still need the instrument.</li>
+    </ul>
+    <VerdictBox title="Is the price fair?">
+      At $149.99/yr, Skoove is the premium-priced course app — but it is the only one bundling real-instructor
+      support at that price, and the technique-first method is genuinely the most serious here. It only fails
+      the value test for song-hungry players (Flowkey is cheaper with more songs) or absolute beginners who
+      need more hand-holding (Simply Piano, same price). Full verdict: <a href="/is-skoove-worth-it/">is Skoove worth it in 2026?</a>
+    </VerdictBox>
+    <CTA app={app} label="Try Skoove free for 7 days" />
+    <p>More: <a href="/skoove-review/">full Skoove review</a> · <a href="/simply-piano-vs-skoove/">Simply Piano vs Skoove</a> · <a href="/flowkey-vs-skoove/">Flowkey vs Skoove</a> · <a href="/skoove-vs-yousician/">Skoove vs Yousician</a> · <a href="/skoove-alternatives/">alternatives</a></p>
+    <FAQ items={[
+      { q: 'How much is Skoove per month?', a: '$29.99/month on the monthly plan, or $149.99/year ($12.50/month-equivalent) on the annual plan.' },
+      { q: 'How much is Skoove per year?', a: '$149.99/year at sticker price. The annual plan pays for itself after about 5 months versus month-to-month.' },
+      { q: 'Is there a Skoove free trial?', a: 'Yes — 7 days, card required. Cancel before day 7 to avoid being charged. Piano Marvel offers a longer 30-day trial if trial length matters to you.' },
+      { q: 'Is Skoove cheaper than Simply Piano?', a: 'Yes — Skoove costs $149.99/yr versus Simply Piano\u2019s $169.90/yr. Skoove bundles real-instructor support and a more technique-focused method; Simply Piano has the bigger song library (~5,000 songs) and stronger beginner hand-holding.' },
+      { q: 'Is Skoove worth $150 a year?', a: 'If you want the most serious teaching method among the course apps and value instructor support, yes. If you mainly want songs to play, Flowkey costs the same with a far bigger library.' },
+    ]} />
+    <DisclosureBlock />
+    <LastVerified />
+    </div>
+  </div>
+</BaseLayout>

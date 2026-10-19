@@ -2,7 +2,7 @@
  * bestpianoapp.com — single source of truth for the comparison engine.
  * Every page template renders from this file. No hand-maintained tables.
  *
- * PRICING POLICY: numbers below are the verified baseline (2026-09-27).
+ * PRICING POLICY: numbers below are the verified baseline (2026-10-19).
  * Re-verify monthly; bump LAST_VERIFIED. Pages render "prices verified {date}".
  *
  * HONESTY POLICY: MetaScores synthesize PUBLIC ratings (app stores, Reddit,
@@ -56,8 +56,8 @@ export interface PianoApp {
 }
 
 /** Bump this on every monthly re-verification pass. */
-export const LAST_VERIFIED = '2026-09-27';
-export const LAST_VERIFIED_LABEL = 'September 27, 2026';
+export const LAST_VERIFIED = '2026-10-19';
+export const LAST_VERIFIED_LABEL = 'October 19, 2026';
 
 export const apps: PianoApp[] = [
   {
@@ -65,8 +65,8 @@ export const apps: PianoApp[] = [
     name: 'Simply Piano',
     maker: 'Simply (formerly JoyTunes)',
     tagline: 'The most-downloaded piano course app — structured lessons from zero to playing songs.',
-    pricing: { monthly: 20, annual: 150, currency: 'USD' },
-    freeTrial: '7-day free trial (card required)',
+    pricing: { monthly: 17.9, annual: 169.9, currency: 'USD' },
+    freeTrial: '14-day free trial (card required)',
     platforms: ['iOS', 'Android'],
     inputMethod: 'mic',
     songLibrarySize: 5000,
@@ -97,7 +97,7 @@ export const apps: PianoApp[] = [
       'Clear, gamified progression from first notes to two-handed playing',
     ],
     cons: [
-      'Priciest of the course apps at ~$150/yr with aggressive upsell screens',
+      'Priciest of the course apps at ~$169.90/yr with aggressive upsell screens',
       'Mic detection struggles in noisy rooms; MIDI users get little benefit',
       'Song library leans pop; classical and jazz players will outgrow it',
     ],
@@ -110,7 +110,7 @@ export const apps: PianoApp[] = [
     name: 'Flowkey',
     maker: 'Flowkey (a Yamaha company)',
     tagline: 'Learn songs first, theory second — huge library with instant feedback.',
-    pricing: { monthly: 20, annual: 120, currency: 'USD' },
+    pricing: { monthly: 24.99, annual: 149.99, currency: 'USD' },
     freeTrial: '7-day free trial (card required)',
     platforms: ['iOS', 'Android', 'Web'],
     inputMethod: 'both',
@@ -143,7 +143,7 @@ export const apps: PianoApp[] = [
     ],
     cons: [
       'Course depth is thinner than Simply Piano for absolute beginners',
-      'Full price is ~$120/yr but the "real" price is whatever the current discount is — check /deals/',
+      'Full price is ~$149.99/yr but the "real" price is whatever the current discount is — check /deals/',
       'Advanced players will exhaust the lesson path quickly',
     ],
     verdict:
@@ -155,7 +155,7 @@ export const apps: PianoApp[] = [
     name: 'Skoove',
     maker: 'Skoove GmbH',
     tagline: 'Real piano lessons online — AI feedback with an actual teaching method behind it.',
-    pricing: { monthly: 20, annual: 150, currency: 'USD' },
+    pricing: { monthly: 29.99, annual: 149.99, currency: 'USD' },
     freeTrial: '7-day free trial (card required)',
     platforms: ['iOS', 'Android', 'Web'],
     inputMethod: 'both',
@@ -188,7 +188,7 @@ export const apps: PianoApp[] = [
     ],
     cons: [
       'Smallest song library here (~400 songs) — variety is the weak point',
-      '~$150/yr puts it at the top of the price range',
+      '~$149.99/yr puts it near the top of the price range',
       'Fewer beginner hand-holding features than Simply Piano',
     ],
     verdict:
@@ -200,7 +200,7 @@ export const apps: PianoApp[] = [
     name: 'Pianote',
     maker: 'Pianote (Musora)',
     tagline: 'The Netflix of piano lessons — video courses plus a live community.',
-    pricing: { monthly: 30, annual: 240, currency: 'USD' },
+    pricing: { monthly: 30, annual: 279, currency: 'USD' },
     freeTrial: '7-day free trial (card required)',
     platforms: ['iOS', 'Android', 'Web'],
     inputMethod: 'mic',
@@ -232,12 +232,12 @@ export const apps: PianoApp[] = [
       'Highest per-user ratings of any app we track',
     ],
     cons: [
-      'Most expensive at ~$240/yr — double the course-app average',
+      'Most expensive at ~$279/yr — more than double the course-app average',
       'No automated note feedback; you assess yourself or ask the community',
       'Overkill if you just want to play a few songs for fun',
     ],
     verdict:
-      'Pianote is the premium play and it shows in the ratings: real teachers, real community, and content that lasts years instead of months. The catch is the price — $240 a year — and the lack of instant note feedback. If you are serious about piano and self-motivated, it is worth every cent. If you want an app to tell you when you miss a note, get Flowkey instead.',
+      'Pianote is the premium play and it shows in the ratings: real teachers, real community, and content that lasts years instead of months. The catch is the price — $279 a year — and the lack of instant note feedback. If you are serious about piano and self-motivated, it is worth every cent. If you want an app to tell you when you miss a note, get Flowkey instead.',
     lastVerified: LAST_VERIFIED,
   },
   {
@@ -245,7 +245,7 @@ export const apps: PianoApp[] = [
     name: 'Playground Sessions',
     maker: 'Playground Sessions Inc. (co-created with Quincy Jones)',
     tagline: 'Video lessons plus interactive sheet music — the course for keyboard-and-computer setups.',
-    pricing: { monthly: 18, annual: 150, lifetime: 290, currency: 'USD' },
+    pricing: { monthly: 24.99, annual: 149.99, lifetime: 349.99, currency: 'USD' },
     freeTrial: '7-day free trial (card required)',
     platforms: ['iOS', 'PC', 'Mac'],
     inputMethod: 'midi',
@@ -272,7 +272,7 @@ export const apps: PianoApp[] = [
     siteUrl: 'https://www.playgroundsessions.com',
     pros: [
       'Best-in-class interactive sheet music — scoring and playback built into real notation',
-      'Lifetime purchase option ($290) pays for itself in under two years vs. annual',
+      'Lifetime purchase option ($349.99) pays for itself in under two and a half years vs. annual',
       'Co-created with Quincy Jones; the curriculum has genuine musical credibility',
       'Excellent for players who already read a little music',
     ],
@@ -290,7 +290,7 @@ export const apps: PianoApp[] = [
     name: 'Piano Marvel',
     maker: 'Piano Marvel LLC',
     tagline: 'The method-book killer — structured technique training for serious students.',
-    pricing: { monthly: 15, annual: 120, currency: 'USD' },
+    pricing: { monthly: 17.99, annual: 129.99, currency: 'USD' },
     freeTrial: '30-day free trial (card required)',
     platforms: ['iOS', 'PC', 'Mac'],
     inputMethod: 'midi',
@@ -316,7 +316,7 @@ export const apps: PianoApp[] = [
     },
     siteUrl: 'https://www.pianomarvel.com',
     pros: [
-      'Cheapest full-featured option here at ~$120/yr, with the longest free trial (30 days)',
+      'Cheapest full-featured option here at ~$129.99/yr, with the longest free trial (30 days)',
       'SASR sight-reading assessment is unique — measurable progress on reading music',
       'Huge library (6,000+ pieces) spanning method books to repertoire',
       'Widely used by actual piano teachers as a practice tool',
@@ -335,7 +335,7 @@ export const apps: PianoApp[] = [
     name: 'Yousician',
     maker: 'Yousician Ltd.',
     tagline: 'The multi-instrument gamified trainer — piano plus guitar, ukulele, bass, and singing.',
-    pricing: { monthly: 20, annual: 140, currency: 'USD' },
+    pricing: { monthly: 29.99, annual: 139.99, currency: 'USD' },
     freeTrial: '7-day free trial (card required)',
     platforms: ['iOS', 'Android', 'PC', 'Mac'],
     inputMethod: 'mic',
@@ -380,8 +380,8 @@ export const apps: PianoApp[] = [
     name: 'Piano Tree',
     maker: 'Piano Tree',
     tagline: 'The underdog — a newer piano course app growing fast on word of mouth.',
-    pricing: { currency: 'USD' },
-    freeTrial: 'Free tier available; paid plans — see site for current pricing',
+    pricing: { monthly: 9.99, annual: 99.99, currency: 'USD' },
+    freeTrial: '7-day free trial (no card required); free tier available',
     platforms: ['iOS', 'Android', 'Web'],
     inputMethod: 'both',
     songLibrarySize: null,

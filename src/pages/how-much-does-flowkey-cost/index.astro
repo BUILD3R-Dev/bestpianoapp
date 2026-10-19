@@ -14,68 +14,72 @@ import { SITE } from '../../data/site';
 const app = appBySlug('flowkey');
 const title = 'How Much Does Flowkey Cost in 2026? Full Price Breakdown';
 const description =
-  'Flowkey costs $20/month or $120/year (7-day free trial, card required). Full breakdown of every plan, the discount reality, and how it compares to Simply Piano, Skoove, and Pianote.';
+  'Flowkey costs $24.99/month or $149.99/year for Premium (7-day free trial, card required), with a cheaper Classic tier at $99.99/year. Full breakdown of every plan, the discount reality, and how it compares to Simply Piano, Skoove, and Pianote.';
 ---
 
 <BaseLayout title={`${title} | ${SITE.name}`} description={description}>
   <PageHeader title={title} crumbs={[{ label: 'Home', href: '/' }, { label: 'How much does Flowkey cost?' }]}>
-    Flowkey costs <strong>$20/month</strong> or <strong>$120/year</strong> on the annual plan,
-    with a 7-day free trial (card required). It is the best price-for-ratings value in the category —
-    the highest-rated app we track (MetaScore <MetaScoreBadge app={app} showSources={false} />) at the
-    lowest annual price. Full breakdown below.
+    Flowkey costs <strong>$24.99/month</strong> or <strong>$149.99/year</strong> for the full Premium plan,
+    with a 7-day free trial (card required) — plus a cheaper Classic tier at $99.99/year for
+    course-only learners. It remains the highest-rated app we track
+    (MetaScore <MetaScoreBadge app={app} showSources={false} />) at a mid-range price.
+    Full breakdown below.
     <ScoreCard app={app} linkReview slot="aside" />
   </PageHeader>
   <div class="container">
     <div class="prose">
     <h2>Flowkey prices in 2026</h2>
     <ul>
-      <li><strong>Monthly:</strong> $20/month — the flexible option, but the worst value: $240/year if you stay on it.</li>
-      <li><strong>Annual:</strong> $120/year — $10/month-equivalent, and the plan almost every committed learner picks.</li>
-      <li><strong>Free trial:</strong> 7 days, card required. Cancel before day 7 to avoid being charged.</li>
+      <li><strong>Premium monthly:</strong> $24.99/month — full song library (pop, film, TV, classical), the flexible option, but the worst value: about $300/year if you stay on it.</li>
+      <li><strong>Premium annual:</strong> $149.99/year — $12.50/month-equivalent, and the plan almost every committed learner picks.</li>
+      <li><strong>Classic:</strong> about $16.99/month or $99.99/year — the course library plus classical songs, without the licensed pop/film catalog. The budget way into Flowkey.</li>
+      <li><strong>Family:</strong> about $37.99/month or $224.99/year — Premium for up to 5 profiles.</li>
+      <li><strong>Free trial:</strong> 7 days of Premium, card required. Cancel before day 7 to avoid being charged.</li>
       <li><strong>No permanent free tier.</strong> After the trial ends, you pay or lose access.</li>
       <li><strong>Run by Yamaha.</strong> Flowkey is a Yamaha company — the app is backed by one of the largest instrument makers in the world, so your subscription is not funding a fragile startup.</li>
     </ul>
     <h2>The monthly vs. annual math</h2>
     <p>
-      The break-even is fast: 6 × $20 = $120, exactly the annual price. If you will practice for more
+      The break-even is fast: 6 × $24.99 = $149.94, essentially the annual price. If you will practice for more
       than 6 months, the annual plan is cheaper than month-to-month. Committed learners should buy
-      the year; casual tinkerers should start on the trial and reassess.
+      the year; casual tinkerers should start on the trial and reassess. On a tight budget, Classic at
+      $99.99/year undercuts every mainstream course app except Piano Tree's promo pricing.
     </p>
     <h2>The discount reality: the sticker price is a ceiling</h2>
     <p>
       Flowkey's "real" price is whatever the current discount is. The app runs frequent promotions and
-      third-party discount sales (StackSocial-style deals have been a long-running pattern) — the $120/yr
-      sticker price is a ceiling, not a floor. Check our <a href="/deals/">deals page</a> before buying;
-      you may never need to pay full price.
+      third-party discount sales — the $149.99/yr Premium sticker price is a ceiling, not a floor. Check our
+      <a href="/deals/">deals page</a> before buying; you may never need to pay full price.
     </p>
     <h2>Flowkey vs. competitor prices</h2>
     <ul>
-      <li><strong>Simply Piano:</strong> $150/yr — $30 more than Flowkey, and rated lower (MetaScore 8.6 vs 8.9). You pay extra for a more structured beginner curriculum.</li>
-      <li><strong>Skoove:</strong> $150/yr — same price as Simply Piano, with real-instructor support bundled.</li>
-      <li><strong>Yousician:</strong> $140/yr — covers piano plus guitar, ukulele, bass, and singing, but its piano curriculum is shallower.</li>
-      <li><strong>Piano Marvel:</strong> $120/yr — the same sticker price as Flowkey, MIDI-focused, but a smaller user base and lower ratings.</li>
-      <li><strong>Pianote:</strong> $240/yr — double Flowkey's price, for real teachers, live Q&amp;A, and a genuine advanced path.</li>
+      <li><strong>Simply Piano:</strong> $169.90/yr — $20 more than Flowkey Premium, and rated lower (MetaScore 8.6 vs 8.9). You pay extra for a more structured beginner curriculum.</li>
+      <li><strong>Skoove:</strong> $149.99/yr — the same price as Flowkey Premium, with real-instructor support bundled but a much smaller song library.</li>
+      <li><strong>Yousician:</strong> $139.99/yr — $10 cheaper, covers piano plus guitar, ukulele, bass, and singing, but its piano curriculum is shallower.</li>
+      <li><strong>Piano Marvel:</strong> $129.99/yr — $20 cheaper than Flowkey Premium, MIDI-focused, but a smaller user base and lower ratings.</li>
+      <li><strong>Pianote:</strong> $279/yr — nearly double Flowkey's price, for real teachers, live Q&amp;A, and a genuine advanced path.</li>
     </ul>
-    <p>Context: $120/year is roughly one-twenty-fifth the cost of a year of weekly private piano lessons. Every app here is cheap next to a teacher — the real question is which app you will actually open.</p>
+    <p>Context: $149.99/year is roughly one-twentieth the cost of a year of weekly private piano lessons. Every app here is cheap next to a teacher — the real question is which app you will actually open.</p>
     <h2>Hidden costs and things to watch</h2>
     <ul>
       <li><strong>Auto-renewal</strong> after the trial: the card you enter on day 1 gets charged on day 8 unless you cancel.</li>
-      <li><strong>Advanced players hit a ceiling.</strong> The lesson path runs out quickly for serious players — if that is you, you are buying a $120 stepping stone, not a multi-year tool. <a href="/pianote-review/">Pianote</a> is the honest upgrade path.</li>
+      <li><strong>Advanced players hit a ceiling.</strong> The lesson path runs out quickly for serious players — if that is you, you are buying a $149.99 stepping stone, not a multi-year tool. <a href="/pianote-review/">Pianote</a> is the honest upgrade path.</li>
       <li><strong>Course depth for absolute beginners.</strong> Flowkey's song-first approach is its strength, but the course structure is thinner than Simply Piano's for day-one beginners.</li>
       <li><strong>Keyboard costs extra.</strong> Like every app here, Flowkey assumes you have a piano or keyboard — mic input works with any instrument, no cable needed, but you still need the instrument.</li>
     </ul>
     <VerdictBox title="Is the price fair?">
-      At $120/yr, Flowkey is the best value in the category on paper: the highest MetaScore (8.9) at the
-      lowest mainstream annual price. It only fails the value test for advanced players who will outgrow
-      the curriculum. Full verdict: <a href="/is-flowkey-worth-it/">is Flowkey worth it in 2026?</a>
+      At $149.99/yr, Flowkey Premium is fairly priced for what it is: the highest MetaScore (8.9) at a
+      mid-range annual price, with a genuine budget tier (Classic, $99.99/yr) underneath. It only fails the
+      value test for advanced players who will outgrow the curriculum. Full verdict:
+      <a href="/is-flowkey-worth-it/">is Flowkey worth it in 2026?</a>
     </VerdictBox>
     <CTA app={app} label="Try Flowkey free for 7 days" />
     <p>More: <a href="/flowkey-review/">full Flowkey review</a> · <a href="/simply-piano-vs-flowkey/">Simply Piano vs Flowkey</a> · <a href="/flowkey-vs-pianote/">Flowkey vs Pianote</a> · <a href="/flowkey-alternatives/">alternatives</a></p>
     <FAQ items={[
-      { q: 'How much is Flowkey per month?', a: '$20/month on the monthly plan, or $120/year ($10/month-equivalent) on the annual plan.' },
-      { q: 'How much is Flowkey per year?', a: '$120/year at sticker price — but Flowkey runs frequent promotions, so check the deals page before buying; you may never need to pay full price.' },
-      { q: 'Is there a Flowkey free trial?', a: 'Yes — 7 days, card required. Cancel before day 7 to avoid being charged. There is no permanent free tier.' },
-      { q: 'Is Flowkey cheaper than Simply Piano?', a: 'Yes — Flowkey costs $120/yr vs Simply Piano\u2019s $150/yr, and Flowkey carries the higher MetaScore (8.9 vs 8.6).' },
+      { q: 'How much is Flowkey per month?', a: '$24.99/month for Premium (full song library), or about $16.99/month for the course-only Classic tier. Annual plans cut both substantially.' },
+      { q: 'How much is Flowkey per year?', a: '$149.99/year for Premium at sticker price — but Flowkey runs frequent promotions, so check the deals page before buying; you may never need to pay full price. Classic is $99.99/year.' },
+      { q: 'Is there a Flowkey free trial?', a: 'Yes — 7 days of Premium, card required. Cancel before day 7 to avoid being charged. There is no permanent free tier.' },
+      { q: 'Is Flowkey cheaper than Simply Piano?', a: 'Yes — Flowkey Premium costs $149.99/yr vs Simply Piano\u2019s $169.90/yr, and Flowkey carries the higher MetaScore (8.9 vs 8.6).' },
       { q: 'Can I use Flowkey on my phone and computer?', a: 'Yes — one subscription covers iOS, Android, and Web, and it works with mic or MIDI input on all of them. You still need your own piano or keyboard.' },
     ]} />
     <DisclosureBlock />
