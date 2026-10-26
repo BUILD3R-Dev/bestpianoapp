@@ -340,10 +340,10 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickA:
       'Pick Simply Piano if motivation is the risk — gamified courses and kids profiles keep beginners practicing.',
     pickB:
-      'Pick Piano Marvel if measurable skill is the goal — SASR sight-reading scores, teacher-approved method, 30-day trial.',
+      'Pick Piano Marvel if measurable skill is the goal — SASR sight-reading scores, teacher-approved method, no-charge trial.',
     body: [
       'Simply Piano (8.6, ~$169.90/year) and Piano Marvel (8.2, ~$129.99/year) represent opposite theories of learning. Simply Piano believes practice follows fun: streaks, songs, polished progression. Piano Marvel believes practice follows measurement: the SASR sight-reading assessment turns progress into a number, and the 6,000-piece library is built for students, not scrollers.',
-      'The practical split is hardware and temperament. Simply Piano works with any piano via mic; Piano Marvel demands a MIDI keyboard. Simply Piano entertains; Piano Marvel trains. Piano Marvel\u2019s 30-day trial (versus 7) makes it the cheapest experiment of the two — try the serious tool first, and if you bounce off it, you have your answer about what motivates you.',
+      'The practical split is hardware and temperament. Simply Piano works with any piano via mic; Piano Marvel demands a MIDI keyboard. Simply Piano entertains; Piano Marvel trains. Piano Marvel\u2019s no-charge trial (versus 7 days, card required) makes it the cheapest experiment of the two — try the serious tool first, and if you bounce off it, you have your answer about what motivates you.',
     ],
   },
   'flowkey-vs-pianote': {
@@ -411,6 +411,10 @@ export const alternativesIntro: Record<string, string> = {
     'Skoove is the technique-first pick with the thinnest song library and a top-of-range price. If the method appeals but the catalog or cost does not, these alternatives keep the rigor and fix the trade-offs.',
   pianote:
     'Pianote is the premium video school at $279/year — superb if you are all-in, overkill otherwise. These alternatives deliver serious learning for less, or swap video depth for instant feedback.',
+  yousician:
+    'Yousician is the gamified multi-instrument pick — fun, but piano is one of several instruments and the piano path is thinner than the specialists. These alternatives go deeper on piano alone, for less money or with stricter teaching.',
+  'playground-sessions':
+    'Playground Sessions is the MIDI-first video school with a lifetime option — great if you own a keyboard, a non-starter without one. These alternatives work with mic or MIDI, or cost less per year.',
 };
 
 export const VS_PAIRS: [string, string][] = [
@@ -428,7 +432,7 @@ export const VS_PAIRS: [string, string][] = [
   ['simply-piano', 'piano-tree'],
 ];
 
-export const ALTERNATIVES_APPS = ['simply-piano', 'flowkey', 'skoove', 'pianote'];
+export const ALTERNATIVES_APPS = ['simply-piano', 'flowkey', 'skoove', 'pianote', 'yousician', 'playground-sessions'];
 
 // Apps with a dedicated "is it worth it?" cost-vs-value page (URL: /is-{slug}-worth-it/)
 export const WORTH_IT_APPS = ['flowkey', 'simply-piano', 'skoove', 'yousician', 'pianote'];

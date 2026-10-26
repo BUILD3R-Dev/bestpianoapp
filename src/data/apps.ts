@@ -327,7 +327,7 @@ export const apps: PianoApp[] = [
       'Smaller review footprint means a thinner MetaScore evidence base',
     ],
     verdict:
-      'Piano Marvel is the sleeper: the cheapest subscription, the longest trial, and the most teacher-approved method of the bunch. It is also the least fun. If your goal is measurable skill — especially sight reading — and you own a MIDI keyboard, nothing beats it per dollar. If you need motivation mechanics, look elsewhere.',
+      'Piano Marvel is the sleeper: the cheapest subscription, a no-charge trial, and the most teacher-approved method of the bunch. It is also the least fun. If your goal is measurable skill — especially sight reading — and you own a MIDI keyboard, nothing beats it per dollar. If you need motivation mechanics, look elsewhere.',
     lastVerified: LAST_VERIFIED,
   },
   {
