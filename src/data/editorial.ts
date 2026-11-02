@@ -415,6 +415,10 @@ export const alternativesIntro: Record<string, string> = {
     'Yousician is the gamified multi-instrument pick — fun, but piano is one of several instruments and the piano path is thinner than the specialists. These alternatives go deeper on piano alone, for less money or with stricter teaching.',
   'playground-sessions':
     'Playground Sessions is the MIDI-first video school with a lifetime option — great if you own a keyboard, a non-starter without one. These alternatives work with mic or MIDI, or cost less per year.',
+  'piano-marvel':
+    'Piano Marvel is the cheapest full-featured app here and the most teacher-approved — but it demands a MIDI keyboard and offers zero gamification. These alternatives add mic input, motivation mechanics, or a more modern interface.',
+  'piano-tree':
+    'Piano Tree is the underdog: a free tier, strong early ratings, and the lowest promo price — but the thinnest evidence base and no kids mode. These alternatives trade the gamble for deeper catalogs, proven curricula, or live teachers.',
 };
 
 export const VS_PAIRS: [string, string][] = [
@@ -432,7 +436,7 @@ export const VS_PAIRS: [string, string][] = [
   ['simply-piano', 'piano-tree'],
 ];
 
-export const ALTERNATIVES_APPS = ['simply-piano', 'flowkey', 'skoove', 'pianote', 'yousician', 'playground-sessions'];
+export const ALTERNATIVES_APPS = ['simply-piano', 'flowkey', 'skoove', 'pianote', 'yousician', 'playground-sessions', 'piano-marvel', 'piano-tree'];
 
 // Apps with a dedicated "is it worth it?" cost-vs-value page (URL: /is-{slug}-worth-it/)
 export const WORTH_IT_APPS = ['flowkey', 'simply-piano', 'skoove', 'yousician', 'pianote'];
