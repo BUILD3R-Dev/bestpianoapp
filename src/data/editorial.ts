@@ -396,6 +396,26 @@ export const vsEditorial: Record<string, VsEditorial> = {
       'The rational play is sequential, not either-or: try Piano Tree\u2019s free tier this week at zero cost. If the lessons click, you may never need the $169.90/year giant. If they feel thin, Simply Piano\u2019s depth is worth paying for — you will know within the 14-day trial.',
     ],
   },
+  'skoove-vs-pianote': {
+    pickA:
+      'Pick Skoove if you want the most teacher-like app that still listens — technique-first feedback and instructor support at $149.99/year.',
+    pickB:
+      'Pick Pianote if you want real teachers on video and a genuine path to advanced playing — at $279/year, nearly double.',
+    body: [
+      'Skoove (8.4) and Pianote (8.8) are the two most serious teaching options here, and they teach in opposite ways. Skoove is software that corrects: AI listening via mic or MIDI, technique-focused feedback, ~400 songs, and one-on-one instructor support included — all for ~$149.99/year. Pianote is a video school: real teachers, live Q&A, community feedback, ~500 songs, and content from beginner to advanced — for ~$279/year.',
+      'The trade is feedback versus depth. Skoove tells you instantly when your fingering or timing is off; Pianote has no automated note feedback at all — you assess yourself or ask the community. Skoove caps at intermediate; Pianote is the only app here with a true advanced path. Serious adults on a budget should take Skoove; serious learners who know they will still be playing in three years should take Pianote.',
+    ],
+  },
+  'playground-sessions-vs-yousician': {
+    pickA:
+      'Pick Playground Sessions if you own a MIDI keyboard and want to learn real sheet music — scored in real time, with a $349.99 lifetime option.',
+    pickB:
+      'Pick Yousician if the household plays more than piano — five instruments, one $139.99 subscription, and the strongest gamification here.',
+    body: [
+      'Playground Sessions (8.3) and Yousician (7.9) cost almost the same — ~$149.99/year versus ~$139.99 — and serve opposite buyers. Playground Sessions is a piano specialist built around a MIDI keyboard: interactive notation, real-time scoring, 1,000 songs, and a lifetime purchase that pays for itself in under two and a half years. Yousician is a music generalist: piano plus guitar, ukulele, bass, and singing under one subscription, 10,000 songs, mic-based feedback on phone, tablet, and desktop.',
+      'The deciding question is hardware and scope. No MIDI keyboard, no Playground Sessions — it has no mic fallback and no Android app. Piano-only learners get deeper teaching from Playground Sessions; multi-instrument households get far more value from Yousician. If the goal is reading real sheet music well, Playground Sessions wins; if the goal is keeping the whole family playing something, Yousician wins.',
+    ],
+  },
 };
 
 export interface AlternativesIntro {
@@ -434,6 +454,8 @@ export const VS_PAIRS: [string, string][] = [
   ['simply-piano', 'pianote'],
   ['flowkey', 'playground-sessions'],
   ['simply-piano', 'piano-tree'],
+  ['skoove', 'pianote'],
+  ['playground-sessions', 'yousician'],
 ];
 
 export const ALTERNATIVES_APPS = ['simply-piano', 'flowkey', 'skoove', 'pianote', 'yousician', 'playground-sessions', 'piano-marvel', 'piano-tree'];
