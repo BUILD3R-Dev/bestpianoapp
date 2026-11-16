@@ -56,8 +56,8 @@ export interface PianoApp {
 }
 
 /** Bump this on every monthly re-verification pass. */
-export const LAST_VERIFIED = '2026-10-19';
-export const LAST_VERIFIED_LABEL = 'October 19, 2026';
+export const LAST_VERIFIED = '2026-11-16';
+export const LAST_VERIFIED_LABEL = 'November 16, 2026';
 
 export const apps: PianoApp[] = [
   {
@@ -294,7 +294,7 @@ export const apps: PianoApp[] = [
     freeTrial: 'Free trial available — no charge during trial (length not published)',
     platforms: ['iOS', 'PC', 'Mac'],
     inputMethod: 'midi',
-    songLibrarySize: 6000,
+    songLibrarySize: 25000,
     format: 'course',
     sheetMusic: true,
     feedbackType: 'MIDI-based assessment with the proprietary SASR (Standard Assessment of Sight Reading)',
@@ -318,7 +318,7 @@ export const apps: PianoApp[] = [
     pros: [
       'Cheapest full-featured option here at ~$129.99/yr, with a free trial (no charge during trial)',
       'SASR sight-reading assessment is unique — measurable progress on reading music',
-      'Huge library (6,000+ pieces) spanning method books to repertoire',
+      'Huge library (25,000+ pieces) spanning method books to repertoire',
       'Widely used by actual piano teachers as a practice tool',
     ],
     cons: [
@@ -335,7 +335,7 @@ export const apps: PianoApp[] = [
     name: 'Yousician',
     maker: 'Yousician Ltd.',
     tagline: 'The multi-instrument gamified trainer — piano plus guitar, ukulele, bass, and singing.',
-    pricing: { monthly: 29.99, annual: 139.99, currency: 'USD' },
+    pricing: { monthly: 29.99, annual: 159.99, currency: 'USD' },
     freeTrial: '7-day free trial (card required)',
     platforms: ['iOS', 'Android', 'PC', 'Mac'],
     inputMethod: 'mic',
@@ -460,13 +460,13 @@ export const apps: PianoApp[] = [
       '7-day free trial with cancel-anytime terms',
     ],
     cons: [
-      'Song library page is currently empty despite the homepage claiming "hundreds of songs" — catalog size is unproven',
+      'Song library is still tiny — 35 pieces listed across three artist collections (verified November 16, 2026) — despite the homepage claiming "hundreds of songs"',
       'Native iOS, Android, macOS, and Windows apps are all still "coming soon" — web-only for now',
       'No automated feedback on your playing: you learn by watching, the app does not listen',
       'Brand-new with thin public ratings — our MetaScore is provisional until more data exists',
     ],
     verdict:
-      'Piano Player is the most visually ambitious piano app we track: watching motion-captured pro hands in 3D is a genuinely different way to learn a song. But go in clear-eyed — the song library is currently empty, native apps are still coming soon, and nothing checks your playing. The 7-day trial costs nothing; judge the 3D experience yourself before paying $120 a year.',
+      'Piano Player is the most visually ambitious piano app we track: watching motion-captured pro hands in 3D is a genuinely different way to learn a song. But go in clear-eyed — the song library lists just 35 pieces so far, native apps are still coming soon, and nothing checks your playing. The 7-day trial costs nothing; judge the 3D experience yourself before paying $120 a year.',
     lastVerified: LAST_VERIFIED,
   },
 ];

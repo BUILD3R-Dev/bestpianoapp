@@ -163,7 +163,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
     pricingDeepDive:
       'Piano Marvel costs $17.99/month or $129.99/year — the cheapest annual plan of any full-featured app here. The standout is the trial terms: no charge during the trial period (the official site does not publish the length; independent reviews report 30 days). At these prices the financial risk of trying it is essentially zero. Like Playground Sessions, it requires a MIDI keyboard, so budget for one if needed.',
     methodNote:
-      'The method centers on SASR — the Standard Assessment of Sight Reading — a proprietary scoring system that measures and tracks your reading progress numerically. Around it sits a structured technique curriculum and a 6,000+ piece library spanning method books to repertoire. Feedback is MIDI-based and precise. The interface is spartan and there is no gamification to speak of; motivation must come from you.',
+      'The method centers on SASR — the Standard Assessment of Sight Reading — a proprietary scoring system that measures and tracks your reading progress numerically. Around it sits a structured technique curriculum and a 25,000+ piece library spanning method books to repertoire. Feedback is MIDI-based and precise. The interface is spartan and there is no gamification to speak of; motivation must come from you.',
     whoFor:
       'Technique-focused learners, students already working with a teacher who want a practice tool, and sight-reading builders. The no-charge trial makes it a low-risk experiment.',
     whoSkip:
@@ -185,9 +185,9 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
   },
   yousician: {
     intro:
-      'Yousician is the best value in music apps — with one enormous asterisk. A single $139.99/year subscription covers piano, guitar, ukulele, bass, and singing, with the strongest gamification in the category. As a piano-only app, though, it loses to the piano-first competition on curriculum depth and feedback quality. Buy it for the bundle, not for the piano course.',
+      'Yousician is the best value in music apps — with one enormous asterisk. A single $159.99/year subscription covers piano, guitar, ukulele, bass, and singing, with the strongest gamification in the category. As a piano-only app, though, it loses to the piano-first competition on curriculum depth and feedback quality. Buy it for the bundle, not for the piano course.',
     pricingDeepDive:
-      'Yousician costs $29.99/month or $139.99/year. The math only works as a bundle: $139.99 for five instruments is $28 per instrument per year, which is absurd value. As a piano-only purchase at $139.99, it is mid-priced and outclassed on curriculum by piano-first apps like Flowkey. The 7-day free trial requires a card — and note that subscription-cancellation complaints are the most common negative reviews, so trial with intent.',
+      'Yousician costs $29.99/month or $159.99/year. The math only works as a bundle: $159.99 for five instruments is $32 per instrument per year, which is absurd value. As a piano-only purchase at $159.99, it is mid-priced and outclassed on curriculum by piano-first apps like Flowkey. The 7-day free trial requires a card — and note that subscription-cancellation complaints are the most common negative reviews, so trial with intent.',
     methodNote:
       'The method is gamified across the board: mic-based real-time feedback, levels, challenges, and streaks tuned to keep kids and casual learners engaged. It runs on everything — iOS, Android, PC, Mac — the widest platform support here. The piano content is shallower than the piano-first apps and there is no sheet-music focus, which rules it out for classical-track learners.',
     whoFor:
@@ -201,7 +201,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
       },
       {
         q: 'How much does Yousician cost?',
-        a: 'About $139.99 per year or $29.99 per month — one subscription covering piano, guitar, ukulele, bass, and singing. As a five-instrument bundle it is excellent value; as a piano-only app it is merely average.',
+        a: 'About $159.99 per year or $29.99 per month — one subscription covering piano, guitar, ukulele, bass, and singing. As a five-instrument bundle it is excellent value; as a piano-only app it is merely average.',
       },
       {
         q: 'Yousician vs Simply Piano for kids?',
@@ -245,7 +245,7 @@ export const reviewEditorial: Record<string, ReviewEditorial> = {
     whoFor:
       'Visual learners who absorb by watching, and web-first users who want to start in a browser today with nothing to install.',
     whoSkip:
-      'Anyone who wants feedback on their own playing (there is none — no note detection), mobile-app-only users (native apps are still "coming soon"), and learners who need a large proven song catalog: the library page is currently empty, so evaluate the 3D experience, not the catalog.',
+      'Anyone who wants feedback on their own playing (there is none — no note detection), mobile-app-only users (native apps are still "coming soon"), and learners who need a large proven song catalog: the library lists just 35 pieces so far, so evaluate the 3D experience, not the catalog.',
     faqs: [
       {
         q: 'Is Piano Player an app I can download?',
@@ -330,9 +330,9 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickA:
       'Pick Flowkey if piano is the instrument — deeper piano curriculum, higher ratings, lower price.',
     pickB:
-      'Pick Yousician if you want piano plus guitar, ukulele, bass, and singing under one $139.99 subscription.',
+      'Pick Yousician if you want piano plus guitar, ukulele, bass, and singing under one $159.99 subscription.',
     body: [
-      'Flowkey (8.9) is a piano specialist; Yousician (7.9) is a music generalist. That single fact decides this comparison. Flowkey\u2019s piano curriculum, song library, and feedback are all deeper — and at ~$149.99/year it costs $10 more than Yousician\u2019s ~$139.99.',
+      'Flowkey (8.9) is a piano specialist; Yousician (7.9) is a music generalist. That single fact decides this comparison. Flowkey\u2019s piano curriculum, song library, and feedback are all deeper — and at ~$149.99/year it costs $10 less than Yousician\u2019s ~$159.99.',
       'Yousician\u2019s case is the bundle: five instruments, one subscription, the strongest gamification in the category, and platform support everywhere including desktop. If anyone in the house might pick up a guitar, the bundle math is unbeatable. If the goal is learning piano well, the specialist wins.',
     ],
   },
@@ -342,7 +342,7 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickB:
       'Pick Piano Marvel if measurable skill is the goal — SASR sight-reading scores, teacher-approved method, no-charge trial.',
     body: [
-      'Simply Piano (8.6, ~$169.90/year) and Piano Marvel (8.2, ~$129.99/year) represent opposite theories of learning. Simply Piano believes practice follows fun: streaks, songs, polished progression. Piano Marvel believes practice follows measurement: the SASR sight-reading assessment turns progress into a number, and the 6,000-piece library is built for students, not scrollers.',
+      'Simply Piano (8.6, ~$169.90/year) and Piano Marvel (8.2, ~$129.99/year) represent opposite theories of learning. Simply Piano believes practice follows fun: streaks, songs, polished progression. Piano Marvel believes practice follows measurement: the SASR sight-reading assessment turns progress into a number, and the 25,000-piece library is built for students, not scrollers.',
       'The practical split is hardware and temperament. Simply Piano works with any piano via mic; Piano Marvel demands a MIDI keyboard. Simply Piano entertains; Piano Marvel trains. Piano Marvel\u2019s no-charge trial (versus 7 days, card required) makes it the cheapest experiment of the two — try the serious tool first, and if you bounce off it, you have your answer about what motivates you.',
     ],
   },
@@ -362,7 +362,7 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickB:
       'Pick Yousician if the household plays multiple instruments and fun is the retention strategy.',
     body: [
-      'Skoove (8.4, ~$149.99/year) and Yousician (7.9, ~$139.99/year) both cost about the same and could not be more different. Skoove is a piano purist: ~400 songs, technique-first AI feedback, instructor support, adult design. Yousician is a music arcade: five instruments, heavy gamification, 10,000 songs, kids included.',
+      'Skoove (8.4, ~$149.99/year) and Yousician (7.9, ~$159.99/year) both cost about the same and could not be more different. Skoove is a piano purist: ~400 songs, technique-first AI feedback, instructor support, adult design. Yousician is a music arcade: five instruments, heavy gamification, 10,000 songs, kids included.',
       'The question is what you are optimizing. Optimizing for playing piano well? Skoove, comfortably. Optimizing for a family where the kids might quit piano for guitar by March? Yousician\u2019s bundle keeps the subscription useful either way.',
     ],
   },
@@ -410,10 +410,30 @@ export const vsEditorial: Record<string, VsEditorial> = {
     pickA:
       'Pick Playground Sessions if you own a MIDI keyboard and want to learn real sheet music — scored in real time, with a $349.99 lifetime option.',
     pickB:
-      'Pick Yousician if the household plays more than piano — five instruments, one $139.99 subscription, and the strongest gamification here.',
+      'Pick Yousician if the household plays more than piano — five instruments, one $159.99 subscription, and the strongest gamification here.',
     body: [
-      'Playground Sessions (8.3) and Yousician (7.9) cost almost the same — ~$149.99/year versus ~$139.99 — and serve opposite buyers. Playground Sessions is a piano specialist built around a MIDI keyboard: interactive notation, real-time scoring, 1,000 songs, and a lifetime purchase that pays for itself in under two and a half years. Yousician is a music generalist: piano plus guitar, ukulele, bass, and singing under one subscription, 10,000 songs, mic-based feedback on phone, tablet, and desktop.',
+      'Playground Sessions (8.3) and Yousician (7.9) cost almost the same — ~$149.99/year versus ~$159.99 — and serve opposite buyers. Playground Sessions is a piano specialist built around a MIDI keyboard: interactive notation, real-time scoring, 1,000 songs, and a lifetime purchase that pays for itself in under two and a half years. Yousician is a music generalist: piano plus guitar, ukulele, bass, and singing under one subscription, 10,000 songs, mic-based feedback on phone, tablet, and desktop.',
       'The deciding question is hardware and scope. No MIDI keyboard, no Playground Sessions — it has no mic fallback and no Android app. Piano-only learners get deeper teaching from Playground Sessions; multi-instrument households get far more value from Yousician. If the goal is reading real sheet music well, Playground Sessions wins; if the goal is keeping the whole family playing something, Yousician wins.',
+    ],
+  },
+  'pianote-vs-yousician': {
+    pickA:
+      'Pick Pianote if piano is the long game — real teachers on video, live Q&A, and the only true advanced path here.',
+    pickB:
+      'Pick Yousician if the household plays more than piano — five instruments under one $159.99 subscription, with the strongest gamification in the category.',
+    body: [
+      'Pianote (8.8, ~$279/year) and Yousician (7.9, ~$159.99/year) sit at opposite ends of the price range, and they could not teach more differently. Pianote is a video school: real teachers, live Q&A, community feedback, and content from beginner to advanced. Yousician is a game: mic-based feedback across piano, guitar, ukulele, bass, and singing, with 10,000 songs and streaks to keep everyone playing.',
+      'The price gap is wide — $279 versus $159.99 — and it buys depth, not breadth. Pianote has no automated note feedback at all; Yousician tells you instantly when you miss a note, but its piano curriculum is thinner than any piano-first app here. Serious piano learners should take Pianote (and compare $279 against private lessons before flinching); households where piano is one of several instruments get far more from Yousician\u2019s bundle.',
+    ],
+  },
+  'piano-marvel-vs-skoove': {
+    pickA:
+      'Pick Piano Marvel if measurable skill is the goal — SASR sight-reading scores, a 25,000-piece library, and the lowest price here at $129.99/year.',
+    pickB:
+      'Pick Skoove if you want the most teacher-like app that still listens — technique-first feedback and real instructor support at $149.99/year.',
+    body: [
+      'Piano Marvel (8.2, ~$129.99/year) and Skoove (8.4, ~$149.99/year) are the two most serious teaching tools among the course apps, and both are aimed at adults who want to play correctly, not just play songs. Piano Marvel is the measurement machine: the SASR sight-reading assessment turns progress into a number, the 25,000-piece library spans method books to repertoire, and the no-charge trial makes it the cheapest experiment here.',
+      'The split is hardware and temperament. Piano Marvel is MIDI-only with a utilitarian interface and zero gamification; it trains, it does not entertain. Skoove works with any piano via mic or MIDI, looks better, and answers back with instructor support when you stall. If you own a MIDI keyboard and want to read music measurably better, Piano Marvel is the best value in the category. If motivation is the risk, Skoove\u2019s instructors are worth the $20/year premium.',
     ],
   },
 };
@@ -456,6 +476,8 @@ export const VS_PAIRS: [string, string][] = [
   ['simply-piano', 'piano-tree'],
   ['skoove', 'pianote'],
   ['playground-sessions', 'yousician'],
+  ['pianote', 'yousician'],
+  ['piano-marvel', 'skoove'],
 ];
 
 export const ALTERNATIVES_APPS = ['simply-piano', 'flowkey', 'skoove', 'pianote', 'yousician', 'playground-sessions', 'piano-marvel', 'piano-tree'];
